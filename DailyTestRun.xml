@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="TestSuite">
+	<test name="ContactsPageTest1">
+		<parameter name="browser" value="Chrome" />
+		<parameter name="url" value="stagingUrl" />
+		<classes>
+			<class name="GT.GT.ContactsPageTest">
+				<methods>
+					<include
+						name="verifyCreateListFromContactsPageUsingPlusSymbol" />
+					<include name="verifyCreateListFromExcelUpload" />
+					<include name="verifyDeleteListFromContactsPage" />
+					<include
+						name="verifyAddContactsFromAddContactsTabOnOverlay" />
+					<include
+						name="verifyAddContactsFromMobileContactsTabOnOverlay" />
+
+
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<test name="AccountPageTest1">
+		<parameter name="browser" value="Chrome" />
+		<parameter name="url" value="productionUrl" />
+		<classes>
+			<class name="GT.GT.AccountPageTest">
+				<methods>
+					<include name="verifyEditUserProfile"></include>
+					<include
+						name="verifyConfigureClipsFunctionalityOnProfilePage"></include>
+					<include name="verifyRechargeWithPaytm" />
+					<include name="verifyTotalAmountUsedByUser" />
+					<include name="verifyAllTabsAreDisplayedOnMyAccountPage" />
+					<include
+						name="verifyTheCountOfAccountManagersInAccountManagersTab" />
+					<include
+						name="verifyAddAccountManagerFunctionalityByGivingNonRegisteredNumberInAccountManagersTab" />
+					<include
+						name="verifyAccountManagerFunctionalityInAccountManagersTab" />
+					<include name="checkAccountDetails" />
+					<include name="verifyPromocode" />
+					<include
+						name="verifyAddSubAccountFunctionalityWithAlreadyExistedSubAccount" />
+					<include
+						name="verifyAddSubAccountFunctionalityByGivingNonRegisteredNumberInSubAccountsTab" />
+					<include
+						name="verifyAddSubAccountFunctionalityInSubAccountsTab" />
+					<include
+						name="verifyAddBalanceFunctionalityToExistingSubAccountInSubAccountsTab" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<test name="callpage">
+		<parameter name="browser" value="Chrome" />
+		<parameter name="url" value="productionUrl" />
+		<classes>
+			<class name="GT.GT.CreateAndCallGroupTest">
+				<methods>
+					<include
+						name="verifyHeaderTabsAndLogosDisplayedOnGrpTalksPage" />
+					<include name="verifyFooterTextDisplayedOnMyGrpTalksPage" />
+					<include
+						name="verifyErrorMessageWhenJunkDataGivenInSearchBox" />
+					<include name="verifyContactListInPhoneContacts" />
+					<include name="verifySearchOptionWithfullValidUserName" />
+					<include name="verifySelectContactFromContactList" />
+					<include
+						name="verifyCallFunctionalityOfTestContactsFromCreateGroupTalkPage" />
+					<include
+						name="verifyErrorMsgWhenWeSubmitStartNowButtonWithOutSelectingAnyPhoneContacts" />
+					<include name="removeLeaveGroup" />
+					<include name="createAndSaveTheGroup" />
+					<include name="verifyCallFunctionalityOfListMembers" />
+					<include
+						name="verifyQuickDialButtonFunctionalityofGroupsInMyGrpTalk" />
+					<include
+						name="verify_list_Of_Group_Users_On_MyGrpTalk_Page" />
+					<include
+						name="verify_list_Of_Group_Users_On_MyGrpTalk_Page" />
+					<include
+						name="verifyCreateListFromExcelUploadOnCreateGrpPage" />
+					<include
+						name="verifyAddContactsFromContactsListByEditngSavedGroupOnMyGrpTalkPage" />
+					<include
+						name="verifyMuteCallFunctionalityFromCreateGroupTalkPageByCreatingNewGroup" />
+					<include name="verifySaveGroupWithNormalAndMuteClips" />
+					<include name="verifyAllButtonsDisplayedOnCallOverlay" />
+					<include name="verifyHistoryOfGroup" />
+					<include name="verifyScheduleGrpTalk" />
+					<include
+						name="VerifyAllowNonMembersOptionInAdvancedSettingsOnOverlayInEditGrpTalk" />
+					<include name="verifyRetryCallFunctionality" />
+					<include name="verifyPrivateRoomFuntionalityInLiveCall" />
+					<include
+						name="verifyMuteAndUnmuteFunctionalityInLiveCallWhenParticipantsAreInPrivateRoom" />
+					<include
+						name="verifyfunctionalityOfExcelReportDownloadOptionOnHistory" />
+					<include name="verifyDialFunctionalityOfScheduleGroup" />
+					<include
+						name="verifyCreateListFromExcelUploadandphonecontacts" />
+					<include name="verifyselectedcontactstab" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+
+</suite>
+
+			

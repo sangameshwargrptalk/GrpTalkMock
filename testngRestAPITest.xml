@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="TestSuite">
+	<test name="ContactsPageTest">
+		<parameter name="browser" value="Chrome" />
+		<parameter name="url" value="restUrl" />
+		<classes>
+			<class name="GT.GT.RestApiTest" >
+				<methods>
+					<include name ="verifyCallFunctionality" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+</suite>
+
+			

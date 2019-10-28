@@ -15,14 +15,14 @@ public class EditGroupTalk extends BrowserFunctions{
   
 	private static final TimeUnit SECONDS = null;
 
-	By editGroupCallButton													=By.id("editGroupCall");
+	By editGroupCallButton													=By.xpath("//ul[@id=\"groupCallButtons\"]//i[@class=\"fa fa-pencil\" and @id=\"editGroupCall\"]");//id("editGroupCall");xpath("//li[@class=\"mobileContacts\"]//a[text()=\"Phone Contacts\"]")
  	By onOffSwitchLabelForDialInOnlyOnAdvancedSettingsInEditGrpTalk 		= By.xpath("//*[@for='savedialinswitch']");
  	By onOffSwitchLabelForAllowNonMembersOnAdvancedSettingsInEditGrpTalk 	= By.xpath("//*[@for='saveallownonswitch']");
  	By onOffSwitchLabelForMuteDialOnAdvancedSettingsInEditGrpTalk 			= By.xpath("//*[@for='savemutedialswitch']");
  	By onOffSwitchLabelForAssignCallManagerOnAdvancedSettingsInEditGrpTalk 	= By.xpath("//*[@for='assignManagerEdit']");
  	By onOffSwitchLabelForOpenLineBeforeThirtyMinutesOnAdvancedSettingsInEditGrpTalk = By.xpath("//*[@for='openlineswitch']");
  	By saveButtonOnAdvancedSettingInEditGrpTalk 			= By.id("okBtn");
-	By saveGroupCallButtonOnEditGrpTalk						= By.xpath("//*[@class='form-inline']//*[@id='saveGrpCall']");
+	By saveGroupCallButtonOnEditGrpTalk						= By.xpath("//button[@class=\"btn btn-danger margin-top-10\" and @id=\"saveGrpCall\"]");//*[@class='form-inline']//*[@id='saveGrpCall']
 	By scheduleDateAndTimeFieldOnEditGroupTalkPage 			= By.xpath("//*[@id='conf_datetime']");
 	By repeatDaysFiledOnEditGrpTalk 						= By.id("repeat");
 	By setButtonONOverlayOnEditGrpTalk 						= By.id("setRepeat");

@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
-  <test thread-count="5" name="Default test(failed)">
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [TestSuite]">
+  <test thread-count="5" name="ContactsPageTest(failed)">
+    <parameter name="browser" value="Chrome"/>
+    <parameter name="url" value="restUrl"/>
     <classes>
-      <class name="GT.GT.CreateAndCallGroupTest">
+      <class name="GT.GT.RestApiTest">
         <methods>
           <include name="closeBrowser1"/>
-          <include name="verifySelectSpecificCharacterOfContactsInPhoneContacts"/>
           <include name="tearDown"/>
-          <include name="beforeCalss"/>
+          <include name="verifyCallFunctionality"/>
           <include name="setup"/>
         </methods>
-      </class> <!-- GT.GT.CreateAndCallGroupTest -->
+      </class> <!-- GT.GT.RestApiTest -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- ContactsPageTest(failed) -->
+</suite> <!-- Failed suite [TestSuite] -->
