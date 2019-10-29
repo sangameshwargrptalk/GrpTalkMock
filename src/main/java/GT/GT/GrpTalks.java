@@ -26,7 +26,7 @@ public class GrpTalks extends BrowserFunctions {
 	private static final TimeUnit SECONDS = null;
 
 	static By createGrp = By.xpath("//*[@id='createGrpTalkNew']");
-	static By createdGrplist = By.xpath("//*[@id='grpDetails']/p[1]");
+	static By createdGrplist = By.xpath("txtsearchGroups");
 	By nameOnMyGrpTalkMainGrid = By.className("CallLogName");
 	By grpMembersDetailsOnMyGrpTalks = By
 			.xpath("//*[@class='col-xs-6 col-sm-4 col-md-3 col-mgbtm']//*[@for='r1']//*[@class='persn-name-det']");
@@ -147,8 +147,8 @@ public class GrpTalks extends BrowserFunctions {
 	By individualReDailButton = By.xpath("//*[@class='singleRedial']");
 	// By individualCallEndedParticipants = By.xpath("//*[@class='oncall-bg
 	// bgRed pull-right mr-2']//*[@class='oncall-text text-left']");
-	By individualOnCallParticipants = By
-			.className("oncall-bg bgGreen pull-right mr-2");////*[@class='oncall-bg bgGreen pull-right mr-2']//*[@class='oncall-text text-left']
+	By individualOnCallParticipants = By.xpath("//span[@class=\"oncall-bg bgGreen pull-right mr-2\"]//span[@class=\"oncall-text text-left\" and text()=\"ON CALL\"]");
+	////*[@class='oncall-bg bgGreen pull-right mr-2']//*[@class='oncall-text text-left']
 	// By individualPrivateRoomBadge = By.className("privateRoomBadgeTb");
 	// By globalClosePrivateRoomButton = By.id("privateUnPrivate");
 	// By individualDailingParticipants = By.className("oncall-bg bgYellow
@@ -519,7 +519,13 @@ public class GrpTalks extends BrowserFunctions {
 	}
 
 	public void clickExcelReportDownloadButtonOnHistory() throws InterruptedException {
-		driver.findElement(excelReportDownloadButtonOnHistory).click();
+		if(driver.findElement(excelReportDownloadButtonOnHistory).isDisplayed()) {
+			driver.findElement(excelReportDownloadButtonOnHistory).click();	
+		}
+		else {
+			System.out.println("history not found");
+		}
+		
 		Thread.sleep(5000);
 	}
 
@@ -857,6 +863,7 @@ public class GrpTalks extends BrowserFunctions {
 		Thread.sleep(3000);
 		String savedGrpName = grpName;
 		List<WebElement> listofUsersInGroup = driver.findElements(createdGrplist);
+		
 		for (WebElement user : listofUsersInGroup) {
 			Actions actions = new Actions(driver);
 			actions.moveToElement(user);
@@ -995,8 +1002,12 @@ public class GrpTalks extends BrowserFunctions {
 		 * wait.until(ExpectedConditions.visibilityOfElementLocated((
 		 * individualOnCallParticipants)));
 		 */
-		driver.manage().timeouts().implicitlyWait(20, SECONDS);
-		driver.findElement(individualOnCallParticipants);
+	CommonMethods.explicitWaitForElementVisibility(individualOnCallParticipants);
+		List<WebElement>onCallList=driver.findElements(individualOnCallParticipants);
+		if(onCallList.size()>=1) {
+			System.out.println("onCall");
+		}
+			
 	}
 
 	public boolean onCallCheck() throws InterruptedException {

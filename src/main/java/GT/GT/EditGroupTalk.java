@@ -62,7 +62,10 @@ public class EditGroupTalk extends BrowserFunctions{
 	
 	By normalAudioClipOnEditGroupOverlay    	= By.xpath("//*[@id='upload-pics-inputs-container']//fieldset[1]//*[@id='spMuteclip']");
 	By muteAudioClipOnEditGroupOverlay    	= By.xpath("//*[@id='upload-pics-inputs-container']//fieldset[2]//*[@id='spMuteclip']");
-	
+	By searchGroupIcon=By.id("txtsearchGroups");
+	public void seacrhParticularGroup() {
+		driver.findElement(searchGroupIcon).sendKeys("auau");
+	}
 	public boolean visibilityOfSavedNormalClipOnUploadClipsOverlayInEditGroup(){
 		List<WebElement> normalClip = driver.findElements(normalAudioClipOnEditGroupOverlay);
 		if(normalClip.size()==0){
