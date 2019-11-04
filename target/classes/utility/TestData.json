@@ -19,7 +19,7 @@
     "junkData"								:		"qwertyuiop",
     "partialContactName"					:		"anud",
     "validContactName"						:		"anusha",
-    "grpTalkGroup"							:		"ABSR",	
+    "grpTalkGroup"							:		"AUAU",	
     "newTestList"							:		"TestList",
     "OneDialGroup"							:		"OneDial",
     "LeaveGroupGroup"						:		"LeaveGroup",
@@ -53,7 +53,9 @@
 	"productionHomePage"		:	"https://www.grptalk.com",
 	"searchContactsWithNameAuto" : 	"auto",
 	
-	"restUrl"				:	"http://staging.grptalk.com/index.aspx?automationkey=narasimha"
+	"restUrl"				:	"http://staging.grptalk.com/index.aspx?automationkey=narasimha",
+	"restMockUrl"				:	"http://staging.grptalk.com/index.aspx?automationkey=84089"
+	
 	
 	
 }

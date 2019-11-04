@@ -5,10 +5,10 @@
     <classes>
       <class name="GT.GT.CreateAndCallGroupTest">
         <methods>
-          <include name="verifyRetryCallFunctionality"/>
           <include name="closeBrowser1"/>
           <include name="tearDown"/>
           <include name="beforeCalss"/>
+          <include name="verifyfunctionalityOfExcelReportDownloadOptionOnHistory"/>
           <include name="setup"/>
         </methods>
       </class> <!-- GT.GT.CreateAndCallGroupTest -->

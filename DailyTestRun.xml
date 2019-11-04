@@ -3,7 +3,7 @@
 <suite name="TestSuite">
 	<test name="ContactsPageTest1">
 		<parameter name="browser" value="Chrome" />
-		<parameter name="url" value="stagingUrl" />
+		<parameter name="url" value="productionUrl" />
 		<classes>
 			<class name="GT.GT.ContactsPageTest">
 				<methods>

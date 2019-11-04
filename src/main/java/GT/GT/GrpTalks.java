@@ -25,8 +25,8 @@ public class GrpTalks extends BrowserFunctions {
 
 	private static final TimeUnit SECONDS = null;
 
-	static By createGrp = By.xpath("//*[@id='createGrpTalkNew']");
-	static By createdGrplist = By.xpath("txtsearchGroups");
+	static By createGrp = By.xpath("//button[@class=\"btn btn_head\"]//i[@class=\"fa fa-plus-circle pull-right margin-top-10\" and @id=\"createGrpTalkNew\"]");//xpath("//*[@id='createGrpTalkNew']")
+	static By createdGrplist =By.id("grpDetails"); //By.xpath("txtsearchGroups");
 	By nameOnMyGrpTalkMainGrid = By.className("CallLogName");
 	By grpMembersDetailsOnMyGrpTalks = By
 			.xpath("//*[@class='col-xs-6 col-sm-4 col-md-3 col-mgbtm']//*[@for='r1']//*[@class='persn-name-det']");
@@ -63,13 +63,13 @@ public class GrpTalks extends BrowserFunctions {
 	By totalMinuesConsumedByGrpCall = By.xpath(
 			"//*[@class='ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active']/div/div[1]/ul/li[2]/span");
 	By totalAmountChargedForGrpcall = By.xpath(
-			"//*[@class='ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active']/div/div[1]/ul/li[3]/span");
+			"//span[contains(text(),\"INR\")]");
 	By dialInMsgForGrpOnMyGrpTalks = By.xpath("//*[@class='pinStrip row']");
 	By scheduleTimeAndRepeateDaysTextOfGroupOnMyGrpTalk = By.xpath("//*[@id='listTitle']/div/div[2]/span");
 	By listOfWebLists = By.xpath("//*[@id='list-group1']//*[contains(@class,'list1')]//a");
 	By scheduleCancleButton = By.id("cancelGroupCall");
 	By liveCallButton = By.xpath("//*[@id='date']//label");
-	By downloadRecordingButton = By.xpath("//*[@class='margin-bottom-20']//*[@title='Download Recording']");
+	By downloadRecordingButton = By.xpath("//*[@class=\"pull-left clip-down\"]//*[@class=\"fa fa-download margin-right-5 btn clipDownload\"]");//xpath("//*[@class='margin-bottom-20']//*[@title='Download Recording']");
 	By contactsListOfGroupOnMyGrpTalkPage = By
 			.xpath("//*[@id='members']//*[@class='col-xs-6 col-sm-4 col-md-3 col-mgbtm']");
 	By quickDialButtonOfActiveGroup = By.xpath("//*[@id=\"522891\"]/table/tbody/tr/td[3]/span");
@@ -77,7 +77,7 @@ public class GrpTalks extends BrowserFunctions {
 	By muteAllButtonInUnMutedTab = By.xpath("//*[@id='btnUnmuteAll']");
 	By dialAllButtonInCallEndedTab = By.xpath("//*[@id='btnDialAll']");
 	By closePrivateRoomButtonInPrivateRoomTab = By.xpath("//*[@id='btnClosePrivate']");
-	By excelReportDownloadButtonOnHistory = By.id("btnDownlodHistory");
+	By excelReportDownloadButtonOnHistory = By.xpath("//div[@class=\"margin-bottom-5\"]//a[contains(@title, 'Download Excel Report') and @id=\"btnDownlodHistory\"]");
 	By footerText = By.className("footer");
 	By grpTalkLogo = By.id("logo");
 	By groupsTabOnHomePage = By.id("grptalks-li");
@@ -519,6 +519,7 @@ public class GrpTalks extends BrowserFunctions {
 	}
 
 	public void clickExcelReportDownloadButtonOnHistory() throws InterruptedException {
+		CommonMethods.explicitWaitForElementVisibility(excelReportDownloadButtonOnHistory);
 		if(driver.findElement(excelReportDownloadButtonOnHistory).isDisplayed()) {
 			driver.findElement(excelReportDownloadButtonOnHistory).click();	
 		}
@@ -701,11 +702,12 @@ public class GrpTalks extends BrowserFunctions {
 	}
 
 	public double totalAmountChargedForGrpcall() throws InterruptedException {
-		CommonMethods.explicitWaitForElementVisibility(totalAmountChargedForGrpcall);
+		Thread.sleep(3000);
 		String s = driver.findElement(totalAmountChargedForGrpcall).getText();
 		String intValue = s.replaceAll("[^0-9]", "");
-		Double i = Double.parseDouble(intValue);
-		return i / 1000;
+		Double i = Double.parseDouble(intValue);//
+		//return i / 1000;
+		return i/1000;
 	}
 
 	public String totalAmountChargedForGrpcall1() throws InterruptedException {
@@ -865,14 +867,16 @@ public class GrpTalks extends BrowserFunctions {
 		List<WebElement> listofUsersInGroup = driver.findElements(createdGrplist);
 		
 		for (WebElement user : listofUsersInGroup) {
-			Actions actions = new Actions(driver);
-			actions.moveToElement(user);
-			actions.perform();
-			if (user.getText().equalsIgnoreCase(savedGrpName)) {
-				Thread.sleep(1000);
+			if(user.getAttribute("grpcallname").equalsIgnoreCase(grpName)) {
 				user.click();
 				break;
 			}
+			/*
+			 * Actions actions = new Actions(driver); actions.moveToElement(user);
+			 * actions.perform(); if (user.getText().equalsIgnoreCase(savedGrpName)) {
+			 * Thread.sleep(1000); user.click(); break; }
+			 */
+		
 		}
 	}
 
@@ -996,18 +1000,19 @@ public class GrpTalks extends BrowserFunctions {
 		Thread.sleep(25000);
 	}
 
-	public void verifyLiveCallState() {
+	public void verifyLiveCallState() throws InterruptedException {
 		/*
 		 * WebDriverWait wait = new WebDriverWait(driver, 15);
 		 * wait.until(ExpectedConditions.visibilityOfElementLocated((
 		 * individualOnCallParticipants)));
 		 */
+		Thread.sleep(3000);
 	CommonMethods.explicitWaitForElementVisibility(individualOnCallParticipants);
 		List<WebElement>onCallList=driver.findElements(individualOnCallParticipants);
-		if(onCallList.size()>=1) {
+		if(onCallList.size()>0) {
 			System.out.println("onCall");
 		}
-			
+			Thread.sleep(3000);
 	}
 
 	public boolean onCallCheck() throws InterruptedException {

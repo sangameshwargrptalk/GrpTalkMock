@@ -98,10 +98,10 @@ public class BrowserFunctions {
 	    		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	            break;  
 	         
-	        case "restUrl":  
-	        	driver.get(CommonMethods.passingData("restUrl"));
+	        case "restMockUrl":  
+	        	driver.get(CommonMethods.passingData("restMockUrl"));
 	    		logger_ss.log(Status.INFO, "rest Staging GrpTalk home page opend");
-	    		currentUrl = CommonMethods.passingData("restUrl");
+	    		currentUrl = CommonMethods.passingData("restMockUrl");
 	    		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	            break;    
 	        case "productionUrl":  

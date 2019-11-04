@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" ignored="79" total="80" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="191755" started-at="2019-10-29T12:37:52 IST" finished-at="2019-10-29T12:41:04 IST">
+  <suite name="Default suite" duration-ms="33459" started-at="2019-11-04T14:49:56 IST" finished-at="2019-11-04T14:50:30 IST">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="191755" started-at="2019-10-29T12:37:52 IST" finished-at="2019-10-29T12:41:04 IST">
+    <test name="Default test" duration-ms="33459" started-at="2019-11-04T14:49:56 IST" finished-at="2019-11-04T14:50:30 IST">
       <class name="GT.GT.CreateAndCallGroupTest">
-        <test-method status="PASS" signature="setup(java.lang.String, java.lang.String)[pri:0, instance:GT.GT.CreateAndCallGroupTest@eafc191]" name="setup" is-config="true" duration-ms="7058" started-at="2019-10-29T12:37:52 IST" finished-at="2019-10-29T12:37:59 IST">
+        <test-method status="PASS" signature="setup(java.lang.String, java.lang.String)[pri:0, instance:GT.GT.CreateAndCallGroupTest@eafc191]" name="setup" is-config="true" duration-ms="8782" started-at="2019-11-04T14:49:56 IST" finished-at="2019-11-04T14:50:05 IST">
           <params>
             <param index="0">
               <value>
@@ -23,26 +23,26 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="beforeCalss()[pri:0, instance:GT.GT.CreateAndCallGroupTest@eafc191]" name="beforeCalss" is-config="true" duration-ms="1" started-at="2019-10-29T12:38:00 IST" finished-at="2019-10-29T12:38:00 IST">
+        <test-method status="PASS" signature="beforeCalss()[pri:0, instance:GT.GT.CreateAndCallGroupTest@eafc191]" name="beforeCalss" is-config="true" duration-ms="1" started-at="2019-11-04T14:50:05 IST" finished-at="2019-11-04T14:50:05 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeCalss -->
-        <test-method status="PASS" signature="verifyMuteAndUnmuteFunctionalityInLiveCallWhenParticipantsAreInPrivateRoom()[pri:0, instance:GT.GT.CreateAndCallGroupTest@eafc191]" name="verifyMuteAndUnmuteFunctionalityInLiveCallWhenParticipantsAreInPrivateRoom" duration-ms="161081" started-at="2019-10-29T12:38:00 IST" finished-at="2019-10-29T12:40:41 IST">
+        <test-method status="PASS" signature="verifyfunctionalityOfExcelReportDownloadOptionOnHistory()[pri:0, instance:GT.GT.CreateAndCallGroupTest@eafc191]" name="verifyfunctionalityOfExcelReportDownloadOptionOnHistory" duration-ms="9231" started-at="2019-11-04T14:50:05 IST" finished-at="2019-11-04T14:50:14 IST">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyMuteAndUnmuteFunctionalityInLiveCallWhenParticipantsAreInPrivateRoom -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.CreateAndCallGroupTest@eafc191]" name="tearDown" is-config="true" duration-ms="22965" started-at="2019-10-29T12:40:41 IST" finished-at="2019-10-29T12:41:04 IST">
+        </test-method> <!-- verifyfunctionalityOfExcelReportDownloadOptionOnHistory -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.CreateAndCallGroupTest@eafc191]" name="tearDown" is-config="true" duration-ms="14805" started-at="2019-11-04T14:50:14 IST" finished-at="2019-11-04T14:50:29 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=verifyMuteAndUnmuteFunctionalityInLiveCallWhenParticipantsAreInPrivateRoom status=SUCCESS method=CreateAndCallGroupTest.verifyMuteAndUnmuteFunctionalityInLiveCallWhenParticipantsAreInPrivateRoom()[pri:0, instance:GT.GT.CreateAndCallGroupTest@eafc191] output={null}]]]>
+                <![CDATA[[TestResult name=verifyfunctionalityOfExcelReportDownloadOptionOnHistory status=SUCCESS method=CreateAndCallGroupTest.verifyfunctionalityOfExcelReportDownloadOptionOnHistory()[pri:0, instance:GT.GT.CreateAndCallGroupTest@eafc191] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="closeBrowser1(java.lang.String)[pri:0, instance:GT.GT.CreateAndCallGroupTest@eafc191]" name="closeBrowser1" is-config="true" duration-ms="626" started-at="2019-10-29T12:41:04 IST" finished-at="2019-10-29T12:41:04 IST">
+        <test-method status="PASS" signature="closeBrowser1(java.lang.String)[pri:0, instance:GT.GT.CreateAndCallGroupTest@eafc191]" name="closeBrowser1" is-config="true" duration-ms="617" started-at="2019-11-04T14:50:29 IST" finished-at="2019-11-04T14:50:30 IST">
           <params>
             <param index="0">
               <value>

@@ -55,7 +55,7 @@ public class AccountPageTest extends BrowserFunctions {
 		acc.clickOnAccountTab();
 		Assert.assertEquals(acc.getAccountType(), "Premium Account");
 		Assert.assertEquals(acc.getAccountEmail(), "srikanth.korada@smsc...");
-		Assert.assertEquals(acc.getAccountMobileNumber(), "918634503041");
+		Assert.assertEquals(acc.getAccountMobileNumber(), "918634502051");
 		Assert.assertEquals(acc.getAccountNickName(), "automation");
 	}
 
@@ -171,15 +171,15 @@ public class AccountPageTest extends BrowserFunctions {
 		accountpage.clickOnAccountTab();
 		logger_ss.log(Status.INFO, "Clicked on account tab in MyGrpTalks page");
 		String usedAmount = accountpage.usedAmontInWeb();
-		System.out.println("usedAmount" + usedAmount);
+		System.out.println("usedAmount" + usedAmount);//used
 		logger_ss.log(Status.INFO, "Getting the used amount in web");
 		double usedAmountBeforeCall = Double.parseDouble(usedAmount);
-		System.out.println("usedAmountBeforeCall" + usedAmountBeforeCall);
+		System.out.println("usedAmountBeforeCall" + usedAmountBeforeCall);//used before call-200
 		accountpage.navigateToGrpTalkHomePage();
 		logger_ss.log(Status.INFO, "navigated To GrpTalk Home Page");
 		CreatingGroup crtgrp = new CreatingGroup();
 		GrpTalks grpTalk = new GrpTalks();
-		grpTalk.selectSavedGroupByName("ABSR");
+		grpTalk.selectSavedGroupByName("AUAUAU");
 		logger_ss.log(Status.INFO, "Selected 'grpTalk' group In MyGrpTalk page");
 		grpTalk.dialGroupCallButton();
 		logger_ss.log(Status.INFO, "Clicked on dial button");
@@ -197,9 +197,9 @@ public class AccountPageTest extends BrowserFunctions {
 		grpTalk.historyButtonOnMyGrpTalks();
 		logger_ss.log(Status.INFO, "Clicked on history Button On MyGrpTalks");
 		double amountChargedForCall = grpTalk.totalAmountChargedForGrpcall();
-		System.out.println("amountChargedForCall" + amountChargedForCall);
+		System.out.println("amountChargedForCall" + amountChargedForCall);//charged for call-10
 		logger_ss.log(Status.INFO, "Getting the total amount charged for grpCall");
-		double totalAmount = usedAmountBeforeCall + amountChargedForCall;
+		double totalAmount = usedAmountBeforeCall + amountChargedForCall-2;
 		System.out.println("totalAmount" + totalAmount);
 		logger_ss.log(Status.INFO, "Added usedAmountBeforeCall with amountChargedForCall:");
 		logger_ss.log(Status.INFO, String.valueOf(totalAmount));
@@ -210,9 +210,10 @@ public class AccountPageTest extends BrowserFunctions {
 		String usedAmountAfterCall = accountpage.usedAmontInWeb();
 		System.out.println("usedAmountAfterCall" + usedAmountAfterCall);
 		logger_ss.log(Status.INFO, "Getting used amount in Web After call");
-		double totalUsedAmountAfterCall = Double.parseDouble(usedAmountAfterCall);
+		double totalUsedAmountAfterCall = Double.parseDouble(usedAmountAfterCall);//-262
 		System.out.println("totalUsedAmountAfterCall" + totalUsedAmountAfterCall);
 		logger_ss.log(Status.INFO, String.valueOf(totalUsedAmountAfterCall));
+		 totalAmount = usedAmountBeforeCall + amountChargedForCall;
 		AssertJUnit.assertEquals(totalAmount, totalUsedAmountAfterCall);
 		logger_ss.log(Status.INFO,
 				"Successfully verified the total amount used for before and after calls by the user");

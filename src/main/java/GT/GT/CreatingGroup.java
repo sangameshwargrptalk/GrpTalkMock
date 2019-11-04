@@ -76,7 +76,7 @@ public class CreatingGroup extends BrowserFunctions {
 	By datePickerSetButtonOnOverlay = By.xpath("//*[@class='dtpicker-button dtpicker-buttonSet']");
 	By datePickerClearButtonOnOverlay = By.xpath("//*[@class='dtpicker-button dtpicker-buttonClear']");
 	By repeatDaysOnAdvancedSettings = By.xpath("//*[@class='modal-content']//*[@class='btn weekDay']");
-	By addButtonToCreateWebList = By.className("addNewContact");
+	By addButtonToCreateWebList = By.xpath("//a[@class=\"addNewContact\"]//i[@class=\"fa fa-plus-square\"]");
 	By NameOfUserOnWebListOverlay = By.id("name");
 	By moblileNumberOfUserOnWebListOverlay = By.id("mobileNumber");
 	By newWebListNameOnWebListOverlay = By.id("newWebList");
@@ -146,7 +146,7 @@ public class CreatingGroup extends BrowserFunctions {
 	By saveButtonForDuplicateContactsInDiffList = By.id("saveExcelContacts");
 	By createWebListNameFieldOnOverlayByExcelUpload = By.id("xlNewWebList");
 	By uploadButtonForExcelUploadContactsOnOverlay = By.id("saveExcelContacts");
-	By buttonForExcelSheetHasHeaderOnOverlay = By.id("header_2");
+	By buttonForExcelSheetHasHeaderOnOverlay = By.xpath("//div[@class=\"pull-left\"]//input[@class=\"css-checkbox radio_head\" and @id=\"header_1\"]");
 	By chooseFileButtonOnOverlay = By.xpath("//*[@id='excelFormBody']//*[@value='Choose File']");
 	By successMsgForCreatedWebListFromExcelUpload = By.className("toast-message");
 
@@ -531,7 +531,7 @@ public class CreatingGroup extends BrowserFunctions {
 
 	String listName = "List " + System.currentTimeMillis();
 
-	By excelUploadTab = By.id("excelUpload");
+	By excelUploadTab = By.xpath("//a[@id=\"excelUpload\"]");
 
 	public String createWebLIst() throws InterruptedException {
 		String listName = "List " + System.currentTimeMillis();
@@ -571,9 +571,9 @@ public class CreatingGroup extends BrowserFunctions {
 		Thread.sleep(1000);
 		driver.findElement(buttonForExcelSheetHasHeaderOnOverlay).click();
 		Select name = new Select(driver.findElement(By.id("ddlname_Sheet1")));
-		name.selectByVisibleText("Column A");
+		name.selectByIndex(1);
 		Select number = new Select(driver.findElement(By.id("ddlmobile_Sheet1")));
-		number.selectByVisibleText("Column B");
+		number.selectByIndex(2);
 		driver.findElement(createWebListNameFieldOnOverlayByExcelUpload).sendKeys(listName);
 		driver.findElement(uploadButtonForExcelUploadContactsOnOverlay).click();
 		Thread.sleep(2000);

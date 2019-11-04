@@ -89,10 +89,10 @@ public class RestApiTest extends BrowserFunctions {
 	@Test
 	public void verifyCallFunctionality() throws InterruptedException {
 		logger_ss = extent.createTest("verifyCallFunctionality","verifyCallFunctionality");
-		//driver.get("http://staging.grptalk.com/index.aspx?automationkey=narasimha");
+		//driver.get("http://staging.grptalk.com/index.aspx?automationkey=84089");
 		GrpTalks grpTalks = new GrpTalks();
 		logger_ss.log(Status.INFO, "Select Saved group");
-		grpTalks.selectSavedGroupByName("mockTest");
+		grpTalks.selectSavedGroupByName("Load Test");
 		
 		String hostContactNumber = driver.findElement(hostNumber).getText().replaceAll("[^a-zA-Z0-9]", "");
 		logger_ss.log(Status.INFO, "Get all participants from group");
@@ -105,7 +105,7 @@ public class RestApiTest extends BrowserFunctions {
 			contactsList.add(ele.getText().replaceAll("[^a-zA-Z0-9]", ""));
 		}
 		
-		System.out.println("contact list::"+contactsList);
+		System.out.println("contact list::"+contactsList.toString());
 		logger_ss.log(Status.INFO, "Trigger mute call");
 		grpTalks.dialGroupCallButton();
 		grpTalks.muteDialGroupCallOnOverlay111();
@@ -135,7 +135,7 @@ public class RestApiTest extends BrowserFunctions {
 		System.out.println("disconnectedMembers::"+disconnectedMembers);
 		
 		logger_ss.log(Status.INFO, "Make a post request for onCall and disconnect participants");
-		RestAssured.baseURI = "http://192.168.73.227:8888/v0.1/Mock/";
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
 		RequestSpecification request = RestAssured.given();
 		JSONObject requestParams = new JSONObject();
 		
@@ -297,7 +297,7 @@ public class RestApiTest extends BrowserFunctions {
 				Thread.sleep(1000);
 				actionObject.moveToElement(ele).perform();
 				String text = ele.findElement(By.xpath(".//*[contains(@class,'oncall-bg')]//*[@class='oncall-text text-left']")).getText();
-				Assert.assertEquals(text, "ON CALL");
+				Assert.assertEquals(text, "dailing");//ON CALL
 				System.out.println("----");
 			}
 		}
@@ -307,10 +307,10 @@ public class RestApiTest extends BrowserFunctions {
 	@Test
 	public void verifyFunctionalityOfOnCallAndDisconnectedParticipants() throws InterruptedException {
 		logger_ss = extent.createTest("verifyFunctionalityOfOnCallAndDisconnectedParticipants","verifyFunctionalityOfOnCallAndDisconnectedParticipants");
-		driver.get("http://staging.grptalk.com/index.aspx?automationkey=narasimha");
+		//driver.get("http://staging.grptalk.com/index.aspx?automationkey=narasimha");
 		GrpTalks grpTalks = new GrpTalks();
 		logger_ss.log(Status.INFO, "Select Saved group");
-		grpTalks.selectSavedGroupByName("Demo_Sreenivas_50");
+		grpTalks.selectSavedGroupByName("Load Test");
 		
 		String hostContactNumber = driver.findElement(hostNumber).getText().replaceAll("[^a-zA-Z0-9]", "");
 		logger_ss.log(Status.INFO, "Get all participants from group");

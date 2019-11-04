@@ -1,45 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [TestSuite]">
-  <test thread-count="5" name="AccountPageTest1(failed)">
+<suite name="Failed suite [TestSuite]">
+  <test thread-count="5" name="ContactsPageTest(failed)">
     <parameter name="browser" value="Chrome"/>
-    <parameter name="url" value="productionUrl"/>
+    <parameter name="url" value="restMockUrl"/>
     <classes>
-      <class name="GT.GT.AccountPageTest">
+      <class name="GT.GT.RestApiTest">
         <methods>
           <include name="closeBrowser1"/>
-          <include name="verifyAddBalanceFunctionalityToExistingSubAccountInSubAccountsTab"/>
-          <include name="verifyTotalAmountUsedByUser"/>
+          <include name="verifyFunctionalityOfOnCallAndDisconnectedParticipants"/>
           <include name="tearDown"/>
-          <include name="beforeCalss"/>
           <include name="setup"/>
         </methods>
-      </class> <!-- GT.GT.AccountPageTest -->
+      </class> <!-- GT.GT.RestApiTest -->
     </classes>
-  </test> <!-- AccountPageTest1(failed) -->
-  <test thread-count="5" name="callpage(failed)">
-    <parameter name="browser" value="Chrome"/>
-    <parameter name="url" value="productionUrl"/>
-    <classes>
-      <class name="GT.GT.CreateAndCallGroupTest">
-        <methods>
-          <include name="verifyPrivateRoomFuntionalityInLiveCall"/>
-          <include name="verifyRetryCallFunctionality"/>
-          <include name="closeBrowser1"/>
-          <include name="verifyCallFunctionalityOfListMembers"/>
-          <include name="verifyCreateListFromExcelUploadOnCreateGrpPage"/>
-          <include name="tearDown"/>
-          <include name="verifyfunctionalityOfExcelReportDownloadOptionOnHistory"/>
-          <include name="verifyDialFunctionalityOfScheduleGroup"/>
-          <include name="verifyMuteCallFunctionalityFromCreateGroupTalkPageByCreatingNewGroup"/>
-          <include name="verifyCreateListFromExcelUploadandphonecontacts"/>
-          <include name="verifyCallFunctionalityOfTestContactsFromCreateGroupTalkPage"/>
-          <include name="beforeCalss"/>
-          <include name="verifyMuteAndUnmuteFunctionalityInLiveCallWhenParticipantsAreInPrivateRoom"/>
-          <include name="verifyErrorMessageWhenJunkDataGivenInSearchBox"/>
-          <include name="setup"/>
-        </methods>
-      </class> <!-- GT.GT.CreateAndCallGroupTest -->
-    </classes>
-  </test> <!-- callpage(failed) -->
+  </test> <!-- ContactsPageTest(failed) -->
 </suite> <!-- Failed suite [TestSuite] -->

@@ -3,11 +3,12 @@
 <suite name="TestSuite">
 	<test name="ContactsPageTest">
 		<parameter name="browser" value="Chrome" />
-		<parameter name="url" value="restUrl" />
+		<parameter name="url" value="restMockUrl" />
 		<classes>
 			<class name="GT.GT.RestApiTest" >
 				<methods>
-					<include name ="verifyCallFunctionality" />
+				<!--  	<include name ="verifyCallFunctionality" />-->
+				<include name="verifyFunctionalityOfOnCallAndDisconnectedParticipants"/>
 				</methods>
 			</class>
 		</classes>
