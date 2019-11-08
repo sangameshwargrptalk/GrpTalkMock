@@ -192,7 +192,7 @@ public class AccountPageTest extends BrowserFunctions {
 		grpTalk.submitRateCallByClickingGoodOption();
 		accountpage.clickOnGroupsTab();
 		logger_ss.log(Status.INFO, "navigated To GrpTalk Home Page");
-		grpTalk.selectSavedGroupByName("grpTalk");
+		grpTalk.selectSavedGroupByName("AUAUAU");
 		logger_ss.log(Status.INFO, "Selected 'grpTalk' group In MyGrpTalk page");
 		grpTalk.historyButtonOnMyGrpTalks();
 		logger_ss.log(Status.INFO, "Clicked on history Button On MyGrpTalks");

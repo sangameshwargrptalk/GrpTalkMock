@@ -5,10 +5,17 @@
 		<parameter name="browser" value="Chrome" />
 		<parameter name="url" value="restMockUrl" />
 		<classes>
-			<class name="GT.GT.RestApiTest" >
+			<class name="GT.GT.RestApiTest">
 				<methods>
-				<!--  	<include name ="verifyCallFunctionality" />-->
-				<include name="verifyFunctionalityOfOnCallAndDisconnectedParticipants"/>
+
+
+					<include name="verifyCallFunctionality" />
+					<!--<include name="verifyFunctionalityOfAcceptAndDisconnectRedialParticipants" 
+						/> <include name="verifyFunctionalityOfOnCallAndDisconnectedParticipants"/> 
+						<include name="verifyFunctionalityOfDialInParticipants"/> <include name="verifyFunctionalityOfHandRaiseParticipants"/> 
+						<include name="verifyFunctionalityOfAutoDisconnectedParticipants"/> <include 
+						name="verifyFunctionalityOfIncomingCallFromParticipants"/> <include name="verifyCallFunctionalityCopy"/> 
+						<include name=""/> -->
 				</methods>
 			</class>
 		</classes>

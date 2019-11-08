@@ -83,7 +83,7 @@ public class CreatingGroup extends BrowserFunctions {
 	By saveContactbuttonOnWebListOverlay = By.id("saveContact");
 	By errorMessage = By.xpath("//*[@id='grpCallMobileContacts']");
 	By nameOfUser = By.xpath("//*[@id='profileDetails']/p[1]");
-	static By phoneContacts = By.xpath("//li[@class=\"mobileContacts\"]//a[text()=\"Phone Contacts\"]");//*[@id='myTabList']//*[contains(@class,'mobileContacts')]
+	static By phoneContacts = By.xpath("//li[@class=\"mobileContacts\"]//a[text()=\"Phone Contacts\"]");// *[@id='myTabList']//*[contains(@class,'mobileContacts')]
 	By selectedUserList = By.xpath("//*[@class='contacts margin-right-5 margin-bottom-5  selected']");
 	static By overlaySaveGroup = By.id("saveDate");
 	By selectedContactFromContactList = By.xpath("//*[@class='contacts margin-right-5 margin-bottom-5  selected']");
@@ -146,7 +146,8 @@ public class CreatingGroup extends BrowserFunctions {
 	By saveButtonForDuplicateContactsInDiffList = By.id("saveExcelContacts");
 	By createWebListNameFieldOnOverlayByExcelUpload = By.id("xlNewWebList");
 	By uploadButtonForExcelUploadContactsOnOverlay = By.id("saveExcelContacts");
-	By buttonForExcelSheetHasHeaderOnOverlay = By.xpath("//div[@class=\"pull-left\"]//input[@class=\"css-checkbox radio_head\" and @id=\"header_1\"]");
+	By buttonForExcelSheetHasHeaderOnOverlay = By
+			.xpath("//div[@class=\"pull-left\"]//input[@class=\"css-checkbox radio_head\" and @id=\"header_1\"]");
 	By chooseFileButtonOnOverlay = By.xpath("//*[@id='excelFormBody']//*[@value='Choose File']");
 	By successMsgForCreatedWebListFromExcelUpload = By.className("toast-message");
 
@@ -521,12 +522,12 @@ public class CreatingGroup extends BrowserFunctions {
 	}
 
 	public void clickPhoneContactsTab() throws InterruptedException {
-		
-	CommonMethods.explicitWaitForElementVisibility(phoneContacts);
-		JavascriptExecutor js= (JavascriptExecutor)driver;
+
+		CommonMethods.explicitWaitForElementVisibility(phoneContacts);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].click()", driver.findElement(phoneContacts));
 		/* driver.findElement(phoneContacts).click(); */
-	Thread.sleep(2000);
+		Thread.sleep(2000);
 	}
 
 	String listName = "List " + System.currentTimeMillis();
