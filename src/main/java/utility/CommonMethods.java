@@ -20,6 +20,10 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -30,6 +34,26 @@ public class CommonMethods extends BrowserFunctions {
 
 	static String text;
 	private static final ExpectedCondition<Alert> TRUE = null;
+
+	public static String getRandomElement(List<String> list) {
+		Random rand = new Random();
+		int randomIndex = rand.nextInt(list.size());
+		String randomNumber = list.get(randomIndex);
+		list.remove(randomIndex);
+		return randomNumber;
+	}
+
+	public static List<String> getRandomElements(List<String> copyList, int numberOfElements) {
+		Random rand = new Random();
+
+		List<String> onCall = new ArrayList<String>();
+		for (int i = 1; i < numberOfElements; i++) {
+			int randomIndex = rand.nextInt(copyList.size());
+			onCall.add(copyList.get(randomIndex));
+			copyList.remove(randomIndex);
+		}
+		return onCall;
+	}
 
 	public static void clickMethod(By loactor) {
 		driver.findElement(loactor).click();
@@ -55,7 +79,7 @@ public class CommonMethods extends BrowserFunctions {
 			Thread.sleep(1000);
 			alert.accept();
 			Thread.sleep(2000);
-	//		driver.navigate().to(CommonMethods.passingData("homePageUrl"));
+			// driver.navigate().to(CommonMethods.passingData("homePageUrl"));
 		}
 	}
 
@@ -76,10 +100,10 @@ public class CommonMethods extends BrowserFunctions {
 //				exists = false;
 //				threadCount++;	
 //			}
-			if(driver.findElement(loactor).isDisplayed()){
+			if (driver.findElement(loactor).isDisplayed()) {
 				exists = true;
-				break;	
-			}else{
+				break;
+			} else {
 				Thread.sleep(1000);
 				exists = false;
 			}
@@ -223,33 +247,31 @@ public class CommonMethods extends BrowserFunctions {
 		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
 		Thread.sleep(2000);
 	}
-	
+
 	public static boolean elementExistsOrNot1(By loactor) throws InterruptedException {
 		boolean exists = false;
 		int threadCount = 0;
 		while (threadCount <= 5) {
-		try {
-		boolean result1 = driver.findElement(loactor).isDisplayed();
-		System.out.println("found the locator: " + result1);
-		if (result1 == true) {
-		exists = true;
-		Assert.assertTrue(true);
-		break;
-		}
-		} catch (Exception e) {
-		System.out.println("Got Exception");
-		e.printStackTrace();
-		Thread.sleep(1000);
-		exists = false;
-		if(threadCount ==5){
-		Assert.assertTrue(false);
-		}
-		threadCount++;
-		}
+			try {
+				boolean result1 = driver.findElement(loactor).isDisplayed();
+				System.out.println("found the locator: " + result1);
+				if (result1 == true) {
+					exists = true;
+					Assert.assertTrue(true);
+					break;
+				}
+			} catch (Exception e) {
+				System.out.println("Got Exception");
+				e.printStackTrace();
+				Thread.sleep(1000);
+				exists = false;
+				if (threadCount == 5) {
+					Assert.assertTrue(false);
+				}
+				threadCount++;
+			}
 		}
 		return exists;
-		}
-
-
+	}
 
 }

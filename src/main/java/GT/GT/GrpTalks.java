@@ -34,7 +34,7 @@ public class GrpTalks extends BrowserFunctions {
 	By deleteGroupbutton = By.id("deleteGroupCall");
 	By successMsg = By.className("toast-message");
 	By editGroupButton = By.id("editGroupCall");
-	By dialButton = By.id("dialGroupCall");
+	By dialButton = By.xpath("//i[@class=\"fa fa-phone\" and @id=\"dialGroupCall\"]");
 	By dialGroupCallButtonOnOverlay = By.xpath("//*[@id='dial1']");
 	By allMembersTabInGroupCall = By.xpath("//*[contains(@class,'allMembers')]");
 	By allMembersCountInGrpCall = By.id("allMembersCount");
@@ -227,7 +227,7 @@ public class GrpTalks extends BrowserFunctions {
 	By leaveGroupButton = By.id("leaveGroupCall");
 	By dialButtonOnGrpCall = By.id("dialGroupCall");
 	By reDialingSymbol = By.xpath(
-			"//*[@id='919550866282']//*[@class='oncall-bg bgYellow pull-right mr-2']//*[@class='oncall-text text-left']");
+			"//div [@class=\"text-center mt-10 \"]//a[@class=\"singleRedial\"]");////*[@id='919550866282']//*[@class='oncall-bg bgYellow pull-right mr-2']//*[@class='oncall-text text-left']
 	By mouseHoverLogout = By.id("imgPath");
 	By groupsList = By.xpath("//*[@class='table margin-bottom-0 no-border']/tbody/tr/td[2]/p[1]");
 

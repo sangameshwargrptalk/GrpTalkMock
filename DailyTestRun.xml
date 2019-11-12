@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 <suite name="TestSuite">
-	<test name="ContactsPageTest1">
+	<!-- <test name="ContactsPageTest1">
 		<parameter name="browser" value="Chrome" />
 		<parameter name="url" value="productionUrl" />
 		<classes>
@@ -52,7 +52,7 @@
 				</methods>
 			</class>
 		</classes>
-	</test>
+	</test> -->
 	<test name="callpage">
 		<parameter name="browser" value="Chrome" />
 		<parameter name="url" value="productionUrl" />

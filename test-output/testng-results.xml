@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="8" ignored="69" total="116" passed="39">
+<testng-results skipped="0" failed="5" ignored="2" total="10" passed="3">
   <reporter-output>
   </reporter-output>
-  <suite name="TestSuite" duration-ms="2977016" started-at="2019-11-08T12:45:05 IST" finished-at="2019-11-08T13:34:42 IST">
+  <suite name="TestSuite" duration-ms="742540" started-at="2019-11-12T14:53:01 IST" finished-at="2019-11-12T15:05:23 IST">
     <groups>
     </groups>
-    <test name="ContactsPageTest1" duration-ms="243527" started-at="2019-11-08T12:45:05 IST" finished-at="2019-11-08T12:49:09 IST">
-      <class name="GT.GT.ContactsPageTest">
-        <test-method status="PASS" signature="setup(java.lang.String, java.lang.String)[pri:0, instance:GT.GT.ContactsPageTest@3cb1ffe6]" name="setup" is-config="true" duration-ms="8598" started-at="2019-11-08T12:45:05 IST" finished-at="2019-11-08T12:45:14 IST">
+    <test name="ContactsPageTest" duration-ms="742540" started-at="2019-11-12T14:53:01 IST" finished-at="2019-11-12T15:05:23 IST">
+      <class name="GT.GT.RestApiTest">
+        <test-method status="PASS" signature="setup(java.lang.String, java.lang.String)[pri:0, instance:GT.GT.RestApiTest@3d921e20]" name="setup" is-config="true" duration-ms="11415" started-at="2019-11-12T14:53:01 IST" finished-at="2019-11-12T14:53:12 IST">
           <params>
             <param index="0">
               <value>
@@ -16,880 +16,32 @@
             </param>
             <param index="1">
               <value>
-                <![CDATA[productionUrl]]>
+                <![CDATA[restMockUrl]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="beforeCalss()[pri:0, instance:GT.GT.ContactsPageTest@3cb1ffe6]" name="beforeCalss" is-config="true" duration-ms="1" started-at="2019-11-08T12:45:14 IST" finished-at="2019-11-08T12:45:14 IST">
+        <test-method status="PASS" signature="verifyFunctionalityOfAcceptAndDisconnectRedialParticipants()[pri:0, instance:GT.GT.RestApiTest@3d921e20]" name="verifyFunctionalityOfAcceptAndDisconnectRedialParticipants" duration-ms="73290" started-at="2019-11-12T14:53:12 IST" finished-at="2019-11-12T14:54:25 IST">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- beforeCalss -->
-        <test-method status="PASS" signature="verifyCreateListFromContactsPageUsingPlusSymbol()[pri:0, instance:GT.GT.ContactsPageTest@3cb1ffe6]" name="verifyCreateListFromContactsPageUsingPlusSymbol" duration-ms="11398" started-at="2019-11-08T12:45:14 IST" finished-at="2019-11-08T12:45:25 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyCreateListFromContactsPageUsingPlusSymbol -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.ContactsPageTest@3cb1ffe6]" name="tearDown" is-config="true" duration-ms="31384" started-at="2019-11-08T12:45:25 IST" finished-at="2019-11-08T12:45:57 IST">
+        </test-method> <!-- verifyFunctionalityOfAcceptAndDisconnectRedialParticipants -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.RestApiTest@3d921e20]" name="tearDown" is-config="true" duration-ms="31709" started-at="2019-11-12T14:54:25 IST" finished-at="2019-11-12T14:54:57 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=verifyCreateListFromContactsPageUsingPlusSymbol status=SUCCESS method=ContactsPageTest.verifyCreateListFromContactsPageUsingPlusSymbol()[pri:0, instance:GT.GT.ContactsPageTest@3cb1ffe6] output={null}]]]>
+                <![CDATA[[TestResult name=verifyFunctionalityOfAcceptAndDisconnectRedialParticipants status=SUCCESS method=RestApiTest.verifyFunctionalityOfAcceptAndDisconnectRedialParticipants()[pri:0, instance:GT.GT.RestApiTest@3d921e20] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifyCreateListFromExcelUpload()[pri:0, instance:GT.GT.ContactsPageTest@3cb1ffe6]" name="verifyCreateListFromExcelUpload" duration-ms="24043" started-at="2019-11-08T12:45:57 IST" finished-at="2019-11-08T12:46:21 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyCreateListFromExcelUpload -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.ContactsPageTest@3cb1ffe6]" name="tearDown" is-config="true" duration-ms="31084" started-at="2019-11-08T12:46:21 IST" finished-at="2019-11-08T12:46:52 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyCreateListFromExcelUpload status=SUCCESS method=ContactsPageTest.verifyCreateListFromExcelUpload()[pri:0, instance:GT.GT.ContactsPageTest@3cb1ffe6] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifyDeleteListFromContactsPage()[pri:0, instance:GT.GT.ContactsPageTest@3cb1ffe6]" name="verifyDeleteListFromContactsPage" duration-ms="13096" started-at="2019-11-08T12:46:52 IST" finished-at="2019-11-08T12:47:05 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyDeleteListFromContactsPage -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.ContactsPageTest@3cb1ffe6]" name="tearDown" is-config="true" duration-ms="31218" started-at="2019-11-08T12:47:05 IST" finished-at="2019-11-08T12:47:36 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyDeleteListFromContactsPage status=SUCCESS method=ContactsPageTest.verifyDeleteListFromContactsPage()[pri:0, instance:GT.GT.ContactsPageTest@3cb1ffe6] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifyAddContactsFromAddContactsTabOnOverlay()[pri:0, instance:GT.GT.ContactsPageTest@3cb1ffe6]" name="verifyAddContactsFromAddContactsTabOnOverlay" duration-ms="14996" started-at="2019-11-08T12:47:36 IST" finished-at="2019-11-08T12:47:51 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyAddContactsFromAddContactsTabOnOverlay -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.ContactsPageTest@3cb1ffe6]" name="tearDown" is-config="true" duration-ms="31005" started-at="2019-11-08T12:47:51 IST" finished-at="2019-11-08T12:48:22 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyAddContactsFromAddContactsTabOnOverlay status=SUCCESS method=ContactsPageTest.verifyAddContactsFromAddContactsTabOnOverlay()[pri:0, instance:GT.GT.ContactsPageTest@3cb1ffe6] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifyAddContactsFromMobileContactsTabOnOverlay()[pri:0, instance:GT.GT.ContactsPageTest@3cb1ffe6]" name="verifyAddContactsFromMobileContactsTabOnOverlay" duration-ms="15461" started-at="2019-11-08T12:48:22 IST" finished-at="2019-11-08T12:48:37 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyAddContactsFromMobileContactsTabOnOverlay -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.ContactsPageTest@3cb1ffe6]" name="tearDown" is-config="true" duration-ms="30580" started-at="2019-11-08T12:48:37 IST" finished-at="2019-11-08T12:49:08 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyAddContactsFromMobileContactsTabOnOverlay status=SUCCESS method=ContactsPageTest.verifyAddContactsFromMobileContactsTabOnOverlay()[pri:0, instance:GT.GT.ContactsPageTest@3cb1ffe6] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="closeBrowser1(java.lang.String)[pri:0, instance:GT.GT.ContactsPageTest@3cb1ffe6]" name="closeBrowser1" is-config="true" duration-ms="628" started-at="2019-11-08T12:49:08 IST" finished-at="2019-11-08T12:49:09 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Chrome]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- closeBrowser1 -->
-      </class> <!-- GT.GT.ContactsPageTest -->
-    </test> <!-- ContactsPageTest1 -->
-    <test name="AccountPageTest1" duration-ms="449600" started-at="2019-11-08T12:49:09 IST" finished-at="2019-11-08T12:56:38 IST">
-      <class name="GT.GT.AccountPageTest">
-        <test-method status="PASS" signature="setup(java.lang.String, java.lang.String)[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="setup" is-config="true" duration-ms="7867" started-at="2019-11-08T12:49:09 IST" finished-at="2019-11-08T12:49:17 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Chrome]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[productionUrl]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="beforeCalss()[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="beforeCalss" is-config="true" duration-ms="1" started-at="2019-11-08T12:49:17 IST" finished-at="2019-11-08T12:49:17 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeCalss -->
-        <test-method status="PASS" signature="verifyEditUserProfile()[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="verifyEditUserProfile" duration-ms="21859" started-at="2019-11-08T12:49:17 IST" finished-at="2019-11-08T12:49:38 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyEditUserProfile -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="tearDown" is-config="true" duration-ms="20965" started-at="2019-11-08T12:49:38 IST" finished-at="2019-11-08T12:49:59 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyEditUserProfile status=SUCCESS method=AccountPageTest.verifyEditUserProfile()[pri:0, instance:GT.GT.AccountPageTest@4d3167f4] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifyConfigureClipsFunctionalityOnProfilePage()[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="verifyConfigureClipsFunctionalityOnProfilePage" duration-ms="35751" started-at="2019-11-08T12:49:59 IST" finished-at="2019-11-08T12:50:35 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyConfigureClipsFunctionalityOnProfilePage -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="tearDown" is-config="true" duration-ms="15032" started-at="2019-11-08T12:50:35 IST" finished-at="2019-11-08T12:50:50 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyConfigureClipsFunctionalityOnProfilePage status=SUCCESS method=AccountPageTest.verifyConfigureClipsFunctionalityOnProfilePage()[pri:0, instance:GT.GT.AccountPageTest@4d3167f4] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifyRechargeWithPaytm()[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="verifyRechargeWithPaytm" duration-ms="6955" started-at="2019-11-08T12:50:50 IST" finished-at="2019-11-08T12:50:57 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyRechargeWithPaytm -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="tearDown" is-config="true" duration-ms="14978" started-at="2019-11-08T12:50:57 IST" finished-at="2019-11-08T12:51:12 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyRechargeWithPaytm status=SUCCESS method=AccountPageTest.verifyRechargeWithPaytm()[pri:0, instance:GT.GT.AccountPageTest@4d3167f4] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifyTotalAmountUsedByUser()[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="verifyTotalAmountUsedByUser" duration-ms="71259" started-at="2019-11-08T12:51:12 IST" finished-at="2019-11-08T12:52:23 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyTotalAmountUsedByUser -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="tearDown" is-config="true" duration-ms="14958" started-at="2019-11-08T12:52:23 IST" finished-at="2019-11-08T12:52:38 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyTotalAmountUsedByUser status=SUCCESS method=AccountPageTest.verifyTotalAmountUsedByUser()[pri:0, instance:GT.GT.AccountPageTest@4d3167f4] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifyAllTabsAreDisplayedOnMyAccountPage()[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="verifyAllTabsAreDisplayedOnMyAccountPage" duration-ms="5109" started-at="2019-11-08T12:52:38 IST" finished-at="2019-11-08T12:52:43 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyAllTabsAreDisplayedOnMyAccountPage -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="tearDown" is-config="true" duration-ms="14929" started-at="2019-11-08T12:52:43 IST" finished-at="2019-11-08T12:52:58 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyAllTabsAreDisplayedOnMyAccountPage status=SUCCESS method=AccountPageTest.verifyAllTabsAreDisplayedOnMyAccountPage()[pri:0, instance:GT.GT.AccountPageTest@4d3167f4] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifyTheCountOfAccountManagersInAccountManagersTab()[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="verifyTheCountOfAccountManagersInAccountManagersTab" duration-ms="6708" started-at="2019-11-08T12:52:58 IST" finished-at="2019-11-08T12:53:05 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyTheCountOfAccountManagersInAccountManagersTab -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="tearDown" is-config="true" duration-ms="15018" started-at="2019-11-08T12:53:05 IST" finished-at="2019-11-08T12:53:20 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyTheCountOfAccountManagersInAccountManagersTab status=SUCCESS method=AccountPageTest.verifyTheCountOfAccountManagersInAccountManagersTab()[pri:0, instance:GT.GT.AccountPageTest@4d3167f4] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifyAddAccountManagerFunctionalityByGivingNonRegisteredNumberInAccountManagersTab()[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="verifyAddAccountManagerFunctionalityByGivingNonRegisteredNumberInAccountManagersTab" duration-ms="7213" started-at="2019-11-08T12:53:20 IST" finished-at="2019-11-08T12:53:27 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyAddAccountManagerFunctionalityByGivingNonRegisteredNumberInAccountManagersTab -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="tearDown" is-config="true" duration-ms="14947" started-at="2019-11-08T12:53:27 IST" finished-at="2019-11-08T12:53:42 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyAddAccountManagerFunctionalityByGivingNonRegisteredNumberInAccountManagersTab status=SUCCESS method=AccountPageTest.verifyAddAccountManagerFunctionalityByGivingNonRegisteredNumberInAccountManagersTab()[pri:0, instance:GT.GT.AccountPageTest@4d3167f4] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifyAccountManagerFunctionalityInAccountManagersTab()[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="verifyAccountManagerFunctionalityInAccountManagersTab" duration-ms="26484" started-at="2019-11-08T12:53:42 IST" finished-at="2019-11-08T12:54:09 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyAccountManagerFunctionalityInAccountManagersTab -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="tearDown" is-config="true" duration-ms="15032" started-at="2019-11-08T12:54:09 IST" finished-at="2019-11-08T12:54:24 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyAccountManagerFunctionalityInAccountManagersTab status=SUCCESS method=AccountPageTest.verifyAccountManagerFunctionalityInAccountManagersTab()[pri:0, instance:GT.GT.AccountPageTest@4d3167f4] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="checkAccountDetails()[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="checkAccountDetails" duration-ms="5414" started-at="2019-11-08T12:54:24 IST" finished-at="2019-11-08T12:54:29 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- checkAccountDetails -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="tearDown" is-config="true" duration-ms="14940" started-at="2019-11-08T12:54:29 IST" finished-at="2019-11-08T12:54:44 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=checkAccountDetails status=SUCCESS method=AccountPageTest.checkAccountDetails()[pri:0, instance:GT.GT.AccountPageTest@4d3167f4] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifyPromocode()[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="verifyPromocode" duration-ms="7137" started-at="2019-11-08T12:54:44 IST" finished-at="2019-11-08T12:54:51 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyPromocode -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="tearDown" is-config="true" duration-ms="15060" started-at="2019-11-08T12:54:51 IST" finished-at="2019-11-08T12:55:06 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyPromocode status=SUCCESS method=AccountPageTest.verifyPromocode()[pri:0, instance:GT.GT.AccountPageTest@4d3167f4] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifyAddSubAccountFunctionalityWithAlreadyExistedSubAccount()[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="verifyAddSubAccountFunctionalityWithAlreadyExistedSubAccount" duration-ms="5188" started-at="2019-11-08T12:55:06 IST" finished-at="2019-11-08T12:55:12 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyAddSubAccountFunctionalityWithAlreadyExistedSubAccount -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="tearDown" is-config="true" duration-ms="14999" started-at="2019-11-08T12:55:12 IST" finished-at="2019-11-08T12:55:27 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyAddSubAccountFunctionalityWithAlreadyExistedSubAccount status=SUCCESS method=AccountPageTest.verifyAddSubAccountFunctionalityWithAlreadyExistedSubAccount()[pri:0, instance:GT.GT.AccountPageTest@4d3167f4] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifyAddSubAccountFunctionalityByGivingNonRegisteredNumberInSubAccountsTab()[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="verifyAddSubAccountFunctionalityByGivingNonRegisteredNumberInSubAccountsTab" duration-ms="6252" started-at="2019-11-08T12:55:27 IST" finished-at="2019-11-08T12:55:33 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyAddSubAccountFunctionalityByGivingNonRegisteredNumberInSubAccountsTab -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="tearDown" is-config="true" duration-ms="14971" started-at="2019-11-08T12:55:33 IST" finished-at="2019-11-08T12:55:48 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyAddSubAccountFunctionalityByGivingNonRegisteredNumberInSubAccountsTab status=SUCCESS method=AccountPageTest.verifyAddSubAccountFunctionalityByGivingNonRegisteredNumberInSubAccountsTab()[pri:0, instance:GT.GT.AccountPageTest@4d3167f4] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifyAddSubAccountFunctionalityInSubAccountsTab()[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="verifyAddSubAccountFunctionalityInSubAccountsTab" duration-ms="9307" started-at="2019-11-08T12:55:48 IST" finished-at="2019-11-08T12:55:57 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyAddSubAccountFunctionalityInSubAccountsTab -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="tearDown" is-config="true" duration-ms="15009" started-at="2019-11-08T12:55:57 IST" finished-at="2019-11-08T12:56:12 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyAddSubAccountFunctionalityInSubAccountsTab status=SUCCESS method=AccountPageTest.verifyAddSubAccountFunctionalityInSubAccountsTab()[pri:0, instance:GT.GT.AccountPageTest@4d3167f4] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifyAddBalanceFunctionalityToExistingSubAccountInSubAccountsTab()[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="verifyAddBalanceFunctionalityToExistingSubAccountInSubAccountsTab" duration-ms="10589" started-at="2019-11-08T12:56:12 IST" finished-at="2019-11-08T12:56:23 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyAddBalanceFunctionalityToExistingSubAccountInSubAccountsTab -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="tearDown" is-config="true" duration-ms="15023" started-at="2019-11-08T12:56:23 IST" finished-at="2019-11-08T12:56:38 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyAddBalanceFunctionalityToExistingSubAccountInSubAccountsTab status=SUCCESS method=AccountPageTest.verifyAddBalanceFunctionalityToExistingSubAccountInSubAccountsTab()[pri:0, instance:GT.GT.AccountPageTest@4d3167f4] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="closeBrowser1(java.lang.String)[pri:0, instance:GT.GT.AccountPageTest@4d3167f4]" name="closeBrowser1" is-config="true" duration-ms="630" started-at="2019-11-08T12:56:38 IST" finished-at="2019-11-08T12:56:38 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Chrome]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- closeBrowser1 -->
-      </class> <!-- GT.GT.AccountPageTest -->
-    </test> <!-- AccountPageTest1 -->
-    <test name="callpage" duration-ms="2283803" started-at="2019-11-08T12:56:38 IST" finished-at="2019-11-08T13:34:42 IST">
-      <class name="GT.GT.CreateAndCallGroupTest">
-        <test-method status="PASS" signature="setup(java.lang.String, java.lang.String)[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="setup" is-config="true" duration-ms="7806" started-at="2019-11-08T12:56:38 IST" finished-at="2019-11-08T12:56:46 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Chrome]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[productionUrl]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="beforeCalss()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="beforeCalss" is-config="true" duration-ms="0" started-at="2019-11-08T12:56:46 IST" finished-at="2019-11-08T12:56:46 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeCalss -->
-        <test-method status="FAIL" signature="createAndSaveTheGroup()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="createAndSaveTheGroup" duration-ms="17780" started-at="2019-11-08T12:56:46 IST" finished-at="2019-11-08T12:57:04 IST">
-          <exception class="org.openqa.selenium.WebDriverException">
-            <message>
-              <![CDATA[unknown error: Element <td style="width:200px;" class="grpList_569307" id="grpDetails" grpcallname="Sec1573198006700">...</td> is not clickable at point (177, 279). Other element would receive the click: <div class="blockUI blockOverlay" style="z-index: 1000; border: none; margin: 0px; padding: 0px; width: 100%; height: 100%; top: 0px; left: 0px; background-color: rgb(0, 0, 0); cursor: default; position: fixed; opacity: 0.480126;"></div>
-  (Session info: chrome=78.0.3904.87)
-  (Driver info: chromedriver=2.43.600210 (68dcf5eebde37173d4027fa8635e332711d2874a),platform=Windows NT 10.0.17763 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 0 milliseconds
-Build info: version: '3.10.0', revision: '176b4a9', time: '2018-03-02T19:03:16.397Z'
-System info: host: 'DESKTOP-U3PMRBE', ip: '169.254.86.53', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_221'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.43.600210 (68dcf5eebde371..., userDataDir: C:\Users\smsc\AppData\Local...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:3622}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 78.0.3904.87, webStorageEnabled: true}
-Session ID: 36dae3b9702ea47cc01af64aeaa31a33]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.WebDriverException: unknown error: Element <td style="width:200px;" class="grpList_569307" id="grpDetails" grpcallname="Sec1573198006700">...</td> is not clickable at point (177, 279). Other element would receive the click: <div class="blockUI blockOverlay" style="z-index: 1000; border: none; margin: 0px; padding: 0px; width: 100%; height: 100%; top: 0px; left: 0px; background-color: rgb(0, 0, 0); cursor: default; position: fixed; opacity: 0.480126;"></div>
-  (Session info: chrome=78.0.3904.87)
-  (Driver info: chromedriver=2.43.600210 (68dcf5eebde37173d4027fa8635e332711d2874a),platform=Windows NT 10.0.17763 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 0 milliseconds
-Build info: version: '3.10.0', revision: '176b4a9', time: '2018-03-02T19:03:16.397Z'
-System info: host: 'DESKTOP-U3PMRBE', ip: '169.254.86.53', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_221'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.43.600210 (68dcf5eebde371..., userDataDir: C:\Users\smsc\AppData\Local...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:3622}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 78.0.3904.87, webStorageEnabled: true}
-Session ID: 36dae3b9702ea47cc01af64aeaa31a33
-at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-at java.lang.reflect.Constructor.newInstance(Unknown Source)
-at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
-at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
-at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
-at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
-at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:160)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:601)
-at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:279)
-at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:83)
-at GT.GT.GrpTalks.selectSavedGroupByName(GrpTalks.java:871)
-at GT.GT.CreateAndCallGroupTest.createAndSaveTheGroup(CreateAndCallGroupTest.java:645)
-at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-at java.lang.reflect.Method.invoke(Unknown Source)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:584)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:172)
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:804)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:145)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.util.ArrayList.forEach(Unknown Source)
-at org.testng.TestRunner.privateRun(TestRunner.java:770)
-at org.testng.TestRunner.run(TestRunner.java:591)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:402)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:396)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:355)
-at org.testng.SuiteRunner.run(SuiteRunner.java:304)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1180)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1102)
-at org.testng.TestNG.runSuites(TestNG.java:1032)
-at org.testng.TestNG.run(TestNG.java:1000)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.WebDriverException -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- createAndSaveTheGroup -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="tearDown" is-config="true" duration-ms="30777" started-at="2019-11-08T12:57:04 IST" finished-at="2019-11-08T12:57:35 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=createAndSaveTheGroup status=FAILURE method=CreateAndCallGroupTest.createAndSaveTheGroup()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="removeLeaveGroup()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="removeLeaveGroup" duration-ms="10053" started-at="2019-11-08T12:57:35 IST" finished-at="2019-11-08T12:57:45 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- removeLeaveGroup -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="tearDown" is-config="true" duration-ms="31091" started-at="2019-11-08T12:57:45 IST" finished-at="2019-11-08T12:58:16 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=removeLeaveGroup status=SUCCESS method=CreateAndCallGroupTest.removeLeaveGroup()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifyAddContactsFromContactsListByEditngSavedGroupOnMyGrpTalkPage()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="verifyAddContactsFromContactsListByEditngSavedGroupOnMyGrpTalkPage" duration-ms="27367" started-at="2019-11-08T12:58:16 IST" finished-at="2019-11-08T12:58:43 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyAddContactsFromContactsListByEditngSavedGroupOnMyGrpTalkPage -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="tearDown" is-config="true" duration-ms="23168" started-at="2019-11-08T12:58:43 IST" finished-at="2019-11-08T12:59:06 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyAddContactsFromContactsListByEditngSavedGroupOnMyGrpTalkPage status=SUCCESS method=CreateAndCallGroupTest.verifyAddContactsFromContactsListByEditngSavedGroupOnMyGrpTalkPage()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifyAllButtonsDisplayedOnCallOverlay()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="verifyAllButtonsDisplayedOnCallOverlay" duration-ms="8230" started-at="2019-11-08T12:59:06 IST" finished-at="2019-11-08T12:59:15 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyAllButtonsDisplayedOnCallOverlay -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="tearDown" is-config="true" duration-ms="31107" started-at="2019-11-08T12:59:15 IST" finished-at="2019-11-08T12:59:46 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyAllButtonsDisplayedOnCallOverlay status=SUCCESS method=CreateAndCallGroupTest.verifyAllButtonsDisplayedOnCallOverlay()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="FAIL" signature="verifyCallFunctionalityOfListMembers()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="verifyCallFunctionalityOfListMembers" duration-ms="67730" started-at="2019-11-08T12:59:46 IST" finished-at="2019-11-08T13:00:54 IST">
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[expected [2] but found [1]]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [2] but found [1]
-at org.testng.Assert.fail(Assert.java:97)
-at org.testng.Assert.assertEqualsImpl(Assert.java:136)
-at org.testng.Assert.assertEquals(Assert.java:118)
-at org.testng.Assert.assertEquals(Assert.java:839)
-at org.testng.Assert.assertEquals(Assert.java:849)
-at GT.GT.CreateAndCallGroupTest.verifyCallFunctionalityOfListMembers(CreateAndCallGroupTest.java:701)
-at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-at java.lang.reflect.Method.invoke(Unknown Source)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:584)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:172)
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:804)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:145)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.util.ArrayList.forEach(Unknown Source)
-at org.testng.TestRunner.privateRun(TestRunner.java:770)
-at org.testng.TestRunner.run(TestRunner.java:591)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:402)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:396)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:355)
-at org.testng.SuiteRunner.run(SuiteRunner.java:304)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1180)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1102)
-at org.testng.TestNG.runSuites(TestNG.java:1032)
-at org.testng.TestNG.run(TestNG.java:1000)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyCallFunctionalityOfListMembers -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="tearDown" is-config="true" duration-ms="15916" started-at="2019-11-08T13:00:54 IST" finished-at="2019-11-08T13:01:09 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyCallFunctionalityOfListMembers status=FAILURE method=CreateAndCallGroupTest.verifyCallFunctionalityOfListMembers()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifyCallFunctionalityOfTestContactsFromCreateGroupTalkPage()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="verifyCallFunctionalityOfTestContactsFromCreateGroupTalkPage" duration-ms="81443" started-at="2019-11-08T13:01:09 IST" finished-at="2019-11-08T13:02:31 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyCallFunctionalityOfTestContactsFromCreateGroupTalkPage -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="tearDown" is-config="true" duration-ms="38338" started-at="2019-11-08T13:02:31 IST" finished-at="2019-11-08T13:03:09 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyCallFunctionalityOfTestContactsFromCreateGroupTalkPage status=SUCCESS method=CreateAndCallGroupTest.verifyCallFunctionalityOfTestContactsFromCreateGroupTalkPage()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifyContactListInPhoneContacts()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="verifyContactListInPhoneContacts" duration-ms="12567" started-at="2019-11-08T13:03:09 IST" finished-at="2019-11-08T13:03:22 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyContactListInPhoneContacts -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="tearDown" is-config="true" duration-ms="31197" started-at="2019-11-08T13:03:22 IST" finished-at="2019-11-08T13:03:53 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyContactListInPhoneContacts status=SUCCESS method=CreateAndCallGroupTest.verifyContactListInPhoneContacts()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifyCreateListFromExcelUploadOnCreateGrpPage()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="verifyCreateListFromExcelUploadOnCreateGrpPage" duration-ms="326394" started-at="2019-11-08T13:03:53 IST" finished-at="2019-11-08T13:09:19 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyCreateListFromExcelUploadOnCreateGrpPage -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="tearDown" is-config="true" duration-ms="31697" started-at="2019-11-08T13:09:19 IST" finished-at="2019-11-08T13:09:51 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyCreateListFromExcelUploadOnCreateGrpPage status=SUCCESS method=CreateAndCallGroupTest.verifyCreateListFromExcelUploadOnCreateGrpPage()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="FAIL" signature="verifyCreateListFromExcelUploadandphonecontacts()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="verifyCreateListFromExcelUploadandphonecontacts" duration-ms="276047" started-at="2019-11-08T13:09:51 IST" finished-at="2019-11-08T13:14:27 IST">
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[expected [0] but found [3]]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [0] but found [3]
-at org.testng.Assert.fail(Assert.java:97)
-at org.testng.Assert.assertEqualsImpl(Assert.java:136)
-at org.testng.Assert.assertEquals(Assert.java:118)
-at org.testng.Assert.assertEquals(Assert.java:839)
-at org.testng.Assert.assertEquals(Assert.java:849)
-at GT.GT.CreateAndCallGroupTest.verifyCreateListFromExcelUploadandphonecontacts(CreateAndCallGroupTest.java:3963)
-at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-at java.lang.reflect.Method.invoke(Unknown Source)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:584)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:172)
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:804)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:145)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.util.ArrayList.forEach(Unknown Source)
-at org.testng.TestRunner.privateRun(TestRunner.java:770)
-at org.testng.TestRunner.run(TestRunner.java:591)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:402)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:396)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:355)
-at org.testng.SuiteRunner.run(SuiteRunner.java:304)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1180)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1102)
-at org.testng.TestNG.runSuites(TestNG.java:1032)
-at org.testng.TestNG.run(TestNG.java:1000)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyCreateListFromExcelUploadandphonecontacts -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="tearDown" is-config="true" duration-ms="16988" started-at="2019-11-08T13:14:27 IST" finished-at="2019-11-08T13:14:44 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyCreateListFromExcelUploadandphonecontacts status=FAILURE method=CreateAndCallGroupTest.verifyCreateListFromExcelUploadandphonecontacts()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="FAIL" signature="verifyDialFunctionalityOfScheduleGroup()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="verifyDialFunctionalityOfScheduleGroup" duration-ms="178054" started-at="2019-11-08T13:14:44 IST" finished-at="2019-11-08T13:17:42 IST">
-          <exception class="org.openqa.selenium.TimeoutException">
-            <message>
-              <![CDATA[Expected condition failed: waiting for visibility of element located by By.xpath: //span[@class="oncall-bg bgGreen pull-right mr-2"]//span[@class="oncall-text text-left" and text()="ON CALL"] (tried for 20 second(s) with 500 milliseconds interval)]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //span[@class="oncall-bg bgGreen pull-right mr-2"]//span[@class="oncall-text text-left" and text()="ON CALL"] (tried for 20 second(s) with 500 milliseconds interval)
-at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:82)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
-at utility.CommonMethods.explicitWaitForElementVisibility(CommonMethods.java:165)
-at GT.GT.GrpTalks.verifyLiveCallState(GrpTalks.java:1010)
-at GT.GT.CreateAndCallGroupTest.verifyDialFunctionalityOfScheduleGroup(CreateAndCallGroupTest.java:3555)
-at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-at java.lang.reflect.Method.invoke(Unknown Source)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:584)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:172)
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:804)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:145)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.util.ArrayList.forEach(Unknown Source)
-at org.testng.TestRunner.privateRun(TestRunner.java:770)
-at org.testng.TestRunner.run(TestRunner.java:591)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:402)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:396)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:355)
-at org.testng.SuiteRunner.run(SuiteRunner.java:304)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1180)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1102)
-at org.testng.TestNG.runSuites(TestNG.java:1032)
-at org.testng.TestNG.run(TestNG.java:1000)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.xpath: //span[@class="oncall-bg bgGreen pull-right mr-2"]//span[@class="oncall-text text-left" and text()="ON CALL"]
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.10.0', revision: '176b4a9', time: '2018-03-02T19:03:16.397Z'
-System info: host: 'DESKTOP-U3PMRBE', ip: '169.254.86.53', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_221'
-Driver info: driver.version: unknown
-at org.openqa.selenium.support.ui.ExpectedConditions.lambda$findElement$0(ExpectedConditions.java:896)
-at java.util.Optional.orElseThrow(Unknown Source)
-at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:895)
-at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:44)
-at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:206)
-at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:202)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:249)
-... 31 more
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.TimeoutException -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyDialFunctionalityOfScheduleGroup -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="tearDown" is-config="true" duration-ms="23638" started-at="2019-11-08T13:17:42 IST" finished-at="2019-11-08T13:18:06 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyDialFunctionalityOfScheduleGroup status=FAILURE method=CreateAndCallGroupTest.verifyDialFunctionalityOfScheduleGroup()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="FAIL" signature="verifyErrorMessageWhenJunkDataGivenInSearchBox()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="verifyErrorMessageWhenJunkDataGivenInSearchBox" duration-ms="41" started-at="2019-11-08T13:18:06 IST" finished-at="2019-11-08T13:18:06 IST">
-          <exception class="org.openqa.selenium.WebDriverException">
-            <message>
-              <![CDATA[unknown error: Element <i id="createGrpTalkNew" class="fa fa-plus-circle pull-right margin-top-10"></i> is not clickable at point (289, 110). Other element would receive the click: <div class="blockUI blockOverlay" style="z-index: 1000; border: none; margin: 0px; padding: 0px; width: 100%; height: 100%; top: 0px; left: 0px; background-color: rgb(0, 0, 0); cursor: wait; position: fixed; opacity: 0.6;"></div>
-  (Session info: chrome=78.0.3904.87)
-  (Driver info: chromedriver=2.43.600210 (68dcf5eebde37173d4027fa8635e332711d2874a),platform=Windows NT 10.0.17763 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 0 milliseconds
-Build info: version: '3.10.0', revision: '176b4a9', time: '2018-03-02T19:03:16.397Z'
-System info: host: 'DESKTOP-U3PMRBE', ip: '169.254.86.53', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_221'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.43.600210 (68dcf5eebde371..., userDataDir: C:\Users\smsc\AppData\Local...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:3622}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 78.0.3904.87, webStorageEnabled: true}
-Session ID: 36dae3b9702ea47cc01af64aeaa31a33]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.WebDriverException: unknown error: Element <i id="createGrpTalkNew" class="fa fa-plus-circle pull-right margin-top-10"></i> is not clickable at point (289, 110). Other element would receive the click: <div class="blockUI blockOverlay" style="z-index: 1000; border: none; margin: 0px; padding: 0px; width: 100%; height: 100%; top: 0px; left: 0px; background-color: rgb(0, 0, 0); cursor: wait; position: fixed; opacity: 0.6;"></div>
-  (Session info: chrome=78.0.3904.87)
-  (Driver info: chromedriver=2.43.600210 (68dcf5eebde37173d4027fa8635e332711d2874a),platform=Windows NT 10.0.17763 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 0 milliseconds
-Build info: version: '3.10.0', revision: '176b4a9', time: '2018-03-02T19:03:16.397Z'
-System info: host: 'DESKTOP-U3PMRBE', ip: '169.254.86.53', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_221'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.43.600210 (68dcf5eebde371..., userDataDir: C:\Users\smsc\AppData\Local...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:3622}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 78.0.3904.87, webStorageEnabled: true}
-Session ID: 36dae3b9702ea47cc01af64aeaa31a33
-at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-at java.lang.reflect.Constructor.newInstance(Unknown Source)
-at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
-at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
-at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
-at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
-at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:160)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:601)
-at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:279)
-at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:83)
-at utility.CommonMethods.clickMethod(CommonMethods.java:35)
-at GT.GT.CreateAndCallGroupTest.verifyErrorMessageWhenJunkDataGivenInSearchBox(CreateAndCallGroupTest.java:336)
-at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-at java.lang.reflect.Method.invoke(Unknown Source)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:584)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:172)
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:804)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:145)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.util.ArrayList.forEach(Unknown Source)
-at org.testng.TestRunner.privateRun(TestRunner.java:770)
-at org.testng.TestRunner.run(TestRunner.java:591)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:402)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:396)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:355)
-at org.testng.SuiteRunner.run(SuiteRunner.java:304)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1180)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1102)
-at org.testng.TestNG.runSuites(TestNG.java:1032)
-at org.testng.TestNG.run(TestNG.java:1000)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.WebDriverException -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyErrorMessageWhenJunkDataGivenInSearchBox -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="tearDown" is-config="true" duration-ms="31263" started-at="2019-11-08T13:18:06 IST" finished-at="2019-11-08T13:18:37 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyErrorMessageWhenJunkDataGivenInSearchBox status=FAILURE method=CreateAndCallGroupTest.verifyErrorMessageWhenJunkDataGivenInSearchBox()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifyErrorMsgWhenWeSubmitStartNowButtonWithOutSelectingAnyPhoneContacts()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="verifyErrorMsgWhenWeSubmitStartNowButtonWithOutSelectingAnyPhoneContacts" duration-ms="7578" started-at="2019-11-08T13:18:37 IST" finished-at="2019-11-08T13:18:45 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyErrorMsgWhenWeSubmitStartNowButtonWithOutSelectingAnyPhoneContacts -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="tearDown" is-config="true" duration-ms="30995" started-at="2019-11-08T13:18:45 IST" finished-at="2019-11-08T13:19:16 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyErrorMsgWhenWeSubmitStartNowButtonWithOutSelectingAnyPhoneContacts status=SUCCESS method=CreateAndCallGroupTest.verifyErrorMsgWhenWeSubmitStartNowButtonWithOutSelectingAnyPhoneContacts()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifyFooterTextDisplayedOnMyGrpTalksPage()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="verifyFooterTextDisplayedOnMyGrpTalksPage" duration-ms="45" started-at="2019-11-08T13:19:16 IST" finished-at="2019-11-08T13:19:16 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyFooterTextDisplayedOnMyGrpTalksPage -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="tearDown" is-config="true" duration-ms="30496" started-at="2019-11-08T13:19:16 IST" finished-at="2019-11-08T13:19:46 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyFooterTextDisplayedOnMyGrpTalksPage status=SUCCESS method=CreateAndCallGroupTest.verifyFooterTextDisplayedOnMyGrpTalksPage()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifyHeaderTabsAndLogosDisplayedOnGrpTalksPage()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="verifyHeaderTabsAndLogosDisplayedOnGrpTalksPage" duration-ms="5169" started-at="2019-11-08T13:19:46 IST" finished-at="2019-11-08T13:19:51 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyHeaderTabsAndLogosDisplayedOnGrpTalksPage -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="tearDown" is-config="true" duration-ms="31031" started-at="2019-11-08T13:19:51 IST" finished-at="2019-11-08T13:20:22 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyHeaderTabsAndLogosDisplayedOnGrpTalksPage status=SUCCESS method=CreateAndCallGroupTest.verifyHeaderTabsAndLogosDisplayedOnGrpTalksPage()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifyHistoryOfGroup()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="verifyHistoryOfGroup" duration-ms="15200" started-at="2019-11-08T13:20:22 IST" finished-at="2019-11-08T13:20:38 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyHistoryOfGroup -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="tearDown" is-config="true" duration-ms="30969" started-at="2019-11-08T13:20:38 IST" finished-at="2019-11-08T13:21:09 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyHistoryOfGroup status=SUCCESS method=CreateAndCallGroupTest.verifyHistoryOfGroup()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="FAIL" signature="verifyMuteAndUnmuteFunctionalityInLiveCallWhenParticipantsAreInPrivateRoom()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="verifyMuteAndUnmuteFunctionalityInLiveCallWhenParticipantsAreInPrivateRoom" duration-ms="68990" started-at="2019-11-08T13:21:09 IST" finished-at="2019-11-08T13:22:18 IST">
+        <test-method status="FAIL" signature="verifyCallFunctionality()[pri:0, instance:GT.GT.RestApiTest@3d921e20]" name="verifyCallFunctionality" duration-ms="124402" started-at="2019-11-12T14:54:57 IST" finished-at="2019-11-12T14:57:02 IST">
           <exception class="org.openqa.selenium.NoSuchElementException">
             <message>
-              <![CDATA[no such element: Unable to locate element: {"method":"id","selector":"918634502054"}
+              <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"//*[@class='singleRedial']"}
   (Session info: chrome=78.0.3904.87)
   (Driver info: chromedriver=2.43.600210 (68dcf5eebde37173d4027fa8635e332711d2874a),platform=Windows NT 10.0.17763 x86_64) (WARNING: The server did not provide any stacktrace information)
 Command duration or timeout: 0 milliseconds
@@ -897,12 +49,12 @@ For documentation on this error, please visit: http://seleniumhq.org/exceptions/
 Build info: version: '3.10.0', revision: '176b4a9', time: '2018-03-02T19:03:16.397Z'
 System info: host: 'DESKTOP-U3PMRBE', ip: '169.254.86.53', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_221'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.43.600210 (68dcf5eebde371..., userDataDir: C:\Users\smsc\AppData\Local...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:3622}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 78.0.3904.87, webStorageEnabled: true}
-Session ID: 36dae3b9702ea47cc01af64aeaa31a33
-*** Element info: {Using=id, value=918634502054}]]>
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.43.600210 (68dcf5eebde371..., userDataDir: C:\Users\smsc\AppData\Local...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:41595}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 78.0.3904.87, webStorageEnabled: true}
+Session ID: a19a30c0c0d3099ec75a16ad28fba023
+*** Element info: {Using=xpath, value=//*[@class='singleRedial']}]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"id","selector":"918634502054"}
+              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@class='singleRedial']"}
   (Session info: chrome=78.0.3904.87)
   (Driver info: chromedriver=2.43.600210 (68dcf5eebde37173d4027fa8635e332711d2874a),platform=Windows NT 10.0.17763 x86_64) (WARNING: The server did not provide any stacktrace information)
 Command duration or timeout: 0 milliseconds
@@ -910,9 +62,9 @@ For documentation on this error, please visit: http://seleniumhq.org/exceptions/
 Build info: version: '3.10.0', revision: '176b4a9', time: '2018-03-02T19:03:16.397Z'
 System info: host: 'DESKTOP-U3PMRBE', ip: '169.254.86.53', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_221'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.43.600210 (68dcf5eebde371..., userDataDir: C:\Users\smsc\AppData\Local...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:3622}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 78.0.3904.87, webStorageEnabled: true}
-Session ID: 36dae3b9702ea47cc01af64aeaa31a33
-*** Element info: {Using=id, value=918634502054}
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.43.600210 (68dcf5eebde371..., userDataDir: C:\Users\smsc\AppData\Local...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:41595}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 78.0.3904.87, webStorageEnabled: true}
+Session ID: a19a30c0c0d3099ec75a16ad28fba023
+*** Element info: {Using=xpath, value=//*[@class='singleRedial']}
 at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
 at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
@@ -925,12 +77,12 @@ at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttp
 at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:160)
 at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
 at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:601)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:371)
-at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:417)
-at org.openqa.selenium.By$ById.findElement(By.java:218)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
-at GT.GT.GrpTalks.participantMovingToPrviateRoom(GrpTalks.java:382)
-at GT.GT.CreateAndCallGroupTest.verifyMuteAndUnmuteFunctionalityInLiveCallWhenParticipantsAreInPrivateRoom(CreateAndCallGroupTest.java:2773)
+at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:279)
+at org.openqa.selenium.remote.RemoteWebElement.findElement(RemoteWebElement.java:179)
+at org.openqa.selenium.remote.RemoteWebElement.findElementByXPath(RemoteWebElement.java:255)
+at org.openqa.selenium.By$ByXPath.findElement(By.java:361)
+at org.openqa.selenium.remote.RemoteWebElement.findElement(RemoteWebElement.java:175)
+at GT.GT.RestApiTest.verifyCallFunctionality(RestApiTest.java:337)
 at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -964,80 +116,37 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           </exception> <!-- org.openqa.selenium.NoSuchElementException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyMuteAndUnmuteFunctionalityInLiveCallWhenParticipantsAreInPrivateRoom -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="tearDown" is-config="true" duration-ms="17011" started-at="2019-11-08T13:22:18 IST" finished-at="2019-11-08T13:22:35 IST">
+        </test-method> <!-- verifyCallFunctionality -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.RestApiTest@3d921e20]" name="tearDown" is-config="true" duration-ms="25281" started-at="2019-11-12T14:57:02 IST" finished-at="2019-11-12T14:57:27 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=verifyMuteAndUnmuteFunctionalityInLiveCallWhenParticipantsAreInPrivateRoom status=FAILURE method=CreateAndCallGroupTest.verifyMuteAndUnmuteFunctionalityInLiveCallWhenParticipantsAreInPrivateRoom()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14] output={null}]]]>
+                <![CDATA[[TestResult name=verifyCallFunctionality status=FAILURE method=RestApiTest.verifyCallFunctionality()[pri:0, instance:GT.GT.RestApiTest@3d921e20] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="FAIL" signature="verifyMuteCallFunctionalityFromCreateGroupTalkPageByCreatingNewGroup()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="verifyMuteCallFunctionalityFromCreateGroupTalkPageByCreatingNewGroup" duration-ms="71342" started-at="2019-11-08T13:22:35 IST" finished-at="2019-11-08T13:23:46 IST">
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[expected [0] but found [3]]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [0] but found [3]
-at org.testng.Assert.fail(Assert.java:97)
-at org.testng.Assert.assertEqualsImpl(Assert.java:136)
-at org.testng.Assert.assertEquals(Assert.java:118)
-at org.testng.Assert.assertEquals(Assert.java:839)
-at org.testng.Assert.assertEquals(Assert.java:849)
-at GT.GT.CreateAndCallGroupTest.verifyMuteCallFunctionalityFromCreateGroupTalkPageByCreatingNewGroup(CreateAndCallGroupTest.java:1135)
-at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-at java.lang.reflect.Method.invoke(Unknown Source)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:584)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:172)
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:804)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:145)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.util.ArrayList.forEach(Unknown Source)
-at org.testng.TestRunner.privateRun(TestRunner.java:770)
-at org.testng.TestRunner.run(TestRunner.java:591)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:402)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:396)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:355)
-at org.testng.SuiteRunner.run(SuiteRunner.java:304)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1180)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1102)
-at org.testng.TestNG.runSuites(TestNG.java:1032)
-at org.testng.TestNG.run(TestNG.java:1000)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
+        <test-method status="PASS" signature="verifyFunctionalityOfOnCallAndDisconnectedParticipants()[pri:0, instance:GT.GT.RestApiTest@3d921e20]" name="verifyFunctionalityOfOnCallAndDisconnectedParticipants" duration-ms="45170" started-at="2019-11-12T14:57:27 IST" finished-at="2019-11-12T14:58:12 IST">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyMuteCallFunctionalityFromCreateGroupTalkPageByCreatingNewGroup -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="tearDown" is-config="true" duration-ms="16382" started-at="2019-11-08T13:23:46 IST" finished-at="2019-11-08T13:24:02 IST">
+        </test-method> <!-- verifyFunctionalityOfOnCallAndDisconnectedParticipants -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.RestApiTest@3d921e20]" name="tearDown" is-config="true" duration-ms="31658" started-at="2019-11-12T14:58:12 IST" finished-at="2019-11-12T14:58:44 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=verifyMuteCallFunctionalityFromCreateGroupTalkPageByCreatingNewGroup status=FAILURE method=CreateAndCallGroupTest.verifyMuteCallFunctionalityFromCreateGroupTalkPageByCreatingNewGroup()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14] output={null}]]]>
+                <![CDATA[[TestResult name=verifyFunctionalityOfOnCallAndDisconnectedParticipants status=SUCCESS method=RestApiTest.verifyFunctionalityOfOnCallAndDisconnectedParticipants()[pri:0, instance:GT.GT.RestApiTest@3d921e20] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="FAIL" signature="verifyPrivateRoomFuntionalityInLiveCall()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="verifyPrivateRoomFuntionalityInLiveCall" duration-ms="68261" started-at="2019-11-08T13:24:02 IST" finished-at="2019-11-08T13:25:11 IST">
+        <test-method status="FAIL" signature="verifyFunctionalityOfDialInParticipants()[pri:0, instance:GT.GT.RestApiTest@3d921e20]" name="verifyFunctionalityOfDialInParticipants" duration-ms="15921" started-at="2019-11-12T14:58:44 IST" finished-at="2019-11-12T14:59:00 IST">
           <exception class="org.openqa.selenium.NoSuchElementException">
             <message>
-              <![CDATA[no such element: Unable to locate element: {"method":"id","selector":"918634502054"}
+              <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"//div[@id='grpCallMobileContacts']//div[@class='contacts margin-right-5 margin-bottom-5 ']"}
   (Session info: chrome=78.0.3904.87)
   (Driver info: chromedriver=2.43.600210 (68dcf5eebde37173d4027fa8635e332711d2874a),platform=Windows NT 10.0.17763 x86_64) (WARNING: The server did not provide any stacktrace information)
 Command duration or timeout: 0 milliseconds
@@ -1045,12 +154,12 @@ For documentation on this error, please visit: http://seleniumhq.org/exceptions/
 Build info: version: '3.10.0', revision: '176b4a9', time: '2018-03-02T19:03:16.397Z'
 System info: host: 'DESKTOP-U3PMRBE', ip: '169.254.86.53', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_221'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.43.600210 (68dcf5eebde371..., userDataDir: C:\Users\smsc\AppData\Local...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:3622}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 78.0.3904.87, webStorageEnabled: true}
-Session ID: 36dae3b9702ea47cc01af64aeaa31a33
-*** Element info: {Using=id, value=918634502054}]]>
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.43.600210 (68dcf5eebde371..., userDataDir: C:\Users\smsc\AppData\Local...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:41595}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 78.0.3904.87, webStorageEnabled: true}
+Session ID: a19a30c0c0d3099ec75a16ad28fba023
+*** Element info: {Using=xpath, value=//div[@id='grpCallMobileContacts']//div[@class='contacts margin-right-5 margin-bottom-5 ']}]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"id","selector":"918634502054"}
+              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//div[@id='grpCallMobileContacts']//div[@class='contacts margin-right-5 margin-bottom-5 ']"}
   (Session info: chrome=78.0.3904.87)
   (Driver info: chromedriver=2.43.600210 (68dcf5eebde37173d4027fa8635e332711d2874a),platform=Windows NT 10.0.17763 x86_64) (WARNING: The server did not provide any stacktrace information)
 Command duration or timeout: 0 milliseconds
@@ -1058,9 +167,9 @@ For documentation on this error, please visit: http://seleniumhq.org/exceptions/
 Build info: version: '3.10.0', revision: '176b4a9', time: '2018-03-02T19:03:16.397Z'
 System info: host: 'DESKTOP-U3PMRBE', ip: '169.254.86.53', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_221'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.43.600210 (68dcf5eebde371..., userDataDir: C:\Users\smsc\AppData\Local...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:3622}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 78.0.3904.87, webStorageEnabled: true}
-Session ID: 36dae3b9702ea47cc01af64aeaa31a33
-*** Element info: {Using=id, value=918634502054}
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.43.600210 (68dcf5eebde371..., userDataDir: C:\Users\smsc\AppData\Local...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:41595}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 78.0.3904.87, webStorageEnabled: true}
+Session ID: a19a30c0c0d3099ec75a16ad28fba023
+*** Element info: {Using=xpath, value=//div[@id='grpCallMobileContacts']//div[@class='contacts margin-right-5 margin-bottom-5 ']}
 at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
 at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
@@ -1074,11 +183,13 @@ at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.ja
 at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
 at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:601)
 at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:371)
-at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:417)
-at org.openqa.selenium.By$ById.findElement(By.java:218)
+at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:473)
+at org.openqa.selenium.By$ByXPath.findElement(By.java:361)
 at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
-at GT.GT.GrpTalks.participantMovingToPrviateRoom(GrpTalks.java:382)
-at GT.GT.CreateAndCallGroupTest.verifyPrivateRoomFuntionalityInLiveCall(CreateAndCallGroupTest.java:2674)
+at utility.CommonMethods.elementExistsOrNot(CommonMethods.java:79)
+at GT.GT.CreatingGroup.listOfUsers(CreatingGroup.java:812)
+at GT.GT.CreatingGroup.selectContactsFromContactList(CreatingGroup.java:773)
+at GT.GT.RestApiTest.verifyFunctionalityOfDialInParticipants(RestApiTest.java:670)
 at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -1112,169 +223,272 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           </exception> <!-- org.openqa.selenium.NoSuchElementException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyPrivateRoomFuntionalityInLiveCall -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="tearDown" is-config="true" duration-ms="16584" started-at="2019-11-08T13:25:11 IST" finished-at="2019-11-08T13:25:27 IST">
+        </test-method> <!-- verifyFunctionalityOfDialInParticipants -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.RestApiTest@3d921e20]" name="tearDown" is-config="true" duration-ms="31173" started-at="2019-11-12T14:59:00 IST" finished-at="2019-11-12T14:59:31 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=verifyPrivateRoomFuntionalityInLiveCall status=FAILURE method=CreateAndCallGroupTest.verifyPrivateRoomFuntionalityInLiveCall()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14] output={null}]]]>
+                <![CDATA[[TestResult name=verifyFunctionalityOfDialInParticipants status=FAILURE method=RestApiTest.verifyFunctionalityOfDialInParticipants()[pri:0, instance:GT.GT.RestApiTest@3d921e20] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifyQuickDialButtonFunctionalityofGroupsInMyGrpTalk()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="verifyQuickDialButtonFunctionalityofGroupsInMyGrpTalk" duration-ms="7245" started-at="2019-11-08T13:25:27 IST" finished-at="2019-11-08T13:25:34 IST">
+        <test-method status="PASS" signature="verifyFunctionalityOfHandRaiseParticipants()[pri:0, instance:GT.GT.RestApiTest@3d921e20]" name="verifyFunctionalityOfHandRaiseParticipants" duration-ms="72909" started-at="2019-11-12T14:59:31 IST" finished-at="2019-11-12T15:00:44 IST">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyQuickDialButtonFunctionalityofGroupsInMyGrpTalk -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="tearDown" is-config="true" duration-ms="24352" started-at="2019-11-08T13:25:34 IST" finished-at="2019-11-08T13:25:59 IST">
+        </test-method> <!-- verifyFunctionalityOfHandRaiseParticipants -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.RestApiTest@3d921e20]" name="tearDown" is-config="true" duration-ms="31164" started-at="2019-11-12T15:00:44 IST" finished-at="2019-11-12T15:01:15 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=verifyQuickDialButtonFunctionalityofGroupsInMyGrpTalk status=SUCCESS method=CreateAndCallGroupTest.verifyQuickDialButtonFunctionalityofGroupsInMyGrpTalk()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14] output={null}]]]>
+                <![CDATA[[TestResult name=verifyFunctionalityOfHandRaiseParticipants status=SUCCESS method=RestApiTest.verifyFunctionalityOfHandRaiseParticipants()[pri:0, instance:GT.GT.RestApiTest@3d921e20] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifyRetryCallFunctionality()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="verifyRetryCallFunctionality" duration-ms="85718" started-at="2019-11-08T13:25:59 IST" finished-at="2019-11-08T13:27:24 IST">
+        <test-method status="FAIL" signature="verifyFunctionalityOfAutoDisconnectedParticipants()[pri:0, instance:GT.GT.RestApiTest@3d921e20]" name="verifyFunctionalityOfAutoDisconnectedParticipants" duration-ms="76068" started-at="2019-11-12T15:01:15 IST" finished-at="2019-11-12T15:02:31 IST">
+          <exception class="org.openqa.selenium.NoSuchElementException">
+            <message>
+              <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"//*[@class='singleRedial']"}
+  (Session info: chrome=78.0.3904.87)
+  (Driver info: chromedriver=2.43.600210 (68dcf5eebde37173d4027fa8635e332711d2874a),platform=Windows NT 10.0.17763 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.10.0', revision: '176b4a9', time: '2018-03-02T19:03:16.397Z'
+System info: host: 'DESKTOP-U3PMRBE', ip: '169.254.86.53', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_221'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.43.600210 (68dcf5eebde371..., userDataDir: C:\Users\smsc\AppData\Local...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:41595}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 78.0.3904.87, webStorageEnabled: true}
+Session ID: a19a30c0c0d3099ec75a16ad28fba023
+*** Element info: {Using=xpath, value=//*[@class='singleRedial']}]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@class='singleRedial']"}
+  (Session info: chrome=78.0.3904.87)
+  (Driver info: chromedriver=2.43.600210 (68dcf5eebde37173d4027fa8635e332711d2874a),platform=Windows NT 10.0.17763 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.10.0', revision: '176b4a9', time: '2018-03-02T19:03:16.397Z'
+System info: host: 'DESKTOP-U3PMRBE', ip: '169.254.86.53', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_221'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.43.600210 (68dcf5eebde371..., userDataDir: C:\Users\smsc\AppData\Local...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:41595}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 78.0.3904.87, webStorageEnabled: true}
+Session ID: a19a30c0c0d3099ec75a16ad28fba023
+*** Element info: {Using=xpath, value=//*[@class='singleRedial']}
+at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+at java.lang.reflect.Constructor.newInstance(Unknown Source)
+at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:160)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:601)
+at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:279)
+at org.openqa.selenium.remote.RemoteWebElement.findElement(RemoteWebElement.java:179)
+at org.openqa.selenium.remote.RemoteWebElement.findElementByXPath(RemoteWebElement.java:255)
+at org.openqa.selenium.By$ByXPath.findElement(By.java:361)
+at org.openqa.selenium.remote.RemoteWebElement.findElement(RemoteWebElement.java:175)
+at GT.GT.RestApiTest.verifyFunctionalityOfAutoDisconnectedParticipants(RestApiTest.java:1031)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:584)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:172)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:804)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:145)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.util.ArrayList.forEach(Unknown Source)
+at org.testng.TestRunner.privateRun(TestRunner.java:770)
+at org.testng.TestRunner.run(TestRunner.java:591)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:402)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:396)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:355)
+at org.testng.SuiteRunner.run(SuiteRunner.java:304)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1180)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1102)
+at org.testng.TestNG.runSuites(TestNG.java:1032)
+at org.testng.TestNG.run(TestNG.java:1000)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyRetryCallFunctionality -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="tearDown" is-config="true" duration-ms="22908" started-at="2019-11-08T13:27:24 IST" finished-at="2019-11-08T13:27:47 IST">
+        </test-method> <!-- verifyFunctionalityOfAutoDisconnectedParticipants -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.RestApiTest@3d921e20]" name="tearDown" is-config="true" duration-ms="25198" started-at="2019-11-12T15:02:31 IST" finished-at="2019-11-12T15:02:56 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=verifyRetryCallFunctionality status=SUCCESS method=CreateAndCallGroupTest.verifyRetryCallFunctionality()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14] output={null}]]]>
+                <![CDATA[[TestResult name=verifyFunctionalityOfAutoDisconnectedParticipants status=FAILURE method=RestApiTest.verifyFunctionalityOfAutoDisconnectedParticipants()[pri:0, instance:GT.GT.RestApiTest@3d921e20] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifySaveGroupWithNormalAndMuteClips()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="verifySaveGroupWithNormalAndMuteClips" duration-ms="45303" started-at="2019-11-08T13:27:47 IST" finished-at="2019-11-08T13:28:33 IST">
+        <test-method status="FAIL" signature="verifyFunctionalityOfIncomingCallFromParticipants()[pri:0, instance:GT.GT.RestApiTest@3d921e20]" name="verifyFunctionalityOfIncomingCallFromParticipants" duration-ms="45251" started-at="2019-11-12T15:02:56 IST" finished-at="2019-11-12T15:03:41 IST">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [ON CALL] but found [dialing]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [ON CALL] but found [dialing]
+at org.testng.Assert.fail(Assert.java:97)
+at org.testng.Assert.assertEqualsImpl(Assert.java:136)
+at org.testng.Assert.assertEquals(Assert.java:118)
+at org.testng.Assert.assertEquals(Assert.java:575)
+at org.testng.Assert.assertEquals(Assert.java:585)
+at GT.GT.RestApiTest.verifyFunctionalityOfIncomingCallFromParticipants(RestApiTest.java:1140)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:584)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:172)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:804)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:145)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.util.ArrayList.forEach(Unknown Source)
+at org.testng.TestRunner.privateRun(TestRunner.java:770)
+at org.testng.TestRunner.run(TestRunner.java:591)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:402)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:396)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:355)
+at org.testng.SuiteRunner.run(SuiteRunner.java:304)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1180)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1102)
+at org.testng.TestNG.runSuites(TestNG.java:1032)
+at org.testng.TestNG.run(TestNG.java:1000)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifySaveGroupWithNormalAndMuteClips -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="tearDown" is-config="true" duration-ms="23147" started-at="2019-11-08T13:28:33 IST" finished-at="2019-11-08T13:28:56 IST">
+        </test-method> <!-- verifyFunctionalityOfIncomingCallFromParticipants -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.RestApiTest@3d921e20]" name="tearDown" is-config="true" duration-ms="27889" started-at="2019-11-12T15:03:41 IST" finished-at="2019-11-12T15:04:09 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=verifySaveGroupWithNormalAndMuteClips status=SUCCESS method=CreateAndCallGroupTest.verifySaveGroupWithNormalAndMuteClips()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14] output={null}]]]>
+                <![CDATA[[TestResult name=verifyFunctionalityOfIncomingCallFromParticipants status=FAILURE method=RestApiTest.verifyFunctionalityOfIncomingCallFromParticipants()[pri:0, instance:GT.GT.RestApiTest@3d921e20] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifyScheduleGrpTalk()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="verifyScheduleGrpTalk" duration-ms="25085" started-at="2019-11-08T13:28:56 IST" finished-at="2019-11-08T13:29:21 IST">
+        <test-method status="FAIL" signature="verifyCallFunctionalityCopy()[pri:0, instance:GT.GT.RestApiTest@3d921e20]" name="verifyCallFunctionalityCopy" duration-ms="46223" started-at="2019-11-12T15:04:09 IST" finished-at="2019-11-12T15:04:55 IST">
+          <exception class="org.openqa.selenium.NoSuchElementException">
+            <message>
+              <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"//*[@class='oncall-bg bgGreen pull-right mr-2']//*[@class='oncall-text text-left']"}
+  (Session info: chrome=78.0.3904.87)
+  (Driver info: chromedriver=2.43.600210 (68dcf5eebde37173d4027fa8635e332711d2874a),platform=Windows NT 10.0.17763 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.10.0', revision: '176b4a9', time: '2018-03-02T19:03:16.397Z'
+System info: host: 'DESKTOP-U3PMRBE', ip: '169.254.86.53', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_221'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.43.600210 (68dcf5eebde371..., userDataDir: C:\Users\smsc\AppData\Local...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:41595}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 78.0.3904.87, webStorageEnabled: true}
+Session ID: a19a30c0c0d3099ec75a16ad28fba023
+*** Element info: {Using=xpath, value=//*[@class='oncall-bg bgGreen pull-right mr-2']//*[@class='oncall-text text-left']}]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@class='oncall-bg bgGreen pull-right mr-2']//*[@class='oncall-text text-left']"}
+  (Session info: chrome=78.0.3904.87)
+  (Driver info: chromedriver=2.43.600210 (68dcf5eebde37173d4027fa8635e332711d2874a),platform=Windows NT 10.0.17763 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.10.0', revision: '176b4a9', time: '2018-03-02T19:03:16.397Z'
+System info: host: 'DESKTOP-U3PMRBE', ip: '169.254.86.53', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_221'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.43.600210 (68dcf5eebde371..., userDataDir: C:\Users\smsc\AppData\Local...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:41595}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 78.0.3904.87, webStorageEnabled: true}
+Session ID: a19a30c0c0d3099ec75a16ad28fba023
+*** Element info: {Using=xpath, value=//*[@class='oncall-bg bgGreen pull-right mr-2']//*[@class='oncall-text text-left']}
+at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+at java.lang.reflect.Constructor.newInstance(Unknown Source)
+at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:160)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:601)
+at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:279)
+at org.openqa.selenium.remote.RemoteWebElement.findElement(RemoteWebElement.java:179)
+at org.openqa.selenium.remote.RemoteWebElement.findElementByXPath(RemoteWebElement.java:255)
+at org.openqa.selenium.By$ByXPath.findElement(By.java:361)
+at org.openqa.selenium.remote.RemoteWebElement.findElement(RemoteWebElement.java:175)
+at GT.GT.RestApiTest.verifyCallFunctionalityCopy(RestApiTest.java:1347)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:584)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:172)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:804)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:145)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.util.ArrayList.forEach(Unknown Source)
+at org.testng.TestRunner.privateRun(TestRunner.java:770)
+at org.testng.TestRunner.run(TestRunner.java:591)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:402)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:396)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:355)
+at org.testng.SuiteRunner.run(SuiteRunner.java:304)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1180)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1102)
+at org.testng.TestNG.runSuites(TestNG.java:1032)
+at org.testng.TestNG.run(TestNG.java:1000)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyScheduleGrpTalk -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="tearDown" is-config="true" duration-ms="23060" started-at="2019-11-08T13:29:21 IST" finished-at="2019-11-08T13:29:44 IST">
+        </test-method> <!-- verifyCallFunctionalityCopy -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.RestApiTest@3d921e20]" name="tearDown" is-config="true" duration-ms="27181" started-at="2019-11-12T15:04:55 IST" finished-at="2019-11-12T15:05:23 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=verifyScheduleGrpTalk status=SUCCESS method=CreateAndCallGroupTest.verifyScheduleGrpTalk()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14] output={null}]]]>
+                <![CDATA[[TestResult name=verifyCallFunctionalityCopy status=FAILURE method=RestApiTest.verifyCallFunctionalityCopy()[pri:0, instance:GT.GT.RestApiTest@3d921e20] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifySearchOptionWithfullValidUserName()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="verifySearchOptionWithfullValidUserName" duration-ms="11177" started-at="2019-11-08T13:29:44 IST" finished-at="2019-11-08T13:29:55 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifySearchOptionWithfullValidUserName -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="tearDown" is-config="true" duration-ms="30990" started-at="2019-11-08T13:29:55 IST" finished-at="2019-11-08T13:30:26 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifySearchOptionWithfullValidUserName status=SUCCESS method=CreateAndCallGroupTest.verifySearchOptionWithfullValidUserName()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifySelectContactFromContactList()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="verifySelectContactFromContactList" duration-ms="7592" started-at="2019-11-08T13:30:26 IST" finished-at="2019-11-08T13:30:34 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifySelectContactFromContactList -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="tearDown" is-config="true" duration-ms="30977" started-at="2019-11-08T13:30:34 IST" finished-at="2019-11-08T13:31:05 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifySelectContactFromContactList status=SUCCESS method=CreateAndCallGroupTest.verifySelectContactFromContactList()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verify_list_Of_Group_Users_On_MyGrpTalk_Page()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="verify_list_Of_Group_Users_On_MyGrpTalk_Page" duration-ms="21208" started-at="2019-11-08T13:31:05 IST" finished-at="2019-11-08T13:31:26 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verify_list_Of_Group_Users_On_MyGrpTalk_Page -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="tearDown" is-config="true" duration-ms="22997" started-at="2019-11-08T13:31:26 IST" finished-at="2019-11-08T13:31:49 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verify_list_Of_Group_Users_On_MyGrpTalk_Page status=SUCCESS method=CreateAndCallGroupTest.verify_list_Of_Group_Users_On_MyGrpTalk_Page()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifyfunctionalityOfExcelReportDownloadOptionOnHistory()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="verifyfunctionalityOfExcelReportDownloadOptionOnHistory" duration-ms="8910" started-at="2019-11-08T13:31:49 IST" finished-at="2019-11-08T13:31:58 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyfunctionalityOfExcelReportDownloadOptionOnHistory -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="tearDown" is-config="true" duration-ms="31002" started-at="2019-11-08T13:31:58 IST" finished-at="2019-11-08T13:32:29 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyfunctionalityOfExcelReportDownloadOptionOnHistory status=SUCCESS method=CreateAndCallGroupTest.verifyfunctionalityOfExcelReportDownloadOptionOnHistory()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="verifyselectedcontactstab()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="verifyselectedcontactstab" duration-ms="16544" started-at="2019-11-08T13:32:29 IST" finished-at="2019-11-08T13:32:45 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyselectedcontactstab -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="tearDown" is-config="true" duration-ms="37274" started-at="2019-11-08T13:32:45 IST" finished-at="2019-11-08T13:33:23 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyselectedcontactstab status=SUCCESS method=CreateAndCallGroupTest.verifyselectedcontactstab()[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="VerifyAllowNonMembersOptionInAdvancedSettingsOnOverlayInEditGrpTalk()[pri:4, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="VerifyAllowNonMembersOptionInAdvancedSettingsOnOverlayInEditGrpTalk" duration-ms="45155" started-at="2019-11-08T13:33:23 IST" finished-at="2019-11-08T13:34:08 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- VerifyAllowNonMembersOptionInAdvancedSettingsOnOverlayInEditGrpTalk -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="tearDown" is-config="true" duration-ms="27808" started-at="2019-11-08T13:34:08 IST" finished-at="2019-11-08T13:34:36 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=VerifyAllowNonMembersOptionInAdvancedSettingsOnOverlayInEditGrpTalk status=SUCCESS method=CreateAndCallGroupTest.VerifyAllowNonMembersOptionInAdvancedSettingsOnOverlayInEditGrpTalk()[pri:4, instance:GT.GT.CreateAndCallGroupTest@18bf3d14] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="closeBrowser1(java.lang.String)[pri:0, instance:GT.GT.CreateAndCallGroupTest@18bf3d14]" name="closeBrowser1" is-config="true" duration-ms="6581" started-at="2019-11-08T13:34:36 IST" finished-at="2019-11-08T13:34:42 IST">
+        <test-method status="PASS" signature="closeBrowser1(java.lang.String)[pri:0, instance:GT.GT.RestApiTest@3d921e20]" name="closeBrowser1" is-config="true" duration-ms="605" started-at="2019-11-12T15:05:23 IST" finished-at="2019-11-12T15:05:23 IST">
           <params>
             <param index="0">
               <value>
@@ -1285,7 +499,7 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeBrowser1 -->
-      </class> <!-- GT.GT.CreateAndCallGroupTest -->
-    </test> <!-- callpage -->
+      </class> <!-- GT.GT.RestApiTest -->
+    </test> <!-- ContactsPageTest -->
   </suite> <!-- TestSuite -->
 </testng-results>

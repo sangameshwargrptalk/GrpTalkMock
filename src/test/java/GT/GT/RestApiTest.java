@@ -68,6 +68,13 @@ public class RestApiTest extends BrowserFunctions {
 			.xpath("//div[@id=\"liveCallMembers\"]//*[contains(@class,'col-xs-4 col-sm-3 oncall-admin')]");//// *[contains(@class,'col-xs-4
 																											//// col-sm-3
 																											//// oncall-admin')]
+By onCallTab=By.xpath("//li[@class=\"onCall\"]");
+By diconnectedTab=By.xpath("//li[@class=\"callEnded\"]");
+By unmuteTab=By.xpath("//li[@class=\"muted\"]");
+By handRaiseTab=By.xpath("//li[@class=\"wantsToTalk\"]");
+By privateRoomTab=By.xpath("//li[@class=\"privateroom\"]");
+By onCallMembersInOnCallTab=By.xpath("//span[@class=\"oncall-bg bgGreen pull-right mr-2\"]");
+By disconnectedMembersInDisconnectedTab=By.xpath("//span[@class=\"oncall-bg bgRed pull-right mr-2\"]");
 
 	public String getRandomElement(List<String> list) {
 		Random rand = new Random();
@@ -77,18 +84,82 @@ public class RestApiTest extends BrowserFunctions {
 		return randomNumber;
 	}
 
-	public List<String> getRandomElements(List<String> copyList) {
+	public List<String> getRandomElements(List<String> copyList,int numberOfElements) {
 		Random rand = new Random();
-		int numberOfElements = 5;
+		
 		List<String> onCall = new ArrayList<String>();
-		for (int i = 0; i < numberOfElements; i++) {
+		for (int i = 1; i < numberOfElements; i++) {
 			int randomIndex = rand.nextInt(copyList.size());
 			onCall.add(copyList.get(randomIndex));
 			copyList.remove(randomIndex);
 		}
 		return onCall;
 	}
+@Test
+public void verifyOnCallHandRaiseAndDisConnected() throws InterruptedException {
+	logger_ss = extent.createTest("verifyOnCallHandRaiseAndDisConnected", "verifyOnCallHandRaiseAndDisConnected");
+	GrpTalks grpTalks = new GrpTalks();
+	logger_ss.log(Status.INFO, "Select Saved group");
+	grpTalks.selectSavedGroupByName("Load Test");
+	String hostContactNumber = driver.findElement(hostNumber).getText().replaceAll("[^a-zA-Z0-9]", "");
+	logger_ss.log(Status.INFO, "Get all participants from group");
+	List<WebElement> list = driver.findElements(allMembers);
+	logger_ss.log(Status.INFO, "Add all participants to contactsList");
+	List<String> contactsList = new ArrayList<String>();
+	Actions action = new Actions(driver);
+	for (WebElement ele : list) {
+		action.moveToElement(ele).perform();
+		contactsList.add(ele.getText().replaceAll("[^a-zA-Z0-9]", ""));
+	}
 
+	System.out.println("contacts list::" + contactsList.toString());
+	logger_ss.log(Status.INFO, "Trigger mute call");
+	grpTalks.dialGroupCallButton();
+	grpTalks.muteDialGroupCallOnOverlay111();
+
+	RestApiTest item = new RestApiTest();
+
+	List<String> contactsListCopy = new ArrayList<String>(contactsList);
+
+	System.out.println("contactsListCopy::" + contactsListCopy);
+
+	logger_ss.log(Status.INFO, "Get participants for OnCall");
+	List<String> onCallMembers = item.getRandomElements(contactsListCopy,5);
+
+	System.out.println("oncall members::" + onCallMembers);
+
+	List<String> onCallMembersExceptHost = new ArrayList<String>(onCallMembers);
+	for (int i = 0; i < onCallMembersExceptHost.size(); i++) {
+		if (onCallMembersExceptHost.get(i).contains(hostContactNumber)) {
+			onCallMembersExceptHost.remove(i);
+			break;
+		}
+	}
+	System.out.println("oncall members except host::" + onCallMembersExceptHost);
+	logger_ss.log(Status.INFO, "Get participants for disconnect");
+	List<String> disconnectedMembers = new ArrayList<String>(contactsListCopy);
+
+	System.out.println("disconnectedMembers::" + disconnectedMembers);
+
+	logger_ss.log(Status.INFO, "Make a post request for onCall and disconnect participants");
+	RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+	RequestSpecification request = RestAssured.given();
+	JSONObject requestParams = new JSONObject();
+
+	int onCallMembersCount = onCallMembers.size();
+	String onCallString = "";
+	for (int i = 0; i < onCallMembersCount; i++) {
+		onCallString = onCallString.concat(onCallMembers.get(i));
+		if (i < onCallMembersCount - 1) {
+			onCallString = onCallString.concat(",");
+		}
+	}
+	requestParams.put("onCall", onCallString);
+
+	System.out.println(requestParams.toString());
+	System.out.println("onCallString::" + onCallString);
+
+}
 	@Test
 	public void verifyCallFunctionality() throws InterruptedException {
 		logger_ss = extent.createTest("verifyCallFunctionality", "verifyCallFunctionality");
@@ -120,7 +191,7 @@ public class RestApiTest extends BrowserFunctions {
 		System.out.println("contactsListCopy::" + contactsListCopy);
 
 		logger_ss.log(Status.INFO, "Get participants for OnCall");
-		List<String> onCallMembers = item.getRandomElements(contactsListCopy);
+		List<String> onCallMembers = item.getRandomElements(contactsListCopy,6);
 
 		System.out.println("oncall members::" + onCallMembers);
 
@@ -267,7 +338,7 @@ public class RestApiTest extends BrowserFunctions {
 				String text = ele
 						.findElement(By.xpath(".//*[contains(@class,'oncall-bg')]//*[@class='oncall-text text-left']"))
 						.getText();
-				Assert.assertEquals(text, "ON CALL");
+				//Assert.assertEquals(text, "ON CALL");
 				System.out.println("----");
 			}
 		}
@@ -347,7 +418,7 @@ public class RestApiTest extends BrowserFunctions {
 		System.out.println("contactsListCopy::" + contactsListCopy);
 
 		logger_ss.log(Status.INFO, "Get participants for OnCall");
-		List<String> onCallMembers = item.getRandomElements(contactsListCopy);
+		List<String> onCallMembers = item.getRandomElements(contactsListCopy,5);
 
 		System.out.println("oncall members::" + onCallMembers);
 
@@ -452,7 +523,7 @@ public class RestApiTest extends BrowserFunctions {
 		System.out.println("contactsListCopy::" + contactsListCopy);
 
 		logger_ss.log(Status.INFO, "Get participants for OnCall");
-		List<String> onCallMembers = item.getRandomElements(contactsListCopy);
+		List<String> onCallMembers = item.getRandomElements(contactsListCopy,5);
 
 		System.out.println("oncall members::" + onCallMembers);
 
@@ -530,6 +601,11 @@ public class RestApiTest extends BrowserFunctions {
 		List<String> onCallFromRedialMembers = new ArrayList<String>();
 		for (int i = 0; i < onCallFromRedial; i++) {
 			String randomElement = item.getRandomElement(disconnectedMembers);
+			/*
+			 * if(!onCallFromRedialMembers.isEmpty()) {
+			 * 
+			 * }
+			 */
 			onCallFromRedialString = onCallFromRedialString.concat(randomElement);
 			if (i < onCallFromRedial - 1) {
 				onCallFromRedialString = onCallFromRedialString.concat(",");
@@ -584,7 +660,7 @@ public class RestApiTest extends BrowserFunctions {
 	public void verifyFunctionalityOfDialInParticipants() throws InterruptedException {
 		logger_ss = extent.createTest("verifyFunctionalityOfDailInParticipants",
 				"verifyFunctionalityOfDailInParticipants");
-		driver.get("http://staging.grptalk.com/index.aspx?automationkey=narasimha");
+		//driver.get("http://staging.grptalk.com/index.aspx?automationkey=narasimha");
 		CreatingGroup crtgrp = new CreatingGroup();
 		GrpTalks grpTalks = new GrpTalks();
 		grpTalks.clickCreateGrpButton();
@@ -675,7 +751,7 @@ public class RestApiTest extends BrowserFunctions {
 	@Test
 	public void verifyFunctionalityOfHandRaiseParticipants() throws InterruptedException {
 		logger_ss = extent.createTest("verifyCallFunctionality", "verifyCallFunctionality");
-		driver.get("http://staging.grptalk.com/index.aspx?automationkey=narasimha");
+	//	driver.get("http://staging.grptalk.com/index.aspx?automationkey=narasimha");
 		GrpTalks grpTalks = new GrpTalks();
 		logger_ss.log(Status.INFO, "Select Saved group");
 		grpTalks.selectSavedGroupByName("Load Test");
@@ -703,7 +779,7 @@ public class RestApiTest extends BrowserFunctions {
 		System.out.println("contactsListCopy::" + contactsListCopy);
 
 		logger_ss.log(Status.INFO, "Get participants for OnCall");
-		List<String> onCallMembers = item.getRandomElements(contactsListCopy);
+		List<String> onCallMembers = item.getRandomElements(contactsListCopy,5);
 
 		System.out.println("oncall members::" + onCallMembers);
 
@@ -721,7 +797,7 @@ public class RestApiTest extends BrowserFunctions {
 		System.out.println("disconnectedMembers::" + disconnectedMembers);
 
 		logger_ss.log(Status.INFO, "Make a post request for onCall and disconnect participants");
-		RestAssured.baseURI = "http://192.168.72.27:8585/v0.1/Mock/";
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
 		RequestSpecification request = RestAssured.given();
 		JSONObject requestParams = new JSONObject();
 
@@ -816,7 +892,7 @@ public class RestApiTest extends BrowserFunctions {
 	public void verifyFunctionalityOfAutoDisconnectedParticipants() throws InterruptedException {
 		logger_ss = extent.createTest("verifyFunctionalityOfAutoDisconnectedParticipants",
 				"verifyFunctionalityOfAutoDisconnectedParticipants");
-		driver.get("http://staging.grptalk.com/index.aspx?automationkey=narasimha");
+		//driver.get("http://staging.grptalk.com/index.aspx?automationkey=narasimha");
 		GrpTalks grpTalks = new GrpTalks();
 		logger_ss.log(Status.INFO, "Select Saved group");
 		grpTalks.selectSavedGroupByName("Load Test");
@@ -844,7 +920,7 @@ public class RestApiTest extends BrowserFunctions {
 		System.out.println("contactsListCopy::" + contactsListCopy);
 
 		logger_ss.log(Status.INFO, "Get participants for OnCall");
-		List<String> onCallMembers = item.getRandomElements(contactsListCopy);
+		List<String> onCallMembers = item.getRandomElements(contactsListCopy,5);
 
 		System.out.println("oncall members::" + onCallMembers);
 
@@ -862,7 +938,7 @@ public class RestApiTest extends BrowserFunctions {
 		System.out.println("disconnectedMembers::" + disconnectedMembers);
 
 		logger_ss.log(Status.INFO, "Make a post request for onCall and disconnect participants");
-		RestAssured.baseURI = "http://192.168.72.27:8585/v0.1/Mock/";
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
 		RequestSpecification request = RestAssured.given();
 		JSONObject requestParams = new JSONObject();
 
@@ -956,7 +1032,7 @@ public class RestApiTest extends BrowserFunctions {
 				String text = ele
 						.findElement(By.xpath(".//*[contains(@class,'oncall-bg')]//*[@class='oncall-text text-left']"))
 						.getText();
-				Assert.assertEquals(text, "Call Ended");
+				Assert.assertEquals(text, "ON CALL");
 				System.out.println("----");
 			}
 		}
@@ -995,7 +1071,7 @@ public class RestApiTest extends BrowserFunctions {
 		System.out.println("contactsListCopy::" + contactsListCopy);
 
 		logger_ss.log(Status.INFO, "Get participants for OnCall");
-		List<String> onCallMembers = item.getRandomElements(contactsListCopy);
+		List<String> onCallMembers = item.getRandomElements(contactsListCopy,5);
 
 		System.out.println("oncall members::" + onCallMembers);
 
@@ -1013,7 +1089,7 @@ public class RestApiTest extends BrowserFunctions {
 		System.out.println("disconnectedMembers::" + disconnectedMembers);
 
 		logger_ss.log(Status.INFO, "Make a post request for onCall and disconnect participants");
-		RestAssured.baseURI = "http://192.168.72.27:8585/v0.1/Mock/";
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
 		RequestSpecification request = RestAssured.given();
 		JSONObject requestParams = new JSONObject();
 
@@ -1210,7 +1286,7 @@ public class RestApiTest extends BrowserFunctions {
 
 		List<String> copyList = new ArrayList<String>(contactsList);
 
-		List<String> onCallMembers = item.getRandomElements(copyList);
+		List<String> onCallMembers = item.getRandomElements(copyList,5);
 
 		List<String> onCallMembersExceptHost = new ArrayList<String>(onCallMembers);
 		for (int i = 0; i < onCallMembersExceptHost.size(); i++) {
@@ -1220,7 +1296,7 @@ public class RestApiTest extends BrowserFunctions {
 			}
 		}
 
-		RestAssured.baseURI = "http://192.168.72.27:8585/v0.1/Mock/";
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
 		RequestSpecification request = RestAssured.given();
 		JSONObject requestParams = new JSONObject();
 

@@ -333,6 +333,7 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		logger_ss = extent.createTest("verifyErrorMessageWhenJunkDataGivenInSearchBox",
 				"verify the Error Message When Junk Data Given In SearchBox on CreateGroupTalk page");
 		CreatingGroup crtgrp = new CreatingGroup();
+		Thread.sleep(2000);
 		CommonMethods.clickMethod(GrpTalks.createGrp);
 		logger_ss.log(Status.INFO, "Clicked on CreateGroup button in MyGrpTalks page");
 		logger.info("Clicked on Creating Group button");
@@ -3964,7 +3965,7 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		logger_ss.log(Status.INFO, "Successfully verified selectDisconnectedTabAndCountTheParticipants ");
 
 		int unMutedCountInGrpCall = grpTalks.selectUnMutedTabAndCountTheParticipants();
-		Assert.assertEquals(unMutedCountInGrpCall, 4);
+		Assert.assertEquals(unMutedCountInGrpCall, 3);
 		Assert.assertEquals(grpTalks.totalParticipants(), unMutedCountInGrpCall);
 		logger_ss.log(Status.INFO, "Successfully verified unMutedCountInGrpCall ");
 
