@@ -1,4 +1,5 @@
 {
+    "grpTalkContact"						:		"Auto Ans",
     "ParentPassword"						:		"123456",
     "ParentInvaildUsername"					: 		"1111111111",
     "ParentInvalidPassword"					: 		"11111",
@@ -19,7 +20,7 @@
     "junkData"								:		"qwertyuiop",
     "partialContactName"					:		"anud",
     "validContactName"						:		"anusha",
-    "grpTalkGroup"							:		"AUAU",	
+    "grpTalkGroup"							:		"TestSuite",	
     "newTestList"							:		"TestList",
     "OneDialGroup"							:		"OneDial",
     "LeaveGroupGroup"						:		"LeaveGroup",
@@ -28,8 +29,7 @@
     "successMsgForPaytmRecharge"			:		"Thank you for using grptalk Paytm, our team will charge the requested amount asap.",
     "retryContactNumber"					:		"Srikanth",
     "schdeduleConferenceAgenda"				:		"testing purpose",
-    
-    "stagingUrl"				:	"http://staging.grptalk.com/index.aspx?automationKey=84096",
+     "stagingUrl"				:	"http://staging.grptalk.com/index.aspx?automationKey=84096",
     "localUrl"					:	"http://192.168.75.38:8081/index.aspx?automationKey=103591",
 	"productionUrl"				:	"https://web.grptalk.com/index.aspx?automationKey=89768",
 	"secModeratorUrl"			:	"http://192.168.75.38:8081/index.aspx?automationKey=103592",
@@ -54,7 +54,8 @@
 	"searchContactsWithNameAuto" : 	"auto",
 	
 	"restUrl"				:	"http://staging.grptalk.com/index.aspx?automationkey=narasimha",
-	"restMockUrl"				:	"http://staging.grptalk.com/index.aspx?automationkey=84089"
+	"restMockUrl"				:	"http://staging.grptalk.com/index.aspx?automationkey=84089",
+	"mockBaseUrl"               :"http://192.168.73.227:8585/v0.1/Mock/"
 	
 	
 	

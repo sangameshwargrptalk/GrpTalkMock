@@ -8,9 +8,12 @@ import static org.testng.Assert.assertEquals;
 
 import java.awt.AWTException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.apache.log4j.Logger;
+import org.json.JSONObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -32,6 +35,9 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import utility.*;
 
 public class AccountPageTest extends BrowserFunctions {
@@ -171,21 +177,51 @@ public class AccountPageTest extends BrowserFunctions {
 		accountpage.clickOnAccountTab();
 		logger_ss.log(Status.INFO, "Clicked on account tab in MyGrpTalks page");
 		String usedAmount = accountpage.usedAmontInWeb();
-		System.out.println("usedAmount" + usedAmount);//used
+		System.out.println("usedAmount" + usedAmount);// used
 		logger_ss.log(Status.INFO, "Getting the used amount in web");
 		double usedAmountBeforeCall = Double.parseDouble(usedAmount);
-		System.out.println("usedAmountBeforeCall" + usedAmountBeforeCall);//used before call-200
+		System.out.println("usedAmountBeforeCall" + usedAmountBeforeCall);// used before call-200
 		accountpage.navigateToGrpTalkHomePage();
 		logger_ss.log(Status.INFO, "navigated To GrpTalk Home Page");
 		CreatingGroup crtgrp = new CreatingGroup();
 		GrpTalks grpTalk = new GrpTalks();
-		grpTalk.selectSavedGroupByName("AUAUAU");
+		String grpName = CommonMethods.passingData("grpTalkGroup");
+		grpTalk.selectSavedGroupByName(grpName);
 		logger_ss.log(Status.INFO, "Selected 'grpTalk' group In MyGrpTalk page");
 		grpTalk.dialGroupCallButton();
 		logger_ss.log(Status.INFO, "Clicked on dial button");
 		grpTalk.dialGroupCallButtonOnOverlay();
 		logger_ss.log(Status.INFO, "Clicked on dial grpCall button on overlay");
-		grpTalk.verifyLiveCallState();
+		List<String> allMembersNumber = grpTalks.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
+		int selectAllParticipantsTabAndCountTheParticipants = grpTalks
+				.selectAllParticipantsTabAndCountTheParticipants();
+		assertEquals(selectAllParticipantsTabAndCountTheParticipants, grpTalk.verifyLiveCallState());
+		logger_ss.log(Status.INFO, "Verified live Call is in progress ");
 		logger_ss.log(Status.INFO, "Verified the visiblity of inProgress element");
 		grpTalk.hangUpCurrentGrpTalkcall();
 		logger_ss.log(Status.INFO, "hangUp the Current GrpTalk call");
@@ -197,9 +233,9 @@ public class AccountPageTest extends BrowserFunctions {
 		grpTalk.historyButtonOnMyGrpTalks();
 		logger_ss.log(Status.INFO, "Clicked on history Button On MyGrpTalks");
 		double amountChargedForCall = grpTalk.totalAmountChargedForGrpcall();
-		System.out.println("amountChargedForCall" + amountChargedForCall);//charged for call-10
+		System.out.println("amountChargedForCall" + amountChargedForCall);// charged for call-10
 		logger_ss.log(Status.INFO, "Getting the total amount charged for grpCall");
-		double totalAmount = usedAmountBeforeCall + amountChargedForCall-2;
+		double totalAmount = usedAmountBeforeCall + amountChargedForCall - 2;
 		System.out.println("totalAmount" + totalAmount);
 		logger_ss.log(Status.INFO, "Added usedAmountBeforeCall with amountChargedForCall:");
 		logger_ss.log(Status.INFO, String.valueOf(totalAmount));
@@ -210,10 +246,10 @@ public class AccountPageTest extends BrowserFunctions {
 		String usedAmountAfterCall = accountpage.usedAmontInWeb();
 		System.out.println("usedAmountAfterCall" + usedAmountAfterCall);
 		logger_ss.log(Status.INFO, "Getting used amount in Web After call");
-		double totalUsedAmountAfterCall = Double.parseDouble(usedAmountAfterCall);//-262
+		double totalUsedAmountAfterCall = Double.parseDouble(usedAmountAfterCall);// -262
 		System.out.println("totalUsedAmountAfterCall" + totalUsedAmountAfterCall);
 		logger_ss.log(Status.INFO, String.valueOf(totalUsedAmountAfterCall));
-		 totalAmount = usedAmountBeforeCall + amountChargedForCall;
+		totalAmount = usedAmountBeforeCall + amountChargedForCall;
 		AssertJUnit.assertEquals(totalAmount, totalUsedAmountAfterCall);
 		logger_ss.log(Status.INFO,
 				"Successfully verified the total amount used for before and after calls by the user");
@@ -681,6 +717,7 @@ public class AccountPageTest extends BrowserFunctions {
 		logger_ss = extent.createTest("verifyEditSubAccountFunctionalityInSubAccountsTab",
 				"verifyEditSubAccountFunctionalityInSubAccountsTab");
 		AccountPage accountpage = new AccountPage();
+
 		accountpage.clickOnAccountTab();
 		logger_ss.log(Status.INFO, "Clicked on account tab in MyGrpTalks page");
 		accountpage.clickSubAccountsTab();
@@ -741,65 +778,69 @@ public class AccountPageTest extends BrowserFunctions {
 		logger_ss = extent.createTest("verifybalancecheckinsubaccounts", "verifybalancecheckinsubaccounts");
 		AccountPage accountpage = new AccountPage();
 		accountpage.clickOnAccountTab();
+		String baseUrl = CommonMethods.passingData("mockBaseUrl");
 		logger_ss.log(Status.INFO, "Clicked on account tab in MyGrpTalks page");
 		accountpage.clickSubAccountsTab();
 		logger_ss.log(Status.INFO, "Clicked on sub accounts tab");
 		accountpage.clickEditOptionOfSubAccount();
 		logger_ss.log(Status.INFO, "clicked on EditOptionOfSubAccount");
-		// accountpage.enterMaxMemberLimitInEditSubAccountOverlay();
-		// logger_ss.log(Status.INFO, "entered MaxMemberLimitInEditSubAccountOverlay");
 		accountpage.chanageAccountStatusToBlockedInEditSubAccountOverlay();
 		logger_ss.log(Status.INFO, "chanageed AccountStatusToBlockedInEditSubAccountOverlay");
 		accountpage.clickSaveButtonOnEditsubAccountOverlay();
 		logger_ss.log(Status.INFO, "clicked on SaveButtonOnEditsubAccountOverlay");
-		// AssertJUnit.assertEquals(accountpage.successMsgOfEditSubAccount(), "Sub
-		// Account Have Edited Successfully");
-		// logger_ss.log(Status.INFO, "verified successMsgOfEditSubAccount");
-		// AssertJUnit.assertTrue(accountpage.blockedOptionForSubAccounts());
-		// logger_ss.log(Status.INFO, "verified blocked text ForSubAccounts");
 		Thread.sleep(2000);
 		accountpage.clickEditOptionOfSubAccount();
 		logger_ss.log(Status.INFO, "clicked on EditOptionOfSubAccount");
 		Thread.sleep(1000);
 		accountpage.clickeditPoolSubAccountOnAddSubAccountOverlay();
 		logger_ss.log(Status.INFO, "Clicked on PoolSubAccountOnAddSubAccountOverlay");
-		// accountpage.enterMaxMemberLimitInEditSubAccountOverlay();
-		// logger_ss.log(Status.INFO, "entered MaxMemberLimitInEditSubAccountOverlay");
 		accountpage.chanageAccountStatusToActiveInEditSubAccountOverlay();
 		logger_ss.log(Status.INFO, "chanaged AccountStatusToActiveInEditSubAccountOverlay");
 		accountpage.clickSaveButtonOnEditsubAccountOverlay();
 		logger_ss.log(Status.INFO, "clicked on SaveButtonOnEditsubAccountOverlay");
-		// AssertJUnit.assertEquals(accountpage.successMsgOfEditSubAccount(), "Sub
-		// Account Have Edited Successfully");
-		// logger_ss.log(Status.INFO, "verified successMsgOfEditSubAccount");
-		// AssertJUnit.assertTrue(accountpage.activeOptionForSubAccounts());
-		// logger_ss.log(Status.INFO, "verified ACTIVE text ForSubAccounts");
-		// logger_ss.log(Status.INFO, "Successfully verified
-		// EditSubAccountFunctionalityInSubAccountsTab");
 		Thread.sleep(2000);
 		accountpage.clickOnAccountTab();
 		logger_ss.log(Status.INFO, "Clicked on account tab in MyGrpTalks page");
 		int currentBalance = accountpage.getCurrentBalance();
-		// accountpage.clickSubAccountsTab();
-		// logger_ss.log(Status.INFO, "Clicked on sub accounts tab");
-		// String addBalanceToSubAccount = "100";
-		// String successMsgForBalanceTransfer =
-		// accountpage.addBalanceToActiveSubAccount(addBalanceToSubAccount);
-		// logger_ss.log(Status.INFO, "added Balance To Active SubAccount");
 		accountpage.navigateTosubaccount();
 		accountpage.clickOnAccountTab();
 		logger_ss.log(Status.INFO, "Clicked on subacoount account tab in MyGrpTalks page");
-		// String subaccountcurrentBalance =accountpage.getsubaccountCurrentBalance();
 		Assert.assertEquals(accountpage.getCurrentBalance(), accountpage.getsubaccountCurrentBalance());
 		logger_ss.log(Status.INFO, "successfully verified balancecheck");
-		// Thread.sleep(2000);
 		accountpage.clickOnGroupsTab();
 		Thread.sleep(2000);
 		String grpName = crtgrp.createAndCallTheGrp();
 		logger_ss.log(Status.INFO, "Dialing to new group by submitting StartNowButton");
-		grpTalks.verifyLiveCallState();
+		List<String> allMembersNumber = grpTalks.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		RestAssured.baseURI = baseUrl;
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
+		int selectAllParticipantsTabAndCountTheParticipants = grpTalks
+				.selectAllParticipantsTabAndCountTheParticipants();
+		assertEquals(selectAllParticipantsTabAndCountTheParticipants, grpTalks.verifyLiveCallState());
 		logger_ss.log(Status.INFO, "Verified live Call is in progress ");
-		grpTalks.hangUpCurrentGrpTalkcall();
 		logger_ss.log(Status.INFO, "HangUp the current grpTalk call");
 		grpTalks.submitRateCallByClickingGoodOption();
 		Thread.sleep(2000);

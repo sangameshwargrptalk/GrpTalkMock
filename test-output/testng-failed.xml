@@ -1,22 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [TestSuite]">
-  <test thread-count="5" name="ContactsPageTest(failed)">
-    <parameter name="browser" value="Chrome"/>
-    <parameter name="url" value="restMockUrl"/>
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="GT.GT.RestApiTest">
+      <class name="GT.GT.AccountPageTest">
         <methods>
-          <include name="verifyCallFunctionalityCopy"/>
           <include name="closeBrowser1"/>
-          <include name="verifyFunctionalityOfDialInParticipants"/>
-          <include name="verifyFunctionalityOfIncomingCallFromParticipants"/>
           <include name="tearDown"/>
-          <include name="verifyCallFunctionality"/>
+          <include name="verifybalancecheckinsubaccounts"/>
+          <include name="beforeCalss"/>
           <include name="setup"/>
-          <include name="verifyFunctionalityOfAutoDisconnectedParticipants"/>
         </methods>
-      </class> <!-- GT.GT.RestApiTest -->
+      </class> <!-- GT.GT.AccountPageTest -->
     </classes>
-  </test> <!-- ContactsPageTest(failed) -->
-</suite> <!-- Failed suite [TestSuite] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

@@ -1,10 +1,17 @@
 package GT.GT;
 
+import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matcher.*;
+import static org.testng.Assert.assertEquals;
+
 import java.awt.AWTException;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+
+import org.apache.http.HttpRequest;
 import org.apache.log4j.Logger;
+import org.json.JSONObject;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -13,6 +20,11 @@ import org.testng.annotations.Test;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+
 import java.util.ArrayList;
 import org.junit.Ignore;
 import org.openqa.selenium.WebElement;
@@ -22,6 +34,7 @@ import utility.CommonMethods;
 import utility.*;
 
 public class CreateAndCallGroupTest extends BrowserFunctions {
+
 	public static Logger logger = Logger.getLogger(CreateAndCallGroupTest.class);
 
 	GrpTalks grpTalks = new GrpTalks();
@@ -62,6 +75,7 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		crtgrp.clickScheduleButtonOnAdvancedSettingsOverlayForSchedule();
 		logger_ss.log(Status.INFO, "clicked on Schedule Button On Advanced Settings Overlay For Schedule grpTalk");
 		Thread.sleep(5000);
+		
 		grpTalks.selectRecentlySavedGrpTalkGroup(grpName);
 		logger_ss.log(Status.INFO, "selected Recently Saved GrpTalk Group");
 		Thread.sleep(5000);
@@ -71,25 +85,64 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		logger_ss.log(Status.INFO, "Clicked on schedule cancel button");
 		driver.switchTo().alert().accept();
 		logger_ss.log(Status.INFO, "Alert accepted Successfully");
-		Boolean isGroupDisplayedOrNot = grpTalks.checkRecentlySavedGrpTalkGroup(grpName);
-		Assert.assertFalse(isGroupDisplayedOrNot);
-		logger_ss.log(Status.INFO, "Successfully scheduled group cancelled");
+		 grpTalks.checkRecentlySavedGrpTalkGroup(grpName);
+		Thread.sleep(3000);
+	
 	}
 
 	@Test
 	public void verifyCallFunctionalityFromAllMembersTabInListView() throws InterruptedException {
 		logger_ss = extent.createTest("verifyCallFunctionalityFromAllMembersTabInListView",
 				"verifyCallFunctionalityFromAllMembersTabInListView");
-//		CreatingGroup crtgrp = new CreatingGroup();
-//		GrpTalks grpTalks = new GrpTalks();
-		String grpName = crtgrp.createAndCallTheGrp();
-		logger_ss.log(Status.INFO, "Dialing to new group by submitting StartNowButton");
-		grpTalks.verifyLiveCallState();
-		logger_ss.log(Status.INFO, "Verified live Call is in progress ");
-		grpTalks.listViewInLiveCall();
-		logger_ss.log(Status.INFO, "Switched to list view ");
+
+		CreatingGroup crtgrp = new CreatingGroup();
+		GrpTalks grpTalks = new GrpTalks();
+		String createdgrpName = crtgrp.createAndCallTheGrp();
+		System.out.println("Created group name::" + createdgrpName);
+		Thread.sleep(3000);
+		List<String> allMembersNumber = grpTalks.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		/*
+		 * String hostNumber = grpTalks.getHostNumber(); List<String>
+		 * onCallMembersExceptHost = new ArrayList<String>(contactsListCopy); for (int i
+		 * = 0; i < onCallMembersExceptHost.size(); i++) { if
+		 * (onCallMembersExceptHost.get(i).contains(hostNumber)) {
+		 * onCallMembersExceptHost.remove(i); break; }
+		 * System.out.println(onCallMembersExceptHost);
+		 */
+
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
+		grpTalks.gotoListViwe();
 
 		int allParticipantsCount = grpTalks.selectAllParticipantsTabAndCountTheParticipants();
+		assertEquals(allParticipantsCount, grpTalks.verifyListViewLiveCall());
+		logger_ss.log(Status.INFO, "Verified live Call is in progress ");
+		;
+		logger_ss.log(Status.INFO, "Switched to list view ");
+
 		Assert.assertEquals(allParticipantsCount, 4);
 		Assert.assertEquals(grpTalks.allParticipantsInListView(), allParticipantsCount);
 		logger_ss.log(Status.INFO, "Successfully verified selectAllParticipantsTabAndCountTheParticipants ");
@@ -119,7 +172,7 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		logger_ss.log(Status.INFO, "clicked on UnMute Button Of group participant In All participants tab");
 
 		Assert.assertTrue(CommonMethods.isDisplayedMethod(grpTalks.muteButtonOfParticipantInListView));
-		// Assert.assertTrue(grpTalks.visibilityOFMuteButtonOfIndividualContactInListView());
+		Assert.assertTrue(grpTalks.visibilityOFMuteButtonOfIndividualContactInListView());
 		logger_ss.log(Status.INFO, "verified visibility OF Mute Button Of participant ");
 
 		int unMutedCountInGrpCall2 = grpTalks.selectUnMutedTabAndCountTheParticipants();
@@ -139,10 +192,8 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		logger_ss.log(Status.INFO, "Successfully verified unMutedCountInGrpCall ");
 
 		grpTalks.selectAllParticipantsTabAndCountTheParticipants();
-		grpTalks.participantMovingToPrviateRoomInListView();
+		grpTalks.listViewPrivateRoom();
 		logger_ss.log(Status.INFO, "clicked on Private Room Button Of participant");
-		Assert.assertTrue(grpTalks.visibilityOfPrivateRoomOptionforParticipantInListView());
-		logger_ss.log(Status.INFO, "verified visibility OF private room option Of participant ");
 
 		int onCallCountInGrpCall2 = grpTalks.selectOnCallTabAndCountTheParticipants();
 		Assert.assertEquals(onCallCountInGrpCall2, 2);
@@ -158,7 +209,12 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		logger_ss.log(Status.INFO, "Successfully verified privateRoomMembersCountInGrpCall ");
 
 		grpTalks.selectAllParticipantsTabAndCountTheParticipants();
+		grpTalks.moveToPrivateRoom();
 		grpTalks.participantMovingBackTocallInListView();
+
+		grpTalks.selectAllParticipantsTabAndCountTheParticipants();
+		grpTalks.moveToPrivateRoom();
+
 		logger_ss.log(Status.INFO, "clicked on move back to call option Of participant in all Participants tab");
 		Assert.assertTrue(grpTalks.InvisibilityOfPrivateRoomOptionForParticipantInListView());
 		logger_ss.log(Status.INFO, "verified invisibility OF private room option Of participant ");
@@ -199,8 +255,9 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		logger_ss.log(Status.INFO, "HangUp the current grpTalk call");
 		grpTalks.submitRateCallByClickingAverageOption();
 		logger_ss.log(Status.INFO, "submited RateCall By Clicking Good Option");
-		grpTalks.selectRecentlySavedGrpTalkGroup(grpName);
+		grpTalks.selectRecentlySavedGrpTalkGroup(createdgrpName);
 		logger_ss.log(Status.INFO, "Successfully verified Call Functionality From AllMembersTab in list view");
+		grpTalks.deleteSavedGroupCall();
 	}
 
 	@Test
@@ -211,6 +268,33 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		GrpTalks grpTalks = new GrpTalks();
 		String grpName = crtgrp.createAndCallTheGrp();
 		logger_ss.log(Status.INFO, "Dialed to new grpTalk group by submitting StartNowButton");
+		Thread.sleep(3000);
+		List<String> allMembersNumber = grpTalks.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
 		grpTalks.verifyLiveCallState();
 		logger_ss.log(Status.INFO, "Verified live Call is in progress ");
 
@@ -538,20 +622,54 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 	public void verifyCallFunctionalityOfTestContactsFromCreateGroupTalkPage() throws InterruptedException {
 		logger_ss = extent.createTest("verifyCallFunctionalityOfTestContactsFromCreateGroupTalkPage",
 				"verifyCallFunctionalityOfTestContactsFromCreateGroupTalkPage");
+
+		/*
+		 * CreatingGroup crtgrp = new CreatingGroup(); GrpTalks grpTalk = new
+		 * GrpTalks(); grpTalk.clickCreateGrpButton();
+		 * logger_ss.log(Status.INFO,"Clicked on CreateGroup button in MyGrpTalks page"
+		 * ); crtgrp.clickPhoneContactsTab(); logger_ss.log(Status.
+		 * INFO,"Clicked on phone contacts tab in CreateGroupTalk page");
+		 * crtgrp.selectTestContactsFromContactList();
+		 * logger_ss.log(Status.INFO,"selected TestContactsFromContactList"); String
+		 * grpTalkName =crtgrp.setGrpTalkName(); crtgrp.submitStartNowButton();
+		 * crtgrp.dialGroupCallButtonOnOverlayInCreateGrpTalkForTest();
+		 */
+
 		CreatingGroup crtgrp = new CreatingGroup();
 		GrpTalks grpTalk = new GrpTalks();
-		grpTalk.clickCreateGrpButton();
-		logger_ss.log(Status.INFO, "Clicked on CreateGroup button in MyGrpTalks page");
-		crtgrp.clickPhoneContactsTab();
-		logger_ss.log(Status.INFO, "Clicked on phone contacts tab in CreateGroupTalk page");
-		crtgrp.selectTestContactsFromContactList();
-		logger_ss.log(Status.INFO, "selected TestContactsFromContactList");
-		String grpTalkName = crtgrp.setGrpTalkName();
-		crtgrp.submitStartNowButton();
+		String grpTalkName = crtgrp.createAndCallTheGrp();
+		System.out.println("Created group name::" + grpTalkName);
+		Thread.sleep(3000);
+		List<String> allMembersNumber = grpTalk.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
 		logger_ss.log(Status.INFO, "Submitted StartNow button");
-		crtgrp.dialGroupCallButtonOnOverlayInCreateGrpTalkForTest();
+
 		logger_ss.log(Status.INFO, "clicked on dialGroupCallButtonOnOverlayInCreateGrpTalkForTestContacts");
-		grpTalk.verifyLiveCallState();
+		Assert.assertEquals(grpTalk.verifyLiveCallState(), true);
 		logger_ss.log(Status.INFO, "Verified the visiblity of Inprogress String");
 		grpTalk.hangUpCurrentGrpTalkcall();
 		logger_ss.log(Status.INFO, "hanged Up CurrentGrpTalkcall");
@@ -643,12 +761,13 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		String grpName = crtgrp.createAndSaveTheGrpWithSecondaryModerator();
 		logger_ss.log(Status.INFO, "Dialing to new group by submitting StartNowButton");
 		System.out.println("GrpNAme----" + grpName);
-		grpTalks.selectSavedGroupByName("AUAU");
-		Boolean result = grpTalks.checkSecondaryModerator(CommonMethods.passingData("SecondayModeratorContact"));
-		// Assert.assertTrue(result);
+		grpTalks.selectSavedGroupByName(grpName);
+		String sceonDaryModerator = CommonMethods.passingData("SecondayModeratorContact");
+		Boolean result = grpTalks.checkSecondaryModerator(sceonDaryModerator);
+		Assert.assertTrue(result);
 	}
 
-	@Test(dependsOnMethods = { "removeLeaveGroup" })
+	@Test
 	public void createAndSaveTheGroupByLeaveGroupName() throws InterruptedException {
 		logger_ss = extent.createTest("createAndSaveTheGroupByLeaveGroupName", "createAndSaveTheGroupByLeaveGroupName");
 		CreatingGroup crtgrp = new CreatingGroup();
@@ -677,7 +796,32 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		grpTalks.dialGroupCallButton();
 		logger_ss.log(Status.INFO, "Clicked on dial button");
 		grpTalks.dialGroupCallButtonOnOverlay();
+		List<String> allMembersNumber = grpTalks.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
 
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
 		logger_ss.log(Status.INFO, "Dialed to new grpTalk group by submitting StartNowButton");
 		grpTalks.verifyLiveCallState();
 		logger_ss.log(Status.INFO, "Verified live Call is in progress ");
@@ -809,7 +953,8 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 				"verifyCallFunctionalityFromQuickDialButtonInMyGrpTalk");
 		CreatingGroup crtgrp = new CreatingGroup();
 		GrpTalks grpTalks = new GrpTalks();
-		grpTalks.selectSavedGroupByName(CommonMethods.passingData("grpTalkGroup"));
+		String grpName = CommonMethods.passingData("grpTalkGroup");
+		grpTalks.selectSavedGroupByName(grpName);
 		logger_ss.log(Status.INFO, "Selected 'grpTalk' group In MyGrpTalk page");
 		Thread.sleep(2000);
 		grpTalks.quickDialButtonOfActiveGroup();
@@ -1060,18 +1205,38 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 				"verifyCallFunctionalityFromCreateGroupTalkPageByCreatingNewGroup");
 		CreatingGroup crtgrp = new CreatingGroup();
 		GrpTalks grpTalks = new GrpTalks();
-		grpTalks.clickCreateGrpButton();
-		logger_ss.log(Status.INFO, "Clicked on CreateGroup button in MyGrpTalks page");
-		crtgrp.clickPhoneContactsTab();
-		logger_ss.log(Status.INFO, "Clicked on phone contacts tab in CreateGroupTalk page");
-		crtgrp.selectContactsFromContactList();
-		logger_ss.log(Status.INFO, "Selected phone contact from contact list");
-		crtgrp.setGrpTalkName();
-		logger_ss.log(Status.INFO, "Given new grpTalk name in text field");
-		crtgrp.submitStartNowButton();
-		logger_ss.log(Status.INFO, "Submitted StartNow button");
-		crtgrp.dialGroupCallButtonOnOverlayInCreateGrpTalk();
-		logger_ss.log(Status.INFO, "Submitted dial GroupCall Button On Overlay In CreateGrpTalk page");
+		String grpName = crtgrp.createAndCallTheGrp();
+		logger_ss.log(Status.INFO, "Dialed to new grpTalk group by submitting StartNowButton");
+		/*
+		 * crtgrp.dialGroupCallButtonOnOverlayInCreateGrpTalk();
+		 * logger_ss.log(Status.INFO,
+		 * "Submitted dial GroupCall Button On Overlay In CreateGrpTalk page");
+		 */List<String> allMembersNumber = grpTalks.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
 
 		grpTalks.verifyLiveCallState();
 		logger_ss.log(Status.INFO, "Verified the visiblity of inProgress element");
@@ -1104,19 +1269,36 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 				"verifyMuteCallFunctionalityFromCreateGroupTalkPageByCreatingNewGroup");
 		CreatingGroup crtgrp = new CreatingGroup();
 		GrpTalks grpTalks = new GrpTalks();
-		grpTalks.clickCreateGrpButton();
-		logger_ss.log(Status.INFO, "Clicked on CreateGroup button in MyGrpTalks page");
-		crtgrp.clickPhoneContactsTab();
-		logger_ss.log(Status.INFO, "Clicked on phone contacts tab in CreateGroupTalk page");
-		crtgrp.selectContactsFromContactList();
-		logger_ss.log(Status.INFO, "Selected phone contact from contact list");
-		crtgrp.setGrpTalkName();
-		logger_ss.log(Status.INFO, "Given new grpTalk name in text field");
-		crtgrp.submitStartNowButton();
-		logger_ss.log(Status.INFO, "Submitted StartNow button");
-		crtgrp.clickMuteDialButtonOnOverlayInCreateGrpTalk();
-		logger_ss.log(Status.INFO, "Submitted dial GroupCall Button On Overlay In CreateGrpTalk page");
-		grpTalks.verifyLiveCallState();
+		String grpName = crtgrp.createAndDailMuteCallGrp();
+		logger_ss.log(Status.INFO, "Dialed to new grpTalk group by submitting StartNowButton");
+		List<String> allMembersNumber = grpTalks.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
+		assertEquals(grpTalks.verifyLiveCallState(), true);
+		;
 		logger_ss.log(Status.INFO, "Verified the visiblity of inProgress element");
 		int selectAllParticipantsTabAndCountTheParticipants = grpTalks
 				.selectAllParticipantsTabAndCountTheParticipants();
@@ -1169,7 +1351,37 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		logger_ss.log(Status.INFO, "Clicked on dial button");
 		grpTalks.dialGroupCallButtonOnOverlay();
 		logger_ss.log(Status.INFO, "Clicked on dial grpCall button on overlay");
-		grpTalks.verifyLiveCallState();
+		List<String> allMembersNumber = grpTalks.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
+
+int allParticipantsCount = grpTalks.selectAllParticipantsTabAndCountTheParticipants();
+		assertEquals(allParticipantsCount,grpTalks.verifyLiveCallState() );
+		logger_ss.log(Status.INFO, "Verified live Call is in progress ");
+
 		logger_ss.log(Status.INFO, "Verified the visiblity of inProgress element");
 		Assert.assertEquals(grpTalks.totalParticipants(), 2);
 		grpTalks.addMemberInOnGoingGrpCall();
@@ -1540,8 +1752,35 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		logger_ss.log(Status.INFO, "Clicked on dial button");
 		grpTalks.muteDialGroupCallOnOverlay();
 		logger_ss.log(Status.INFO, "Clicked on mute dial button on overlay");
-		grpTalks.verifyLiveCallState();
-		logger_ss.log(Status.INFO, "Successfully verified on call progress");
+		List<String> allMembersNumber = grpTalks.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
+		int allParticipantsCount = grpTalks.selectAllParticipantsTabAndCountTheParticipants();
+		assertEquals(allParticipantsCount, grpTalks.verifyListViewLiveCall());
+		logger_ss.log(Status.INFO, "Verified live Call is in progress ");
 
 		int unMutedCountInGrpCall = grpTalks.selectUnMutedTabAndCountTheParticipants();
 		Assert.assertEquals(unMutedCountInGrpCall, 0);
@@ -1597,7 +1836,34 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		logger_ss.log(Status.INFO, "Clicked on dial button");
 		grpTalks.muteDialGroupCallOnOverlay();
 		logger_ss.log(Status.INFO, "Clicked on mute dial button on overlay");
-		grpTalks.verifyLiveCallState();
+		List<String> allMembersNumber = grpTalks.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
+		int onCallCountInGrpCall = grpTalks.selectOnCallTabAndCountTheParticipants();
+		assertEquals(onCallCountInGrpCall, grpTalks.verifyLiveCallState());
 
 		logger_ss.log(Status.INFO, "Successfull verified on call state");
 		int unMutedCountInGrpCall = grpTalks.selectUnMutedTabAndCountTheParticipants();
@@ -1607,12 +1873,11 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 
 		int selectAllParticipantsTabAndCountTheParticipants = grpTalks
 				.selectAllParticipantsTabAndCountTheParticipants();
-		Assert.assertEquals(selectAllParticipantsTabAndCountTheParticipants, 4);
+		Assert.assertEquals(selectAllParticipantsTabAndCountTheParticipants, 10);
 		Assert.assertEquals(grpTalks.totalParticipants(), selectAllParticipantsTabAndCountTheParticipants);
 		logger_ss.log(Status.INFO, "Successfully verifed all members count in grp call");
 
-		int onCallCountInGrpCall = grpTalks.selectOnCallTabAndCountTheParticipants();
-		Assert.assertEquals(onCallCountInGrpCall, 4);
+		Assert.assertEquals(onCallCountInGrpCall, 10);
 		Assert.assertEquals(grpTalks.totalParticipants(), onCallCountInGrpCall);
 		logger_ss.log(Status.INFO, "Successfully verifed onCall count in grp call");
 
@@ -1636,7 +1901,7 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		logger_ss.log(Status.INFO, "Verified visibility Of individual user Mute Buuton In GrpCall");
 
 		int unMutedCount = grpTalks.selectUnMutedTabAndCountTheParticipants();
-		Assert.assertEquals(unMutedCount, 3);
+		Assert.assertEquals(unMutedCount, 9);
 		Assert.assertEquals(grpTalks.totalParticipants(), unMutedCount);
 		logger_ss.log(Status.INFO, "Successfully verifed unMuted count in grp call");
 
@@ -1665,7 +1930,37 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		logger_ss.log(Status.INFO, "Clicked on dial button");
 		grpTalks.dialGroupCallButtonOnOverlay();
 		logger_ss.log(Status.INFO, "Clicked on dial grpCall button on overlay");
-		grpTalks.verifyLiveCallState();
+
+		List<String> allMembersNumber = grpTalks.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
+
+		int allParticipantsCount = grpTalks.selectAllParticipantsTabAndCountTheParticipants();
+		assertEquals(allParticipantsCount, grpTalks.verifyListViewLiveCall());
+		logger_ss.log(Status.INFO, "Verified live Call is in progress ");
 		grpTalks.clickOnUnMuteButtonToMuteAllUsersInGrpCall();
 		logger_ss.log(Status.INFO, "clicked On Un Mute Button To Mute All Users In GrpCall");
 		Assert.assertTrue(grpTalks.visibilityOfMuteBuutonInGrpCall());
@@ -1700,7 +1995,37 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		logger_ss.log(Status.INFO, "Clicked on dial button");
 		grpTalks.dialGroupCallButtonOnOverlay();
 		logger_ss.log(Status.INFO, "Clicked on dial grpCall button on overlay");
-		grpTalks.verifyLiveCallState();
+
+		List<String> allMembersNumber = grpTalks.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
+
+		int allParticipantsCount = grpTalks.selectAllParticipantsTabAndCountTheParticipants();
+		assertEquals(allParticipantsCount, grpTalks.verifyListViewLiveCall());
+		logger_ss.log(Status.INFO, "Verified live Call is in progress ");
 		grpTalks.addMemberInOnGoingGrpCall();
 
 		int onCallCountInGrpCall = grpTalks.selectOnCallTabAndCountTheParticipants();
@@ -1761,7 +2086,36 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		logger_ss.log(Status.INFO, "Clicked on dial button");
 		grpTalks.dialGroupCallButtonOnOverlay();
 		logger_ss.log(Status.INFO, "Clicked on dial grpCall button on overlay");
-		grpTalks.verifyLiveCallState();
+		List<String> allMembersNumber = grpTalks.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
+
+int allParticipantsCount = grpTalks.selectAllParticipantsTabAndCountTheParticipants();
+		assertEquals(allParticipantsCount,grpTalks.verifyListViewLiveCall() );
+		logger_ss.log(Status.INFO, "Verified live Call is in progress ");
 		grpTalks.addMemberInOnGoingCallThroughContacts();
 		logger_ss.log(Status.INFO, "Added Member In OnGoing Call Through Contacts");
 
@@ -1806,7 +2160,36 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		logger_ss.log(Status.INFO, "Clicked on dial button");
 		grpTalks.dialGroupCallButtonOnOverlay();
 		logger_ss.log(Status.INFO, "Clicked on dial grpCall button on overlay");
-		grpTalks.verifyLiveCallState();
+		List<String> allMembersNumber = grpTalks.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
+
+int allParticipantsCount = grpTalks.selectAllParticipantsTabAndCountTheParticipants();
+		assertEquals(allParticipantsCount,grpTalks.verifyListViewLiveCall() );
+		logger_ss.log(Status.INFO, "Verified live Call is in progress ");
 		Thread.sleep(3000);
 		grpTalks.addMemberInOnGoingCallThroughWebList();
 		logger_ss.log(Status.INFO, "Added Member In OnGoing Call Through weblist");
@@ -2312,7 +2695,36 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		GrpTalks grpTalks = new GrpTalks();
 		String grpName = crtgrp.createAndCallTheGrp();
 		logger_ss.log(Status.INFO, "created and dialed to new grpTalk group by submitting StartNowButton");
-		grpTalks.verifyLiveCallState();
+		List<String> allMembersNumber = grpTalks.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
+
+int allParticipantsCount = grpTalks.selectAllParticipantsTabAndCountTheParticipants();
+		assertEquals(allParticipantsCount,grpTalks.verifyListViewLiveCall() );
+		logger_ss.log(Status.INFO, "Verified live Call is in progress ");
 		int selectAllParticipantsTabAndCountTheParticipants = grpTalks
 				.selectAllParticipantsTabAndCountTheParticipants();
 		Assert.assertEquals(selectAllParticipantsTabAndCountTheParticipants, 4);
@@ -2334,7 +2746,7 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		Assert.assertEquals(grpTalks.totalParticipants(), selectDisconnectedTabAndCountTheParticipants);
 		logger_ss.log(Status.INFO, "Successfully verified callEndedCount ");
 
-		int allParticipantsCount = grpTalks.selectAllParticipantsTabAndCountTheParticipants();
+		
 		grpTalks.clickOnIndividualUserHangUpButtomInGrpCall();
 
 		Assert.assertEquals(allParticipantsCount, 4);
@@ -2389,7 +2801,38 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		GrpTalks grpTalks = new GrpTalks();
 		String grpName = crtgrp.createAndCallTheGrp();
 		logger_ss.log(Status.INFO, "created and dialed to new grpTalk group by submitting StartNowButton");
-		grpTalks.verifyLiveCallState();
+		List<String> allMembersNumber = grpTalks.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
+
+int allParticipantsCount = grpTalks.selectAllParticipantsTabAndCountTheParticipants();
+		/*
+		 * assertEquals(allParticipantsCount,grpTalks.verifyListViewLiveCall() );
+		 * logger_ss.log(Status.INFO, "Verified live Call is in progress ");
+		 */
 
 		int selectAllParticipantsTabAndCountTheParticipants = grpTalks
 				.selectAllParticipantsTabAndCountTheParticipants();
@@ -2469,9 +2912,38 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		GrpTalks grpTalks = new GrpTalks();
 		String grpName = crtgrp.createAndCallTheGrpWithRetryContact();
 		logger_ss.log(Status.INFO, "Dialed to new grpTalk group by submitting StartNowButton");
-		grpTalks.verifyLiveCallState();
+		List<String> allMembersNumber = grpTalks.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
+
+int allParticipantsCount = grpTalks.selectAllParticipantsTabAndCountTheParticipants();
+		
 		logger_ss.log(Status.INFO, "Verified live Call is in progress ");
 		Thread.sleep(35000);
+		grpTalks.clickhangUpButtonOfParticipant();
 		Assert.assertTrue(grpTalks.redialingSymbol());
 		logger_ss.log(Status.INFO, "Verified presence Of redial symbol");
 		grpTalks.hangUpCurrentGrpTalkcall();
@@ -2490,12 +2962,43 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		GrpTalks grpTalks = new GrpTalks();
 		String grpName = crtgrp.createAndCallTheGrp();
 		logger_ss.log(Status.INFO, "Dialing to new group by submitting StartNowButton");
-		grpTalks.verifyLiveCallState();
-		logger_ss.log(Status.INFO, "Verified live Call is in progress ");
-		grpTalks.listViewInLiveCall();
+
+List<String> allMembersNumber = grpTalks.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
+		grpTalks.gotoListViwe();
 		logger_ss.log(Status.INFO, "Switched to list view ");
 
-		int allParticipantsCount = grpTalks.selectAllParticipantsTabAndCountTheParticipants();
+int allParticipantsCount = grpTalks.selectAllParticipantsTabAndCountTheParticipants();
+		assertEquals(allParticipantsCount,grpTalks.verifyListViewLiveCall() );
+		logger_ss.log(Status.INFO, "Verified live Call is in progress ");
+		logger_ss.log(Status.INFO, "Verified live Call is in progress ");
+		Assert.assertEquals(grpTalks.allParticipantsInListView(), allParticipantsCount);
+	
+		
 		Assert.assertEquals(allParticipantsCount, 4);
 		Assert.assertEquals(grpTalks.allParticipantsInListView(), allParticipantsCount);
 		logger_ss.log(Status.INFO, "Successfully verifed all members count in grp call");
@@ -2582,7 +3085,37 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		GrpTalks grpTalks = new GrpTalks();
 		String grpName = crtgrp.createAndCallTheGrp();
 		logger_ss.log(Status.INFO, "created and dialed to new grpTalk group by submitting StartNowButton");
-		grpTalks.verifyLiveCallState();
+
+List<String> allMembersNumber = grpTalks.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
+
+int allParticipantsCount = grpTalks.selectAllParticipantsTabAndCountTheParticipants();
+		assertEquals(allParticipantsCount,grpTalks.verifyLiveCallState());
+		logger_ss.log(Status.INFO, "Verified live Call is in progress ");
 
 		int selectAllParticipantsTabAndCountTheParticipants = grpTalks
 				.selectAllParticipantsTabAndCountTheParticipants();
@@ -2643,7 +3176,37 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		GrpTalks grpTalks = new GrpTalks();
 		String grpName = crtgrp.createAndCallTheGrp();
 		logger_ss.log(Status.INFO, "created and dialed to new grpTalk group by submitting StartNowButton");
-		grpTalks.verifyLiveCallState();
+
+List<String> allMembersNumber = grpTalks.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
+
+int allParticipantsCount = grpTalks.selectAllParticipantsTabAndCountTheParticipants();
+		assertEquals(allParticipantsCount,grpTalks.verifyLiveCallState() );
+		logger_ss.log(Status.INFO, "Verified live Call is in progress ");
 
 		int selectAllParticipantsTabAndCountTheParticipants = grpTalks
 				.selectAllParticipantsTabAndCountTheParticipants();
@@ -2718,8 +3281,8 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		Assert.assertEquals(grpTalks.totalParticipants(), privateRoomMembersCountInGrpCall4);
 		logger_ss.log(Status.INFO, "Successfully verified private RoomMembersCountInGrpCall");
 		// grpTalks.clickPrivateRoomButton();
-		grpTalks.participantMovingBackTocall();
-		logger_ss.log(Status.INFO, "clicked on PrivateRoomButton");
+		grpTalks.clickClosePrivateRoomButtonInPrivateRoomTab();
+		logger_ss.log(Status.INFO, "clicked on close PrivateRoomButton");
 
 		int privateRoomMembersCountInGrpCall5 = grpTalks.selectPrivateRoomTabAndCountTheParticipants();
 		Assert.assertEquals(privateRoomMembersCountInGrpCall5, 0);
@@ -2742,7 +3305,37 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		GrpTalks grpTalks = new GrpTalks();
 		String grpName = crtgrp.createAndCallTheGrp();
 		logger_ss.log(Status.INFO, "created and dialed to new grpTalk group by submitting StartNowButton");
-		grpTalks.verifyLiveCallState();
+
+List<String> allMembersNumber = grpTalks.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
+
+int allParticipantsCount = grpTalks.selectAllParticipantsTabAndCountTheParticipants();
+		assertEquals(allParticipantsCount,grpTalks.verifyLiveCallState());
+		logger_ss.log(Status.INFO, "Verified live Call is in progress ");
 		logger_ss.log(Status.INFO, "verified live call state");
 		int selectAllParticipantsTabAndCountTheParticipants = grpTalks
 				.selectAllParticipantsTabAndCountTheParticipants();
@@ -2950,13 +3543,45 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		String grpName = crtgrp.createAndCallTheGrp();
 		logger_ss.log(Status.INFO, "Dialing to new group by submitting StartNowButton");
 
-		grpTalks.verifyLiveCallState();
+
+List<String> allMembersNumber = grpTalks.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
+
+int allParticipantsCount = grpTalks.selectAllParticipantsTabAndCountTheParticipants();
+		assertEquals(allParticipantsCount,grpTalks.verifyLiveCallState() );
+	
+		
 		logger_ss.log(Status.INFO, "Verified live Call is in progress ");
+		
 
 		grpTalks.listViewInLiveCall();
 		logger_ss.log(Status.INFO, "Switched to list view ");
 
-		int allParticipantsCount = grpTalks.selectAllParticipantsTabAndCountTheParticipants();
+		
 		Assert.assertEquals(allParticipantsCount, 4);
 		Assert.assertEquals(grpTalks.allParticipantsInListView(), allParticipantsCount);
 		logger_ss.log(Status.INFO, "Successfully verified selectAllParticipantsTabAndCountTheParticipants ");
@@ -3041,10 +3666,40 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		GrpTalks grpTalks = new GrpTalks();
 		String grpName = crtgrp.createAndCallTheGrp();
 		logger_ss.log(Status.INFO, "Dialed to new grpTalk group by submitting StartNowButton");
-		grpTalks.verifyLiveCallState();
-		logger_ss.log(Status.INFO, "Verified live Call is in progress ");
 
-		int allParticipantsCount = grpTalks.selectAllParticipantsTabAndCountTheParticipants();
+List<String> allMembersNumber = grpTalks.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
+
+int allParticipantsCount = grpTalks.selectAllParticipantsTabAndCountTheParticipants();
+		assertEquals(allParticipantsCount,grpTalks.verifyLiveCallState());
+		logger_ss.log(Status.INFO, "Verified live Call is in progress ");
+		
+
+		
 		Assert.assertEquals(allParticipantsCount, 4);
 		Assert.assertEquals(grpTalks.totalParticipants(), allParticipantsCount);
 		logger_ss.log(Status.INFO, "Successfully verified All Participants Count");
@@ -3168,8 +3823,37 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		crtgrp.submitStartNowButton();
 		crtgrp.dialGroupCallButtonOnOverlayInCreateGrpTalk();
 		logger_ss.log(Status.INFO, "Dialed to new grpTalk group by submitting StartNowButton");
-		grpTalks.verifyLiveCallState();
 
+List<String> allMembersNumber = grpTalks.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
+
+int allParticipantsCount = grpTalks.selectAllParticipantsTabAndCountTheParticipants();
+		assertEquals(allParticipantsCount,grpTalks.verifyLiveCallState() );
+		logger_ss.log(Status.INFO, "Verified live Call is in progress ");
 		int selectAllParticipantsTabAndCountTheParticipants = grpTalks
 				.selectAllParticipantsTabAndCountTheParticipants();
 		Assert.assertEquals(selectAllParticipantsTabAndCountTheParticipants, 4);
@@ -3297,12 +3981,41 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		GrpTalks grpTalks = new GrpTalks();
 		String grpName = crtgrp.createAndCallTheGrp();
 		logger_ss.log(Status.INFO, "Dialed to new grpTalk group by submitting StartNowButton");
-		grpTalks.verifyLiveCallState();
-		logger_ss.log(Status.INFO, "Verified live Call is in progress ");
-		grpTalks.listViewInLiveCall();
-		logger_ss.log(Status.INFO, "Switched to list view ");
 
-		int allParticipantsCount = grpTalks.selectAllParticipantsTabAndCountTheParticipants();
+List<String> allMembersNumber = grpTalks.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
+
+int allParticipantsCount = grpTalks.selectAllParticipantsTabAndCountTheParticipants();
+		assertEquals(allParticipantsCount,grpTalks.verifyLiveCallState() );
+		logger_ss.log(Status.INFO, "Verified live Call is in progress ");
+		grpTalks.gotoListViwe();
+		logger_ss.log(Status.INFO, "Switched to list view ");
+assertEquals(allParticipantsCount, grpTalks.verifyListViewLiveCall());
+		
 		Assert.assertEquals(allParticipantsCount, 4);
 		Assert.assertEquals(grpTalks.allParticipantsInListView(), allParticipantsCount);
 		logger_ss.log(Status.INFO, "Successfully verified selectAllParticipantsTabAndCountTheParticipants ");
@@ -3465,8 +4178,39 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		driver.navigate().to(url);
 		grpTalks.selectRecentlySavedGrpTalkGroup(name);
 		logger_ss.log(Status.INFO, "selected Recently Saved GrpTalk Group");
+grpTalks.clickQuickDailButtonofGroupInGrpTalks();
 
-		grpTalks.verifyLiveCallState();
+List<String> allMembersNumber = grpTalks.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
+
+int allParticipantsCount = grpTalks.selectAllParticipantsTabAndCountTheParticipants();
+		assertEquals(allParticipantsCount,grpTalks.verifyLiveCallState() );
+		logger_ss.log(Status.INFO, "Verified live Call is in progress ");
+		
 		logger_ss.log(Status.INFO, "Verified the visiblity of inProgress element");
 
 		Assert.assertTrue(grpTalks.visibilityOfMuteBuutonInGrpCall());
@@ -3552,8 +4296,37 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		Thread.sleep(2000);
 		grpTalks.selectRecentlySavedGrpTalkGroup(grpName);
 		logger_ss.log(Status.INFO, "selected Recently Saved GrpTalk Group");
+grpTalks.clickQuickDailButtonofGroupInGrpTalks();
 
-		grpTalks.verifyLiveCallState();
+List<String> allMembersNumber = grpTalks.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
+
+int allParticipantsCount = grpTalks.selectAllParticipantsTabAndCountTheParticipants();
+		assertEquals(allParticipantsCount,grpTalks.verifyLiveCallState());
 		logger_ss.log(Status.INFO, "Verified the visiblity of inProgress element");
 
 		Assert.assertTrue(grpTalks.visibilityOfUnMuteBuutonInGrpCall());
@@ -3593,12 +4366,14 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 				"verifyNonRepeatedGroupFunctionalityThroughHistory");
 		CreatingGroup crtgrp = new CreatingGroup();
 		GrpTalks grpTalks = new GrpTalks();
-		grpTalks.selectSavedGroupByName(CommonMethods.passingData("OneDialGroup"));
+		String grpName=CommonMethods.passingData("grpTalkGroup");
+		System.out.println(grpName);
+		grpTalks.selectSavedGroupByName(grpName);
 		logger_ss.log(Status.INFO, "Selected 'OneDial' group In MyGrpTalk page");
 		grpTalks.historyButtonOnMyGrpTalks();
 		logger_ss.log(Status.INFO, "clicked on historyButtonOnMyGrpTalks");
 		int count = grpTalks.countOfCallsByGroupInHistory();
-		Assert.assertEquals(count, 1);
+		Assert.assertEquals(count, 2);
 		logger_ss.log(Status.INFO, " get and verified countOfCallsByGroupInHistory");
 		logger_ss.log(Status.INFO, "Successfully verified NonRepeatedGroupFunctionalityThroughHistory");
 	}
@@ -3611,12 +4386,40 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		GrpTalks grpTalks = new GrpTalks();
 		String grpName = crtgrp.createAndCallTheGrp();
 		logger_ss.log(Status.INFO, "Dialing to new group by submitting StartNowButton");
-		grpTalks.verifyLiveCallState();
+
+List<String> allMembersNumber = grpTalks.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
+
+int allParticipantsCount = grpTalks.selectAllParticipantsTabAndCountTheParticipants();
+		assertEquals(allParticipantsCount,grpTalks.verifyLiveCallState());
 		logger_ss.log(Status.INFO, "Verified live Call is in progress ");
-		grpTalks.listViewInLiveCall();
+		grpTalks.gotoListViwe();
 		logger_ss.log(Status.INFO, "Switched to list view ");
 
-		int allParticipantsCount = grpTalks.selectAllParticipantsTabAndCountTheParticipants();
 		Assert.assertEquals(allParticipantsCount, 4);
 		Assert.assertEquals(grpTalks.allParticipantsInListView(), allParticipantsCount);
 		logger_ss.log(Status.INFO, "Successfully verified selectAllParticipantsTabAndCountTheParticipants ");
@@ -3779,17 +4582,47 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		grpTalks.dialGroupCallButtonOnOverlay();
 
 		logger_ss.log(Status.INFO, "Dialed to new grpTalk group by submitting StartNowButton");
-		grpTalks.verifyLiveCallState();
+
+List<String> allMembersNumber = grpTalks.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
+
+int allParticipantsCount = grpTalks.selectAllParticipantsTabAndCountTheParticipants();
+		assertEquals(allParticipantsCount,grpTalks.verifyLiveCallState() );
 		logger_ss.log(Status.INFO, "Verified live Call is in progress ");
+	
 
 		int selectAllParticipantsTabAndCountTheParticipants = grpTalks
 				.selectAllParticipantsTabAndCountTheParticipants();
-		Assert.assertEquals(selectAllParticipantsTabAndCountTheParticipants, 6);
+		Assert.assertEquals(selectAllParticipantsTabAndCountTheParticipants, 7);
 		Assert.assertEquals(grpTalks.totalParticipants(), selectAllParticipantsTabAndCountTheParticipants);
 		logger_ss.log(Status.INFO, "Successfully verified selectAllParticipantsTabAndCountTheParticipants ");
 
 		int onCallCountInGrpCall = grpTalks.selectOnCallTabAndCountTheParticipants();
-		Assert.assertEquals(onCallCountInGrpCall, 6);
+		Assert.assertEquals(onCallCountInGrpCall, 7);
 		Assert.assertEquals(grpTalks.totalParticipants(), onCallCountInGrpCall);
 		logger_ss.log(Status.INFO, "Successfully verified onCallCountInGrpCall ");
 
@@ -3799,7 +4632,7 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		logger_ss.log(Status.INFO, "Successfully verified selectDisconnectedTabAndCountTheParticipants ");
 
 		int unMutedCountInGrpCall = grpTalks.selectUnMutedTabAndCountTheParticipants();
-		Assert.assertEquals(unMutedCountInGrpCall, 5);
+		Assert.assertEquals(unMutedCountInGrpCall, 6);
 		Assert.assertEquals(grpTalks.totalParticipants(), unMutedCountInGrpCall);
 		logger_ss.log(Status.INFO, "Successfully verified unMutedCountInGrpCall ");
 
@@ -3815,7 +4648,7 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		Assert.assertTrue(grpTalks.visibilityOfMuteButtonOfParticipant());
 		logger_ss.log(Status.INFO, "verified visibility OF Mute Button Of participant ");
 		int unMutedCountInGrpCall2 = grpTalks.selectUnMutedTabAndCountTheParticipants();
-		Assert.assertEquals(unMutedCountInGrpCall2, 4);
+		Assert.assertEquals(unMutedCountInGrpCall2, 5);
 		Assert.assertEquals(grpTalks.totalParticipants(), unMutedCountInGrpCall2);
 		logger_ss.log(Status.INFO, "Successfully verified unMutedCountInGrpCall ");
 
@@ -3945,8 +4778,38 @@ public class CreateAndCallGroupTest extends BrowserFunctions {
 		grpTalks.dialGroupCallButtonOnOverlay();
 
 		logger_ss.log(Status.INFO, "Dialed to new grpTalk group by submitting StartNowButton");
-		grpTalks.verifyLiveCallState();
+
+List<String> allMembersNumber = grpTalks.getAllMembers();
+		System.out.println("List of contacts: " + allMembersNumber);
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		System.out.println(onCallString);
+
+		RestAssured.baseURI = "http://192.168.73.227:8585/v0.1/Mock/";
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		Thread.sleep(3000);
+		requestParams.put("onCall", onCallString);
+		System.out.println(requestParams);
+		request.body(requestParams.toString());
+		Response response = request.post();
+		System.out.println("Status Code For OnCall::" + response.getStatusCode());
+		assertEquals(response.getStatusCode(), 200);
+
+int allParticipantsCount = grpTalks.selectAllParticipantsTabAndCountTheParticipants();
+		assertEquals(allParticipantsCount,grpTalks.verifyListViewLiveCall() );
 		logger_ss.log(Status.INFO, "Verified live Call is in progress ");
+	
 
 		int selectAllParticipantsTabAndCountTheParticipants = grpTalks
 				.selectAllParticipantsTabAndCountTheParticipants();

@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -73,6 +74,7 @@ public class CommonMethods extends BrowserFunctions {
 		driver.findElement(loactor).sendKeys(passingData(text));
 	}
 
+	
 	public static void handleAlert() throws InterruptedException {
 		if (isAlertPresent()) {
 			Alert alert = driver.switchTo().alert();
@@ -187,6 +189,10 @@ public class CommonMethods extends BrowserFunctions {
 		By element = locator;
 		WebDriverWait wait = new WebDriverWait(driver, 20);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+	}
+	public static void implicitlyWaitForElement(By locator) {
+		By element=locator;
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	}
 
 	public static void explicitWaitForClickableElement(WebDriver driver, WebElement ele) {

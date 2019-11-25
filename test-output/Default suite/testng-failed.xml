@@ -3,15 +3,15 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="GT.GT.CreateAndCallGroupTest">
+      <class name="GT.GT.AccountPageTest">
         <methods>
           <include name="closeBrowser1"/>
           <include name="tearDown"/>
+          <include name="verifybalancecheckinsubaccounts"/>
           <include name="beforeCalss"/>
-          <include name="verifyfunctionalityOfExcelReportDownloadOptionOnHistory"/>
           <include name="setup"/>
         </methods>
-      </class> <!-- GT.GT.CreateAndCallGroupTest -->
+      </class> <!-- GT.GT.AccountPageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

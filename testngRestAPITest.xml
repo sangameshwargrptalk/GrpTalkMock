@@ -8,9 +8,10 @@
 			<class name="GT.GT.RestApiTest">
 				<methods>
 
-					 <include
-						name="verifyFunctionalityOfAcceptAndDisconnectRedialParticipants" />
+					
 					<include name="verifyCallFunctionality" />
+					<!-- <include
+						name="verifyFunctionalityOfAcceptAndDisconnectRedialParticipants" />
 					<include
 						name="verifyFunctionalityOfOnCallAndDisconnectedParticipants" />
 					<include name="verifyFunctionalityOfDialInParticipants" />
@@ -20,7 +21,7 @@
 					<include
 						name="verifyFunctionalityOfIncomingCallFromParticipants" />
 					<include name="verifyCallFunctionalityCopy" />
-					<!--<include name=""/> -->
+					<include name=""/> -->
 
 				</methods>
 			</class>
