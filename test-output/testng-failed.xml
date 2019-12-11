@@ -3,15 +3,15 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="GT.GT.AccountPageTest">
+      <class name="GT.GT.CreateAndCallGroupTest">
         <methods>
           <include name="closeBrowser1"/>
           <include name="tearDown"/>
-          <include name="verifybalancecheckinsubaccounts"/>
           <include name="beforeCalss"/>
+          <include name="verifyHandRaiseForMultipleParticipants"/>
           <include name="setup"/>
         </methods>
-      </class> <!-- GT.GT.AccountPageTest -->
+      </class> <!-- GT.GT.CreateAndCallGroupTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

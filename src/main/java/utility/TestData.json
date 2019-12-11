@@ -14,6 +14,7 @@
     "userNameOnEditProfileOverlay"			:		"automation",
     "enterTestContactInSearchBox"			:		"Auto Ans",
     "AddContactInOnGoingCall"				:		"8634502055",
+    "testContacts"                          :       "Auto Ans",
     "AddContactnameInOnGoingCall"			:		"Anwesh"
     "emailOnEditProfileOverlay"				:		"srikanth.korada@smscountry.com",
     "SecondayModeratorContact"				:		"Auto Ans2",
@@ -55,8 +56,8 @@
 	
 	"restUrl"				:	"http://staging.grptalk.com/index.aspx?automationkey=narasimha",
 	"restMockUrl"				:	"http://staging.grptalk.com/index.aspx?automationkey=84089",
-	"mockBaseUrl"               :"http://192.168.73.227:8585/v0.1/Mock/"
-	
+	"mockBaseUrl"               :"http://192.168.73.227:8585/v0.1/Mock/",
+	"homePageUrl"                          :"http://staging.grptalk.com"
 	
 	
 }

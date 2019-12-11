@@ -1,22 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [TestSuite]">
-  <test thread-count="5" name="ContactsPageTest(failed)">
+  <test thread-count="5" name="AccountPageTest(failed)">
     <parameter name="browser" value="Chrome"/>
-    <parameter name="url" value="restMockUrl"/>
+    <parameter name="url" value="stagingUrl"/>
     <classes>
-      <class name="GT.GT.RestApiTest">
+      <class name="GT.GT.AccountPageTest">
         <methods>
-          <include name="verifyCallFunctionalityCopy"/>
           <include name="closeBrowser1"/>
-          <include name="verifyFunctionalityOfDialInParticipants"/>
-          <include name="verifyFunctionalityOfIncomingCallFromParticipants"/>
+          <include name="verifyTotalAmountUsedByUser"/>
+          <include name="verifyEditSubAccountFunctionalityInSubAccountsTab"/>
           <include name="tearDown"/>
-          <include name="verifyCallFunctionality"/>
+          <include name="beforeCalss"/>
           <include name="setup"/>
-          <include name="verifyFunctionalityOfAutoDisconnectedParticipants"/>
         </methods>
-      </class> <!-- GT.GT.RestApiTest -->
+      </class> <!-- GT.GT.AccountPageTest -->
     </classes>
-  </test> <!-- ContactsPageTest(failed) -->
+  </test> <!-- AccountPageTest(failed) -->
+  <test thread-count="5" name="CreateAndCallGroupTest(failed)">
+    <parameter name="browser" value="Chrome"/>
+    <parameter name="url" value="stagingUrl"/>
+    <classes>
+      <class name="GT.GT.CreateAndCallGroupTest">
+        <methods>
+          <include name="closeBrowser1"/>
+          <include name="verifyAddMoreNumberOfUsersthanMaximunLimitFromContactList"/>
+          <include name="verifyHistoryOfGroup"/>
+          <include name="verifySelectSpecificCharacterOfContactsInPhoneContacts"/>
+          <include name="verifyCallFunctionalityFromUnMutedCountInListView"/>
+          <include name="verifyCreateListFromExcelUploadandphonecontacts"/>
+          <include name="tearDown"/>
+          <include name="verifyPrivateRoomFuntionalityInLiveCallListView"/>
+          <include name="beforeCalss"/>
+          <include name="verifyUnMuteFromMuteDialfunctionalityInGrpCall"/>
+          <include name="setup"/>
+          <include name="verifyCallFunctionalityFromUnMutedCount"/>
+        </methods>
+      </class> <!-- GT.GT.CreateAndCallGroupTest -->
+    </classes>
+  </test> <!-- CreateAndCallGroupTest(failed) -->
 </suite> <!-- Failed suite [TestSuite] -->

@@ -58,7 +58,7 @@ public class EditGroupTalk extends BrowserFunctions{
 	By muteClipDownloadOptionOnUploadClipsOverlayInEditGroup			= By.xpath("//*[@id='upload-pics-inputs-container']//fieldset[2]//*[@id='spNormalClip']");
 	
 	By saveButtonOnUploadClipsOverlay									= By.id("saveClips");
-	By uploadClipFieldInEditGroup										= By.id("adClips");
+	By uploadClipFieldInEditGroup										= By.xpath("//*[@class=\"form-control-inline custom-form CustomClips\" and @id=\"adClips\"]");
 	
 	By normalAudioClipOnEditGroupOverlay    	= By.xpath("//*[@id='upload-pics-inputs-container']//fieldset[1]//*[@id='spMuteclip']");
 	By muteAudioClipOnEditGroupOverlay    	= By.xpath("//*[@id='upload-pics-inputs-container']//fieldset[2]//*[@id='spMuteclip']");

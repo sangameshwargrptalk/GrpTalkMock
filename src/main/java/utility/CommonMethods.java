@@ -13,6 +13,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import GT.GT.GrpTalks;
+
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.Toolkit;
@@ -23,6 +25,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.OutputType;
@@ -32,7 +35,7 @@ import org.apache.commons.io.FileUtils;
 import utility.BrowserFunctions;
 
 public class CommonMethods extends BrowserFunctions {
-
+	static GrpTalks grpTalks = new GrpTalks();
 	static String text;
 	private static final ExpectedCondition<Alert> TRUE = null;
 
@@ -74,7 +77,6 @@ public class CommonMethods extends BrowserFunctions {
 		driver.findElement(loactor).sendKeys(passingData(text));
 	}
 
-	
 	public static void handleAlert() throws InterruptedException {
 		if (isAlertPresent()) {
 			Alert alert = driver.switchTo().alert();
@@ -112,6 +114,40 @@ public class CommonMethods extends BrowserFunctions {
 			threadCount++;
 		}
 		return exists;
+	}
+
+	public static String getOnCallNumber() throws InterruptedException {
+		List<String> allMembersNumber = grpTalks.getAllMembers();
+
+		List<String> contactsListCopy = new ArrayList<String>();
+
+		String onCallString = "";
+		int onCallMemberCount = allMembersNumber.size();
+		for (int i = 0; i < onCallMemberCount; i++) {
+
+			onCallString = onCallString.concat(allMembersNumber.get(i));
+			if (i < onCallMemberCount - 1) {
+				onCallString = onCallString.concat(",");
+			}
+		}
+		return onCallString;
+	}
+
+	public static String getExceptHost(String str) throws InterruptedException {
+		String[] s=str.split(",");
+		int handRaise=0;
+		String num="";
+		Random r= new Random();
+		int length=s.length-1;
+		for (int i = 1; i < length; i++) {
+			
+			int rand = (int) (length);
+          num=s[rand];
+			break;
+		}
+		
+		return num;
+
 	}
 //	public static boolean elementExistsOrNot(WebElement element) throws InterruptedException {
 //		boolean exists = false;
@@ -190,8 +226,9 @@ public class CommonMethods extends BrowserFunctions {
 		WebDriverWait wait = new WebDriverWait(driver, 20);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(element));
 	}
+
 	public static void implicitlyWaitForElement(By locator) {
-		By element=locator;
+		By element = locator;
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	}
 

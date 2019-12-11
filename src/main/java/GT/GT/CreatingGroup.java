@@ -36,10 +36,10 @@ public class CreatingGroup extends BrowserFunctions {
 	By selectedContacts = By.className("selectedContacts");
 	By errorMsgWhenWeSubmitSaveButton = By.xpath("//*[@id='toast-container']");
 	By startNowButton = By.xpath("//*[@class=\"btn btn-primary\" and @id=\"startNow\"]");
-	By saveButton = By.id("saveGroupCall");
+	By saveButton = By.cssSelector("button#saveGroupCall");
 	By scheduleButton = By.id("schedule");
 	By grpTalkName = By.id("grpTalkName");
-	By selectedContactsTab = By.xpath("//*[@id='myTabList']/li[3]/a/span");
+	By selectedContactsTab = By.cssSelector(".count");
 	By namesOfUsers = By
 			.xpath("//div[@id='grpCallMobileContacts']//div[@class='contacts margin-right-5 margin-bottom-5 ']");
 	By namesOfUsers1 = By.xpath(
@@ -83,14 +83,14 @@ public class CreatingGroup extends BrowserFunctions {
 	By saveContactbuttonOnWebListOverlay = By.id("saveContact");
 	By errorMessage = By.xpath("//*[@id='grpCallMobileContacts']");
 	By nameOfUser = By.xpath("//*[@id='profileDetails']/p[1]");
-	static By phoneContacts = By.cssSelector(".mobileContacts > a");// *[@id='myTabList']//*[contains(@class,'mobileContacts')]
+	static By phoneContacts = By.cssSelector("#myTabList > li.mobileContacts > a");// *[@id='myTabList']//*[contains(@class,'mobileContacts')]
 	By selectedUserList = By.xpath("//*[@class='contacts margin-right-5 margin-bottom-5  selected']");
-	static By overlaySaveGroup = By.id("saveDate");
+	static By overlaySaveGroup = By.xpath("//*[@class=\"btn btn-danger\" and @id=\"saveDate\"]");
 	By selectedContactFromContactList = By.xpath("//*[@class='contacts margin-right-5 margin-bottom-5  selected']");
-	By selectSpecificCharacterOfContacts = By.xpath("//*[@id='grpCallMobileContacts']/ul/li[4]");
+	By selectSpecificCharacterOfContacts = By.xpath("//*[@id=\"grpCallMobileContacts\"]/ul/li[2]");
 	By specificCharaterContacts = By.xpath(
 			"//*[@id='grpCallMobileContacts']//*[@class='contacts margin-right-5 margin-bottom-5 ']//*[@id='profileDetails']/p[1]");
-	By dialGroupCallButtonOnOverlayInCreateGrpTalk = By.xpath("//*[@class=\"btn btn-success\" and @id=\"dial\"]");
+	By dialGroupCallButtonOnOverlayInCreateGrpTalk = By.xpath("//*[@id=\"dial\" and contains(text(),'Dial')]");
 	By usersListFromSelectedContacts = By.xpath("//div[@id='selectedContacts']//div/div[2]/p[1]");
 	By muteDialButtonOnOverlayInCreateGrpTalk = By.xpath("//*[@class=\"btn btn-danger\" and @id=\"muteDial\"]");
 	By scheduleDateAndTimeFieldOnAdvancedSettingsOverlayForSchedule = By.xpath("//*[@id='datefield']");
@@ -221,8 +221,10 @@ public class CreatingGroup extends BrowserFunctions {
 		Thread.sleep(1000);
 		List<WebElement> ele = listOfUsers();
 		int i = 0;
+		JavascriptExecutor js=(JavascriptExecutor)driver;
 		for (WebElement selectContact : ele) {
-			selectContact.click();
+			//selectContact.click();
+			js.executeScript("arguments[0].click()", selectContact);
 			Thread.sleep(1000);
 			if (i == 2) {
 				break;
@@ -247,7 +249,7 @@ public class CreatingGroup extends BrowserFunctions {
 		driver.findElement(search_box).clear();
 		// driver.findElement(search_box).sendKeys(JsonData.passingData("enterTestContactInSearchBox"));
 		String contactName=CommonMethods.passingData("grpTalkContact");
-		System.out.println(contactName);
+		
 		driver.findElement(search_box).sendKeys(contactName);
 		Thread.sleep(1000);
 		List<WebElement> ele = listOfUsers();
@@ -415,8 +417,10 @@ public class CreatingGroup extends BrowserFunctions {
 
 	public String createAndSaveTheGrpWithOneParticipant() throws InterruptedException {
 		Assert.assertTrue(CommonMethods.elementExistsOrNot(GrpTalks.createGrp));
+		Thread.sleep(3000);
 		driver.findElement(GrpTalks.createGrp).click();
 		//Assert.assertTrue(CommonMethods.elementExistsOrNot(CreatingGroup.phoneContacts));
+		Thread.sleep(3000);
 		CommonMethods.clickMethod(phoneContacts);
 		// Thread.sleep(1000);
 		driver.findElement(search_box).clear();
@@ -426,7 +430,7 @@ public class CreatingGroup extends BrowserFunctions {
 		driver.findElement(grpTalkName).clear();
 		driver.findElement(grpTalkName).sendKeys(name);
 		driver.findElement(saveButton).click();
-		// Thread.sleep(1000);
+		Thread.sleep(1000);
 		/*
 		 * boolean check =
 		 * CommonMethods.elementExistsOrNot(CreatingGroup.overlaySaveGroup);
@@ -491,7 +495,10 @@ public class CreatingGroup extends BrowserFunctions {
 	}
 
 	public void dialGroupCallButtonOnOverlayInCreateGrpTalk() throws InterruptedException {
-		driver.findElement(dialGroupCallButtonOnOverlayInCreateGrpTalk).click();
+		Thread.sleep(3000);
+		WebElement dailButton=driver.findElement(dialGroupCallButtonOnOverlayInCreateGrpTalk);
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", dailButton);
 		Thread.sleep(15000);
 	}
 
@@ -564,11 +571,16 @@ public class CreatingGroup extends BrowserFunctions {
 
 	public void clickPhoneContactsTab() throws InterruptedException {
 
-		CommonMethods.explicitWaitForElementVisibility(phoneContacts);
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("arguments[0].click()", driver.findElement(phoneContacts));
-		/* driver.findElement(phoneContacts).click(); */
-		Thread.sleep(2000);
+				Thread.sleep(3000);
+		WebElement mobileContacts= driver.findElement(phoneContacts);
+		  JavascriptExecutor js = (JavascriptExecutor) driver;
+		  Thread.sleep(2000);
+		  js.executeScript("arguments[0].click()",mobileContacts);
+		 
+		/*
+		 * driver.findElement(phoneContacts).click();
+		 */
+		  Thread.sleep(2000);
 	}
 
 	String listName = "List " + System.currentTimeMillis();
@@ -576,12 +588,14 @@ public class CreatingGroup extends BrowserFunctions {
 	By excelUploadTab = By.xpath("//a[@id=\"excelUpload\"]");
 
 	public String createWebLIst() throws InterruptedException {
+		String contactName=CommonMethods.passingData("NameOfUserOnWebListOverlay");
+	String mobileNumber=CommonMethods.passingData("moblileNumberOfUserOnWebListOverlay");
 		String listName = "List " + System.currentTimeMillis();
 		driver.findElement(addButtonToCreateWebList).click();
 		driver.findElement(NameOfUserOnWebListOverlay)
-				.sendKeys(CommonMethods.passingData("NameOfUserOnWebListOverlay"));
+				.sendKeys(contactName);
 		driver.findElement(moblileNumberOfUserOnWebListOverlay)
-				.sendKeys(CommonMethods.passingData("moblileNumberOfUserOnWebListOverlay"));
+				.sendKeys(mobileNumber);
 		driver.findElement(newWebListNameOnWebListOverlay).sendKeys(listName);
 		driver.findElement(saveContactbuttonOnWebListOverlay).click();
 		driver.navigate().refresh();
@@ -766,11 +780,11 @@ public class CreatingGroup extends BrowserFunctions {
 		// CommonMethods.explicitWaitForElementVisibility(search_box);
 		// Thread.sleep(1000);
 		driver.findElement(search_box).clear();
-		driver.findElement(search_box).sendKeys(CommonMethods.passingData("enterTestContactInSearchBox"));
+		driver.findElement(search_box).sendKeys(CommonMethods.passingData("testContacts"));
 		Thread.sleep(2000);
 		List<WebElement> ele = listOfUsers();
 		int j = 0;
-		for (int i = 0; i < ele.size(); i++) {
+		for (int i = 0; i < ele.size(); i++) { 
 			Thread.sleep(1000);
 			ele.get(i).click();
 			if (j == 2) {
@@ -871,7 +885,7 @@ public class CreatingGroup extends BrowserFunctions {
 		// driver.findElement(search_box).sendKeys(CommonMethods.passingData("searchContactsWithNameAuto"));
 		// Thread.sleep(2000);
 		List<WebElement> ele = listOfUsers();
-		int i;
+		int i=0;
 		Actions actions = new Actions(driver);
 		for (i = 0; i < 27; i = i + 3) {
 			actions.moveToElement(ele.get(i));
@@ -912,11 +926,14 @@ public class CreatingGroup extends BrowserFunctions {
 		// CommonMethods.explicitWaitForElementVisibility(startNowButton);
 		driver.findElement(startNowButton).click();
 		driver.findElement(dailButton).click();
-		;
 
 		Thread.sleep(2000);
 	}
-
+	public void submitStartNowButtonWithoutSelectingAnyMember() throws InterruptedException {
+		// CommonMethods.explicitWaitForElementVisibility(startNowButton);
+		driver.findElement(startNowButton).click();
+	Thread.sleep(3000);
+	}
 	public void submitSaveButton() throws InterruptedException {
 		CommonMethods.explicitWaitForElementVisibility(saveButton);
 		driver.findElement(saveButton).click();

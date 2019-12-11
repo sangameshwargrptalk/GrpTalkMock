@@ -29,7 +29,7 @@ public class AccountPage extends BrowserFunctions {
 	By accountName = By.xpath("//p[@id='nickname']");
 	By accountMobileNumber = By.xpath("//p[@id='mobile']");
 	By accountMailId = By.xpath("//p[@id='email']");
-	By account = By.xpath("//*[@id='account-li']/a");
+	By account = By.cssSelector("li#account-li > a");
 	By groups = By.xpath("//a[@class=\"navbar-brand\"]//img[@id=\"imgLogo\"]");////*[@id='grptalks-li']
 	By changeProfileButton = By.id("changeProfileDetails");
 	By allTabInMyAccount = By.xpath("//*[@id='accountTabs']/li[3]/a");
@@ -41,12 +41,12 @@ public class AccountPage extends BrowserFunctions {
 	By totalAvailableLines = By.id("tot_channels");
 	By profileTab = By.id("showProfile");
 	By currrentBalance = By.id("hdnBalance");
-	By subAccountsTab = By.id("subAccountLi");
-	By accountManagersTab = By.id("AccountManagerLi");
+	By subAccountsTab = By.xpath("//*[@id=\"subAccView\"]");
+	By accountManagersTab = By.cssSelector("a#AccMgrView");
 	By addSubAccountTab = By.id("ModalAddSubAccount");
 	By nickNameFieldOnAddSubAccountOverlay = By.id("createProfileName");
 	By mobileNumberFieldOnAddSubAccountOverlay = By.id("createMobNo");
-	By quotaSubAccountOnAddSubAccountOverlay = By.xpath("//input[@id='rdShare']");// rdShare rdShareEdit
+	By quotaSubAccountOnAddSubAccountOverlay = By.xpath("//*[@class=\"radio radioAdd\"]//*[@id=\"rdShare\"]");// rdShare rdShareEdit
 	By poolSubAccountOnAddSubAccountOverlay = By.id("rdPool");
 	By poolsubaccountedit = By.id("rdPoolEdit");
 	By maxMemberLimitFieldOnAddSubAccountOverlay = By.id("createMemberLimit");
@@ -128,7 +128,7 @@ public class AccountPage extends BrowserFunctions {
 	By accountStatusInEditSubAccountOverlay = By.id("ddlAccountStatus");
 	By saveButtonOnEditsubAccountOverlay = By.xpath("//*[@id='btnEditSubAccount']");
 	By successMsgOfEditSubAccount = By.xpath("//*[@class='toast-message']");
-	By rechargeNowWithPaytmButton = By.id("paytmBtn");
+	By rechargeNowWithPaytmButton = By.xpath("//*[@class=\"Recharg\"]//*[@id=\"paytmBtn\"]");
 	By enterRechageAmount = By.id("amount");
 	By walletTransactionId = By.id("trnxid");
 	By proceedButtonOnRechargeOverlay = By.id("btn_rechargeReq");
@@ -253,12 +253,10 @@ public class AccountPage extends BrowserFunctions {
 
 	public void clickOnAccountTab() throws InterruptedException {
 		Thread.sleep(3000);
-		// driver.manage().timeouts().implicitlyWait(2,TimeUnit.SECONDS) ;
-		driver.findElement(account).click();
-		/*
-		 * JavascriptExecutor js=(JavascriptExecutor)driver;
-		 * js.executeScript("arguments[0].click()", account);
-		 */
+		WebElement account1=driver.findElement(account);
+		  JavascriptExecutor js=(JavascriptExecutor)driver;
+		  js.executeScript("arguments[0].click()", account1);
+		 Thread.sleep(2000);
 	}
 
 	public void clickOnGroupsTab() throws InterruptedException {
@@ -669,6 +667,7 @@ public class AccountPage extends BrowserFunctions {
 	}
 
 	public String maxMemberLimitErrorMsgOnAddSubAccountOverlay() throws InterruptedException {
+		Thread.sleep(3000);
 		return driver.findElement(maxMemberLimitErrorMsg).getText();
 	}
 
